@@ -8,6 +8,7 @@ import {
 
 import Login from "./components/login/Login";
 import Signup from './components/Signup/Signup';
+import  Profile from './components/Profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
 import Preferences from './components/Preferences/preferences';
 import useToken from './useToken';
@@ -38,6 +39,9 @@ function App() {
           <Route path="/preferences">
             {/* {token ? <Preferences /> : <Login setToken={setToken}/>} */}
             <Preferences />
+          </Route>
+          <Route path="/profile">
+            {token ? <Profile /> : <Login setToken={setToken} />}
           </Route>
         </Switch>
       </Router>
