@@ -12,12 +12,16 @@ const LoginApiReq = async (userCredentials, dispatch) => {
     dispatch({ type: "LOGIN_START" });
     try {
         const res = await axios.post('/login', userCredentials);
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         return res.data;
     } catch (err) {
         dispatch({ type: "LOGIN_FAILURE", payload: err });
     }
 };
+
+// export const getUserData = async (_id) => {
+//     const data = await axios.get('/')
+// }
 
 export default function Login({ setToken }) {
 
@@ -25,15 +29,23 @@ export default function Login({ setToken }) {
     const email = useRef();
     const password = useRef();
 
-    const { data, isFetching, error, dispatch } = useContext(AuthContext);
+    const { user, isFetching, error, dispatch } = useContext(AuthContext);
+    console.log("This is dispatch : " + dispatch);
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await LoginApiReq({ email: email.current.value, password: password.current.value }, dispatch);
-        console.log("Inside handlesubmit :" + token);
+        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value }, dispatch);
+        console.log("Inside handlesubmit :" + JSON.stringify(userData));
+        if (userData != null) {
+            const _id = userData.user._id;
+            sessionStorage.setItem('_id', JSON.stringify(_id));
+        } else {
+
+        }
+        const token = userData.token;
         setToken(token);
     }
-
+    console.log("Data: " + user);
     return (
         <>
             <div className="bg-image">

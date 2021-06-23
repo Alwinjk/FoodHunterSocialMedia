@@ -1,9 +1,9 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 
 import AuthReducer from './AuthReducer';
 
 const INITIAL_STATE = {
-    token: null,
+    user: null, // changes made
     isFetching: false,
     error: false,
     
@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-                token: state.token, 
+                user: state.user,  // changes made
                 isFetching: state.isFetching, 
                 error: state.error,
                 dispatch
@@ -24,5 +24,5 @@ export const AuthContextProvider = ({ children }) => {
         >
         {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};

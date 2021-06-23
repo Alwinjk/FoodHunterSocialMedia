@@ -43,7 +43,7 @@ export default function Signup() {
         email: email.current.value,
         password: password.current.value
       });
-      // console.log("Registration res " + res);
+      console.log("Registration res " + res);
       history.push("/login");
     } catch (err) {
       console.log("Registration error: " + err);

@@ -16,5 +16,13 @@ router.get("/login", (req, res) => {
 });
 
 
+// user profile routes
+const ctrlProfile = require("../controllers/profile");
+
+router.route("/user/:userid")
+        .get(ctrlProfile.userReadOne)
+        .put(ctrlProfile.userUpdate);
+
+
 
 module.exports = router;
