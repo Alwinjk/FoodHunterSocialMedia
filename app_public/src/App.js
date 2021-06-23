@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 
 import Login from "./components/login/Login";
@@ -12,14 +11,16 @@ import  Profile from './components/Profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
 import Preferences from './components/Preferences/preferences';
 import useToken from './useToken';
-// import { AuthContext } from "./components/context/AuthContext";
+import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
 
   // this is only to store the token from storage only if there is, unless it will remain empty
   const {token, setToken} = useToken();
+  // console.log("Inside App, token is : " + token);
 
-  console.log("Inside App, token is : " + token);
+  const {user} = useContext(AuthContext);
+  // console.log("App, user data : " + user.user._id);
   return (
     <div>
       <Router>
