@@ -1,0 +1,3 @@
+successfully implemented redux store and data persists
+everything happening in dashboard
+need to change to login component

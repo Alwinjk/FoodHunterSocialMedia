@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Person, VpnKey, Lock } from '@material-ui/icons';
@@ -6,22 +6,17 @@ import img1 from '../../public/images/logo.png';
 
 import './Login.css';
 
-import { AuthContext } from '../context/AuthContext';
 
-const LoginApiReq = async (userCredentials, dispatch) => {
-    dispatch({ type: "LOGIN_START" });
-    try {
-        const res = await axios.post('/login', userCredentials);
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-        return res.data;
-    } catch (err) {
-        dispatch({ type: "LOGIN_FAILURE", payload: err });
-    }
+const LoginApiReq = async (userCredentials/*, dispatch */) => {
+    // dispatch({ type: "LOGIN_START" });
+    // try {
+    const res = await axios.post('/login', userCredentials);
+    // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    return res.data;
+    // } catch (err) {
+    //     dispatch({ type: "LOGIN_FAILURE", payload: err });
+    // }
 };
-
-// export const getUserData = async (_id) => {
-//     const data = await axios.get('/')
-// }
 
 export default function Login({ setToken }) {
 
@@ -29,23 +24,18 @@ export default function Login({ setToken }) {
     const email = useRef();
     const password = useRef();
 
-    const { user, isFetching, error, dispatch } = useContext(AuthContext);
-    console.log("This is dispatch : " + dispatch);
-
     const handleSubmit = async e => {
         e.preventDefault();
-        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value }, dispatch);
-        console.log("Inside handlesubmit :" + JSON.stringify(userData));
-        if (userData != null) {
-            const _id = userData.user._id;
-            sessionStorage.setItem('_id', JSON.stringify(_id));
-        } else {
+        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value }/*, dispatch*/);
+        const _id = userData.user._id;
+        sessionStorage.setItem('_id', JSON.stringify(_id));
 
-        }
         const token = userData.token;
         setToken(token);
     }
-    console.log("Data: " + user);
+
+    // console.log("User inside login " + JSON.stringify(user));
+
     return (
         <>
             <div className="bg-image">
@@ -74,7 +64,6 @@ export default function Login({ setToken }) {
                                                 <div className="offset-1 col-lg-10 py-5 pt-5">
                                                     <button type="submit" className="btn4">LEARN MORE</button>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +90,12 @@ export default function Login({ setToken }) {
                                         </div>
                                         <div className="form-row">
                                             <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <button type="submit" className="btn2">Log In</button>
+                                                <button type="submit"
+                                                    className="btn2"
+
+                                                >
+                                                    Log In
+                                                </button>
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -111,7 +105,6 @@ export default function Login({ setToken }) {
 
                                             </div>
                                             <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                {/* <button className="btn1">Create New Account</button> */}
 
                                                 <a className="btn1" href="/signup">Forgot Password</a>
                                             </div>
