@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-import { Person, VpnKey, Lock, PersonAdd, MailOutline } from '@material-ui/icons';
+import { Person, VpnKey, PersonAdd, MailOutline } from '@material-ui/icons';
 
 import './signup.css';
 
@@ -10,17 +10,6 @@ const SignupApiReq = async (user) => {
   const res = await axios.post('/register', user);
   return res.data;
 }
-
-// async function signupUser(credentials) {
-//   return fetch('http://localhost:8000/api/register', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(credentials)
-//   })
-//     .then(data => data.json())
-//  }
 
 export default function Signup() {
 

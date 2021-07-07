@@ -19,7 +19,7 @@ router.get("/login", (req, res) => {
 // user profile routes
 const ctrlProfile = require("../controllers/profile");
 
-router.route("/user/:userid")
+router.route("/users/:userid")
         .get(ctrlProfile.userReadOne)
         .put(ctrlProfile.userUpdate);
 
