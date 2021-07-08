@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
+import Topbar from "./components/topbar/Topbar";
 import Login from "./components/login/Login";
 import Signup from './components/Signup/Signup';
 import Profile from './components/Profile/Profile';
@@ -20,6 +21,7 @@ function App() {
   // rendering occurs from here
   return (
     <div>
+      
       <Router>
         <Switch>
           <Route exact path="/">

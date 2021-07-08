@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
+
+import Topbar from '../topbar/Topbar';
 const Dashboard = ({ currentUser, isLoading, startLoadingUser }) => {
 
     useEffect(() => {
@@ -11,6 +13,7 @@ const Dashboard = ({ currentUser, isLoading, startLoadingUser }) => {
     const loadingMessage = <div>Loading Dashboard...</div>
     const content = (
         <>
+            <Topbar />
             <h1>Welcome to Dashboard {currentUser.firstname}</h1>
         </>
     );
