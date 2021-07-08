@@ -7,15 +7,14 @@ import img1 from '../../public/images/logo.png';
 import './Login.css';
 
 
-const LoginApiReq = async (userCredentials/*, dispatch */) => {
-    // dispatch({ type: "LOGIN_START" });
-    // try {
-    const res = await axios.post('/login', userCredentials);
-    // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    return res.data;
-    // } catch (err) {
-    //     dispatch({ type: "LOGIN_FAILURE", payload: err });
-    // }
+const LoginApiReq = async (userCredentials) => {
+    try {
+        const res = await axios.post('/login', userCredentials);
+        return res.data;
+    } catch (err) {
+        console.log("Login request error : " + err);
+    }
+
 };
 
 export default function Login({ setToken }) {
@@ -26,15 +25,13 @@ export default function Login({ setToken }) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value }/*, dispatch*/);
+        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value });
         const _id = userData.user._id;
         sessionStorage.setItem('_id', JSON.stringify(_id));
 
         const token = userData.token;
         setToken(token);
     }
-
-    // console.log("User inside login " + JSON.stringify(user));
 
     return (
         <>

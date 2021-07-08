@@ -1,3 +1,1 @@
-successfully implemented redux store and data persists
-everything happening in dashboard
-need to change to login component
+add a new action and reducer to update persisted data when user updates his profile

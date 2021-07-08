@@ -20,6 +20,7 @@ function App() {
   // rendering occurs from here
   return (
     <div>
+
       <Router>
         <Switch>
           <Route exact path="/">
@@ -34,11 +35,11 @@ function App() {
           <Route path="/dashboard">
             {token ? <Dashboard /> : <Login setToken={setToken}/>}
           </Route>
-          <Route path="/preferences">
-            {/* {token ? <Preferences /> : <Login setToken={setToken}/>} */}
+          {/* <Route path="/preferences">
+            
             <Preferences />
-          </Route>
-          <Route path="/profile">
+          </Route> */}
+          <Route path="/profile/:userid">
             {token ? <Profile /> : <Login setToken={setToken} />}
           </Route>
         </Switch>

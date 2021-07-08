@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
-const Dashboard = ({ currentUser, isLoading, startLoadingUser }) => {
+const Dashboard = ({ user, isLoading, startLoadingUser }) => {
 
     useEffect(() => {
         startLoadingUser();
@@ -11,17 +12,20 @@ const Dashboard = ({ currentUser, isLoading, startLoadingUser }) => {
     const loadingMessage = <div>Loading Dashboard...</div>
     const content = (
         <>
-            <h1>Welcome to Dashboard {currentUser.firstname}</h1>
+            <Link to={{ pathname: `profile/${user._id}` }}>
+                <h1>Welcome to Dashboard {user.firstname}</h1>
+            </Link>
+
         </>
     );
-    console.log("Current user: " + JSON.stringify(currentUser));
+    console.log("Current user: " + JSON.stringify(user));
     return isLoading ? loadingMessage : content;
 
 };
 
 const mapStateToProps = state => ({
     isLoading: state.isLoading,
-    currentUser: state.user
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
