@@ -3,21 +3,24 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { useRef } from 'react';
+import { loadUser } from '../../store/thunk';
+import { displayAlert } from '../../store/thunk';
 
 import Topbar from '../topbar/Topbar';
 import './Profile.css';
 
+
 const EditProfileReq = async (userid, data) => {
     try {
         const res = await axios.put(`/users/${userid}`, data);
-        console.log("Profile update : " + res.data)
+        console.log("Profile update : " + res.data);
         return res.data;
     } catch (err) {
         console.log("Edit profile error : " + err);
     }
 }
 
-const Profile = ({ user }) => {
+const Profile = ({ user, startLoadingUser }) => {
 
     const firstname = useRef();
     const lastname = useRef();
@@ -35,15 +38,18 @@ const Profile = ({ user }) => {
     const zipcode = useRef();
     const bio = useRef();
 
-    const date = user.dob;
-    const d = new Date();
-    const dayDob = d.getDay(date);
-    const monthDob = d.getMonth(date);
-    const yearDob = d.getFullYear(date);
+    const date = new Date(user.dob);
+    console.log("Hey : " + date);
+    const dayDob = date.getDate() + 1;
+    const monthDob = date.getMonth() + 1;
+    const yearDob = date.getFullYear();
+    console.log(dayDob + " " + monthDob + " " + yearDob);
 
 
     const params = useParams();
     console.log(params.userid);
+
+    // form submit function
     const handleSubmit = async e => {
         e.preventDefault();
         const data = {
@@ -64,7 +70,10 @@ const Profile = ({ user }) => {
             gender: gender.current.value
         };
         const user = await EditProfileReq(params.userid, data);
-    }
+        if (user) {
+            startLoadingUser();
+        }
+    } // end of handleSubmit
 
     return (
         <>
@@ -358,6 +367,11 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = dispatch => ({
+    startLoadingUser: () => dispatch(loadUser()),
+    onDisplayAlert: () => dispatch(displayAlert())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 
