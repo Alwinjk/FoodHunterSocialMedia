@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
+
+import Topbar from '../topbar/Topbar';
+
 const Dashboard = ({ user, isLoading, startLoadingUser }) => {
 
     useEffect(() => {
@@ -12,10 +15,10 @@ const Dashboard = ({ user, isLoading, startLoadingUser }) => {
     const loadingMessage = <div>Loading Dashboard...</div>
     const content = (
         <>
+            <Topbar />
             <Link to={{ pathname: `profile/${user._id}` }}>
                 <h1>Welcome to Dashboard {user.firstname}</h1>
             </Link>
-
         </>
     );
     console.log("Current user: " + JSON.stringify(user));

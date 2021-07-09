@@ -28,7 +28,6 @@ export const user = (state = [], action) => {
         case LOAD_USER_IN_PROGRESS:
         case LOAD_USER_SUCCESS:
             const { user } = payload;
-            // return user;
             return user;
         case LOAD_USER_FAILURE:
         default:

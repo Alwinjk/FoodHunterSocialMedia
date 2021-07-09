@@ -1,0 +1,51 @@
+.topbar-input .form-control {
+    height: 40px;
+    width: 80%;
+    border-radius: 60px;
+    outline: none;
+    margin-right: -35px;
+
+    border: 2px solid rgb(248, 26, 92);
+}
+
+.btn0 {
+    height: 40px;
+    width: 40%;
+    outline: none;
+    border: none;
+    background: rgb(248, 26, 92);
+    color: #fff;
+    border-radius: 60px;
+    font-weight: 700;
+}
+
+.btn0:hover {
+    color: #3aafa9;
+}
+
+.navbar-nav {
+    font-size: 1rem;
+    color: #000;
+
+}
+
+.navbar-nav:hover {
+    color: #000;
+}
+
+.nav-item {
+    margin-right: 40px;
+    margin-left: 10px;
+    color: #000;
+
+
+
+}
+
+.nav-item:hover {
+    color: #000;
+}
+
+.container {
+    align-items: center;
+}

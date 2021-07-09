@@ -1,1 +1,5 @@
+-- make changes in thunk to get user id from session storage
+
+-- check user data to submit user profile put request
+
 add a new action and reducer to update persisted data when user updates his profile
