@@ -19,6 +19,7 @@ const userReadOne = (req, res) => {
         });
 };
 
+
 const userUpdate = (req, res) => {
 
     if(!req.params.userid) {

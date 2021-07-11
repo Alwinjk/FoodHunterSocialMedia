@@ -16,9 +16,6 @@ const Dashboard = ({ user, isLoading, startLoadingUser }) => {
     const content = (
         <>
             <Topbar />
-            <Link to={{ pathname: `profile/${user._id}` }}>
-                <h1>Welcome to Dashboard {user.firstname}</h1>
-            </Link>
         </>
     );
     console.log("Current user: " + JSON.stringify(user));

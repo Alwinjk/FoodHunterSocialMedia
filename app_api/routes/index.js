@@ -24,5 +24,10 @@ router.route("/users/:userid")
         .put(ctrlProfile.userUpdate);
 
 
-
+// post routes
+const ctrlPost = require("../controllers/post");
+router.route("/post")
+        .post(ctrlPost.createPost)
+        .get(ctrlPost.findUserPost);
+       
 module.exports = router;
