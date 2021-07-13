@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
+const avatarSchema = new mongoose.Schema({
+  key: String,
+  updatedon: Date,
+})
+
 const addressSchema = new mongoose.Schema({
   address1: {
     type: String,
@@ -46,7 +51,8 @@ const userSchema = new mongoose.Schema({
   bio: String,
   gender: String,
   dob: Date,
-  address: addressSchema
+  address: addressSchema,
+  avatar: avatarSchema
 });
 
 userSchema.methods.setPassword = function (password) {
