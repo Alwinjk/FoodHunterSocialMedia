@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
@@ -18,9 +18,33 @@ const EditProfileReq = async (userid, data) => {
     } catch (err) {
         console.log("Edit profile error : " + err);
     }
+};
+
+const postImage = async ({ image, description }, userid) => {
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("description", description);
+
+    const result = await axios.put(`/users/${userid}/avatar`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+    return result.data;
 }
 
 const Profile = ({ user, startLoadingUser }) => {
+
+    const [file, setFile] = useState();
+    const [description, setDescription] = useState("");
+    const [images, setImages] = useState([]);
+
+    const submitAvatar = async event => {
+        event.preventDefault();
+        const result = await postImage({ image: file, description }, user._id);
+        setImages([result.image, ...images]);
+    };
+
+    const fileSelected = event => {
+        const file = event.target.files[0];
+        setFile(file);
+    };
 
     const firstname = useRef();
     const lastname = useRef();
@@ -39,15 +63,12 @@ const Profile = ({ user, startLoadingUser }) => {
     const bio = useRef();
 
     const date = new Date(user.dob);
-    console.log("Hey : " + date);
     const dayDob = date.getDate() + 1;
     const monthDob = date.getMonth() + 1;
     const yearDob = date.getFullYear();
-    console.log(dayDob + " " + monthDob + " " + yearDob);
-
 
     const params = useParams();
-    console.log(params.userid);
+    const imagePath = `/users/${params.userid}/avatar/${user.avatar.key}`;
 
     // form submit function
     const handleSubmit = async e => {
@@ -94,6 +115,21 @@ const Profile = ({ user, startLoadingUser }) => {
                 </div>
 
                 <div className="container">
+                    <form onSubmit={submitAvatar}>
+                        <input onChange={fileSelected} type="file" accept="image/*"></input>
+                        <input value={description} onChange={e => setDescription(e.target.value)} type="text"></input>
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    {images.map(image => (
+                        <div key={image}>
+                            <img src={image}></img>
+                        </div>
+                    ))}
+
+                    <img src={imagePath}></img>
+
+
                     <div className="col bg-white mt-5 mb-5">
                         <form onSubmit={handleSubmit}>
                             <div className="row">

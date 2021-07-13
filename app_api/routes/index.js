@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const jwt = require("express-jwt");
 const auth = jwt({
     secret: process.env.JWT_SECRET,
     userProperty: 'payload'
 });
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 // Authentication routes
 const ctrlAuth = require("../controllers/authentication");
@@ -18,10 +20,14 @@ router.get("/login", (req, res) => {
 
 // user profile routes
 const ctrlProfile = require("../controllers/profile");
-
 router.route("/users/:userid")
         .get(ctrlProfile.userReadOne)
         .put(ctrlProfile.userUpdate);
+router.route("/users/:userid/avatar")
+        .put(upload.single('image'),ctrlProfile.avatarUpdate);
+        
+router.route("/users/:userid/avatar/:key")
+        .get(ctrlProfile.getAvatar);
 
 
 // post routes
