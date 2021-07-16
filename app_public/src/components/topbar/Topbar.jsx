@@ -9,13 +9,14 @@ const Topbar = ({ user }) => {
     return (
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container">
-                <Link className="navbar-brand" to='/dashboard'>FoodHunter</Link>
+            <div className="container-nav">
+                <Link className="navbar-brand pt-5 " to='/dashboard'>FoodHunter</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to={{ pathname: `profile/${user._id}` }}>
                                 Profile
@@ -34,17 +35,30 @@ const Topbar = ({ user }) => {
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
+
+                                <li>
+
+                                </li>
                             </ul>
                         </li>
+                        <li>
+                            <form className="d-flex">
+                                <div className="topbar-input">
+                                    <input className="form-control" type="search" placeholder="Search" aria-label="Search" />
+
+                                </div>
+                            </form>
+
+                        </li>
+                        <li>
+                            <button className="btn-search" type="submit">Search</button>
+                        </li>
+
 
                     </ul>
 
-                    <form className="d-flex">
-                        <div className="topbar-input">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn0 " type="submit">Search</button>
-                        </div>
-                    </form>
+
+
                 </div>
             </div>
         </nav >
