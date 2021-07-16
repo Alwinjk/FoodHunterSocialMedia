@@ -33,7 +33,12 @@ router.route("/users/:userid/avatar/:key")
 // post routes
 const ctrlPost = require("../controllers/post");
 router.route("/post")
-        .post(ctrlPost.createPost)
-        .get(ctrlPost.findUserPost);
-       
+        .post(ctrlPost.createPost); // To create a new post
+router.route("/post/:userid/posts")
+        .get(ctrlPost.findUserPost); // To display all the posts from a specific user
+// To edit a specific post from a specific user
+router.route("/post/:userid/posts/:postid")
+        .get(ctrlPost.findSpecificPost)
+        .put(ctrlPost.editPost)
+        .delete(ctrlPost.deletePost);
 module.exports = router;
