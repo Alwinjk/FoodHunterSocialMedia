@@ -1,6 +1,6 @@
 .topbar-input .form-control {
     height: 40px;
-    width: 80%;
+    width: 100%;
     border-radius: 60px;
     outline: none;
     margin-right: -35px;
@@ -8,18 +8,24 @@
     border: 2px solid rgb(248, 26, 92);
 }
 
-.btn0 {
+.form-control {
+    width: 100%;
+}
+
+.btn-search {
     height: 40px;
-    width: 40%;
+    width: 100%;
     outline: none;
     border: none;
     background: rgb(248, 26, 92);
     color: #fff;
     border-radius: 60px;
     font-weight: 700;
+    margin-left: 30px;
+    ;
 }
 
-.btn0:hover {
+.btn-search:hover {
     color: #3aafa9;
 }
 
@@ -28,6 +34,7 @@
     color: #000;
 
 }
+
 
 .navbar-nav:hover {
     color: #000;
@@ -46,6 +53,44 @@
     color: #000;
 }
 
-.container {
-    align-items: center;
+.container-nav {
+    /* align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; */
+    float: left;
+    padding: 10px;
+    margin-left: 10px;
+    width: 90%;
+}
+
+.container-nav li {
+    margin-left: 20px;
+}
+
+@media (max-width:768px) {
+
+    .btn-search {
+        height: 0px;
+        width: 0;
+        outline: none;
+        border: none;
+        background: rgb(248, 26, 92);
+        color: #fff;
+        border-radius: 60px;
+        font-weight: 700;
+    }
+
+    .container-nav {
+        /* align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; */
+        float: right;
+        padding: 10px;
+        margin-left: 10px;
+        width: 90%;
+    }
+
+
 }

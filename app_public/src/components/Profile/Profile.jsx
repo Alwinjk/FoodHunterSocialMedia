@@ -96,6 +96,7 @@ const Profile = ({ user, startLoadingUser }) => {
         }
     } // end of handleSubmit
 
+
     return (
         <>
             <Topbar />
@@ -335,65 +336,115 @@ const Profile = ({ user, startLoadingUser }) => {
                 </div>
                 <div className="container">
 
-                    <div className="col bg-white mt-5 mb-5 ">
-                        <div className="tabbable ">
-                            <h4 className="text-left pt-5 pl-5">Posts</h4>
+                    <div className="col bg-white mt-12 mb-5 ">
 
-                            <ul className="nav nav-tabs p-5">
-                                <li className="active bg-white ">
-                                    <a href="#tab1" data-toggle="tab">Photos</a></li><span>...</span>
-                                <li className="active ">
-                                    <a href="#tab2" data-toggle="tab">Videos</a></li>
-                            </ul>
-                            <div className="tab-content ">
-                                <div className="tab-pane active" id="tab1">
-                                    <section className="gallery p-0 ">
-                                        <div className="container-lg">
-                                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
-                                                <div className="col">
-                                                    <img src="" width="200px" height="200px" className="gallery-item" alt="gallery" />
-                                                </div>
+
+
+                        <div class="container">
+                            <h1>Gallery</h1>
+
+                            <div class="gallery-wrap">
+                                <div class="item item-1"></div>
+                                <div class="item item-2"></div>
+                                <div class="item item-3"></div>
+                                <div class="item item-4"></div>
+                                <div class="item item-5"></div>
+                            </div>
+                        </div>
+
+                        <div class="social">
+                            <a href="https://twitter.com/StefCharle" target="_blank">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg" alt="" />
+                            </a>
+                        </div>
+
+
+
+                        <div className="col-md-2 border-right">
+                        </div>
+
+                        <div className="col-md-10 border-right">
+
+
+
+
+
+
+
+
+
+
+                            <div className="profile-card">
+
+
+                                <div className="card-profile-info">
+
+                                    <div className="row">
+                                        <div className="col-md-3 border-right">
+                                            <div className="col-md-3 border-right">
+                                            </div>
+                                            <div className="pic">
+                                                <img src="./images/File_000%20(1).jpeg" alt="" />
                                             </div>
                                         </div>
-                                    </section>
+                                        <div className="col-md-9 border-right">
+                                            <span>Ananthu</span>
+                                        </div>
 
-                                    {/* <!-- Modal --> */}
-                                    <div className="modal fade" id="gallery-modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div className="modal-dialog modal-dialog-centered modal-lg">
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    {/* <!-- <h5 className="modal-title" id="exampleModalLabel">Modal title</h5> --> */}
-                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div className="modal-body">
-                                                    <img src="" className="modal-img" alt="modal img" />
-                                                </div>
-                                            </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div className="card-header">
+
+                                    <div className="pic-post">
+                                        <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" />
+                                    </div>
+
+                                </div>
+                                <div className="card-footer">
+                                    <div className="numbers">
+                                        <div className="item">
+                                            <span>120</span>
+                                            like
+                                        </div>
+                                        <div className="border"></div>
+                                        <div className="item">
+                                            <span>127</span>
+                                            share
+                                        </div>
+                                        <div className="border"></div>
+                                        <div className="item">
+                                            <span>120</span>
+                                            comment
                                         </div>
                                     </div>
                                 </div>
-                                <div className="tab-pane" id="tab2">
-                                    <p>Howdy, I'm in Section 2.</p>
-                                </div>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
+
+
                 </div>
+
+
+
+
+
+
+
             </section>
         </>
     )
