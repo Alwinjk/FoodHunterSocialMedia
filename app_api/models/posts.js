@@ -30,14 +30,16 @@ const postSchema = new mongoose.Schema({
   text: String,
   images: imageSchema,
   videos: videoSchema,
-  like: Number,
-  share: Number,
-  createdon: {
-      type: Date,
-      required: true,
-      default: Date.now()
-  }
-
+  like: {
+      type: Number,
+      deafult: 0
+  },
+  share: {
+      type: Number,
+      default: 0
+  },
+}, {
+    timestamps: true
 });
 
 
