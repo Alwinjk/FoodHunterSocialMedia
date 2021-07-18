@@ -24,10 +24,7 @@ router.route("/users/:userid")
         .get(ctrlProfile.userReadOne)
         .put(ctrlProfile.userUpdate);
 router.route("/users/:userid/avatar")
-        .put(upload.single('image'),ctrlProfile.avatarUpdate);
-        
-router.route("/users/:userid/avatar/:key")
-        .get(ctrlProfile.getAvatar);
+        .put(ctrlProfile.avatarUpload);
 
 
 // post routes

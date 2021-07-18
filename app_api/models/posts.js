@@ -1,22 +1,11 @@
 const mongoose = require('mongoose');
 
-const imageSchema = new mongoose.Schema({
-    url: {
-        type: String,
-        required: true,
-    },
+const filesSchema = new mongoose.Schema({
     filename: {
         type: String,
         required: true,
-    }
-});
-
-const videoSchema = new mongoose.Schema({
-    url: {
-        type: String,
-        required: true,
     },
-    filename: {
+    url: {
         type: String,
         required: true,
     }
@@ -28,8 +17,7 @@ const postSchema = new mongoose.Schema({
     required: true
   },
   text: String,
-  images: imageSchema,
-  videos: videoSchema,
+  files: [filesSchema],
   like: {
       type: Number,
       deafult: 0

@@ -9,7 +9,6 @@ import { displayAlert } from '../../store/thunk';
 import Topbar from '../topbar/Topbar';
 import './Profile.css';
 
-
 const EditProfileReq = async (userid, data) => {
     try {
         const res = await axios.put(`/users/${userid}`, data);
@@ -20,31 +19,9 @@ const EditProfileReq = async (userid, data) => {
     }
 };
 
-const postImage = async ({ image, description }, userid) => {
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("description", description);
-
-    const result = await axios.put(`/users/${userid}/avatar`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
-    return result.data;
-}
-
 const Profile = ({ user, startLoadingUser }) => {
 
-    const [file, setFile] = useState();
-    const [description, setDescription] = useState("");
-    const [images, setImages] = useState([]);
-
-    const submitAvatar = async event => {
-        event.preventDefault();
-        const result = await postImage({ image: file, description }, user._id);
-        setImages([result.image, ...images]);
-    };
-
-    const fileSelected = event => {
-        const file = event.target.files[0];
-        setFile(file);
-    };
+    const [selectedFile, setSelectedFile] = useState(null);
 
     const firstname = useRef();
     const lastname = useRef();
@@ -68,8 +45,51 @@ const Profile = ({ user, startLoadingUser }) => {
     const yearDob = date.getFullYear();
 
     const params = useParams();
-    const imagePath = `/users/${params.userid}/avatar/${user.avatar.key}`;
 
+    const singleFileChangeHandler = e => {
+        setSelectedFile(e.target.files[0]);
+    }
+
+    const singleFileUploadHandler = (e) => {
+        e.preventDefault();
+        const data = new FormData();// If file selected
+        if (selectedFile) {
+            data.append('profileImage', selectedFile, selectedFile.name);
+            axios.put(`/users/${user._id}/avatar`, data, {
+                headers: {
+                    'accept': 'application/json',
+                    'Accept-Language': 'en-US,en;q=0.8',
+                    'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                }
+            })
+                .then((response) => {
+                    if (200 === response.status) {
+                        // If file size is larger than expected.
+                        if (response.data.error) {
+                            if ('LIMIT_FILE_SIZE' === response.data.error.code) {
+                                console.log("exceeds max size");
+                            } else {
+                                console.log(response.data);// If not the given file type
+                                console.log(response.data.error);
+                            }
+                        } else {
+                            // Success
+                            let fileName = response.data;
+                            console.log('fileName', fileName);
+                            console.log('File Uploaded successfully');
+                            startLoadingUser();
+                        }
+                    }
+                }).catch((error) => {
+                    // If another error
+                    console.log(error);
+                });
+        } else {
+            // if file not selected throw error
+            console.log('Please upload file');
+        }
+    };
+    console.log("selected file", selectedFile);
     // form submit function
     const handleSubmit = async e => {
         e.preventDefault();
@@ -116,19 +136,6 @@ const Profile = ({ user, startLoadingUser }) => {
                 </div>
 
                 <div className="container">
-                    <form onSubmit={submitAvatar}>
-                        <input onChange={fileSelected} type="file" accept="image/*"></input>
-                        <input value={description} onChange={e => setDescription(e.target.value)} type="text"></input>
-                        <button type="submit">Submit</button>
-                    </form>
-
-                    {images.map(image => (
-                        <div key={image}>
-                            <img src={image}></img>
-                        </div>
-                    ))}
-
-                    <img src={imagePath}></img>
 
 
                     <div className="col bg-white mt-5 mb-5">
@@ -136,7 +143,11 @@ const Profile = ({ user, startLoadingUser }) => {
                             <div className="row">
                                 <div className="col-md-3 border-right">
                                     <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                        <img className="rounded-circle mt-4" width="150px" src="" />
+                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar.url} />
+                                        <form >
+                                            <input type="file" onChange={singleFileChangeHandler} />
+                                            <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
+                                        </form>
                                         <span className="font-weight-bold">{user.firstname} {user.lastname}</span><span className="text-black-50"></span><span> </span>
                                     </div>
                                 </div>
@@ -322,7 +333,7 @@ const Profile = ({ user, startLoadingUser }) => {
                                                 id="w3review"
                                                 name="w3review"
                                                 rows="4"
-                                                cols="50"
+                                                cols="100%"
                                                 defaultValue={user.bio}
                                                 ref={bio}
                                             />
@@ -384,7 +395,7 @@ const Profile = ({ user, startLoadingUser }) => {
                                             <div className="col-md-3 border-right">
                                             </div>
                                             <div className="pic">
-                                                <img src="./images/File_000%20(1).jpeg" alt="" />
+                                                <img src="" alt="" />
                                             </div>
                                         </div>
                                         <div className="col-md-9 border-right">

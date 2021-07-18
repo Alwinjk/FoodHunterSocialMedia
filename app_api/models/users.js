@@ -3,9 +3,12 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
 const avatarSchema = new mongoose.Schema({
-  key: String,
-  updatedon: Date,
-})
+  image: String,
+  url: String,
+},
+{
+  timestamps: true
+});
 
 const addressSchema = new mongoose.Schema({
   address1: {
