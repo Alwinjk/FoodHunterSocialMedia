@@ -48,7 +48,12 @@ body {
 }
 
 .labels {
-    font-size: 11px
+    font-size: 11px;
+    width: 100%;
+}
+
+#w3review {
+    width: 100%;
 }
 
 .create-img1 {
