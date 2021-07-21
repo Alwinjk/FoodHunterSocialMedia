@@ -39,13 +39,15 @@ function checkFileType( file, cb ){
     if( mimetype && extname ){
         return cb( null, true );
     } else {
-        cb( 'Error: Images Only!' );
+        cb( 'Error: Images or Videos Only!' );
     }
 }
 
 const createPost = ( req, res ) => {
+    
     uploadsBusinessGallery( req, res, ( error ) => {
-        console.log( 'files', req.files );
+        
+        // console.log( 'files', req.files );
         if( error ){
             console.log( 'errors', error );
             res.json( { error: error } );
@@ -75,22 +77,22 @@ const createPost = ( req, res ) => {
                     console.log("Gallery ", galleryImgLocationArray);
                 }
                 // Save the file name into database
-                // const post = new Post();
+                const post = new Post();
         
-                // post.userid = req.body.userid;
-                // post.text = req.body.text;
-                // post.files = galleryImgLocationArray;
-                // post.like = req.body.like;
-                // post.share = req.body.share;
-                // post.save((err, data) => {
-                //     if(err) {
-                //         res.status(404)
-                //             .json(err);
-                //     } else {
-                //         res.status(200)
-                //         return;
-                //     }
-                // });
+                post.userid = req.body.userid;
+                post.text = req.body.text;
+                post.files = galleryImgLocationArray;
+                post.like = req.body.like;
+                post.share = req.body.share;
+                post.save((err, data) => {
+                    if(err) {
+                        res.status(404)
+                            .json(err);
+                    } else {
+                        res.status(200)
+                        return;
+                    }
+                });
             }
         }
     });
