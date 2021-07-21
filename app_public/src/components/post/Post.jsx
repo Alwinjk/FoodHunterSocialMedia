@@ -21,12 +21,18 @@ export default connect(mapStateToProps)(function Post({ user }) {
     const multipleFileUploadHandler = e => {
         e.preventDefault();
         const data = new FormData();
+        const textValue = text.current.value;
         // If file selected
         if (selectedFiles) {
             for (let i = 0; i < selectedFiles.length; i++) {
                 data.append('galleryImage', selectedFiles[i], selectedFiles[i].name);
             }
-            axios.post('/post', data, {
+            data.append('userid', user._id);
+            data.append('text', textValue);
+            for (var value of data.entries()) {
+                console.log(value[0] + " - " + value[1]);
+            }
+            axios.post(`/posts/${user._id}/post`, data, {
                 headers: {
                     'accept': 'application/json',
                     'Accept-Language': 'en-US,en;q=0.8',

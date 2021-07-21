@@ -29,7 +29,7 @@ router.route("/users/:userid/avatar")
 
 // post routes
 const ctrlPost = require("../controllers/post");
-router.route("/post")
+router.route("/posts/:userid/post")
         .post(ctrlPost.createPost); // To create a new post
 router.route("/post/:userid/posts")
         .get(ctrlPost.findUserPost); // To display all the posts from a specific user
