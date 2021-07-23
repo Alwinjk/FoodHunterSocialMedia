@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import './post.css';
-import FileUploadComponent from '../FileUploadComponent';
 
 const mapStateToProps = state => ({
     user: state.user
@@ -110,7 +109,11 @@ export default connect(mapStateToProps)(function Post({ user }) {
                                                     multiple
                                                     onChange={multipleFileChangeHandler}
                                                 />
-                                                {/* <FileUploadComponent /> */}
+                                                <div className="label-holder">
+                                                    <label htmlFor="file" className="label">
+                                                        <i className="material-icons">add_a_photo</i>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
