@@ -3,11 +3,13 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { useRef } from 'react';
-import { loadUser } from '../../store/thunk';
+import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
 import Topbar from '../topbar/Topbar';
+import SingleFeed from '../singlefeed/SingleFeed';
 import './Profile.css';
+import { useEffect } from 'react';
 
 const EditProfileReq = async (userid, data) => {
     try {
@@ -19,7 +21,11 @@ const EditProfileReq = async (userid, data) => {
     }
 };
 
-const Profile = ({ user, startLoadingUser }) => {
+const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
+
+    useEffect(() => {
+        startLoadingPost();
+    }, []);
 
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -345,9 +351,12 @@ const Profile = ({ user, startLoadingUser }) => {
                     </div>
 
                 </div>
-                <div className="container">
 
-                    <div className="col bg-white mt-12 mb-5 ">
+                {/* Gallery container */}
+
+                {/* <div className="container">
+
+                     <div className="col bg-white mt-12 mb-5 ">
 
 
 
@@ -369,93 +378,15 @@ const Profile = ({ user, startLoadingUser }) => {
                             </a>
                         </div>
 
+                    </div> 
+
+                </div> */}
 
 
-                        <div className="col-md-2 border-right">
-                        </div>
-
-                        <div className="col-md-10 border-right">
-
-
-
-
-
-
-
-
-
-
-                            <div className="profile-card">
-
-
-                                <div className="card-profile-info">
-
-                                    <div className="row">
-                                        <div className="col-md-3 border-right">
-                                            <div className="col-md-3 border-right">
-                                            </div>
-                                            <div className="pic">
-                                                <img src="" alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-9 border-right">
-                                            <span>Ananthu</span>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-                                <div className="card-header">
-
-                                    <div className="pic-post">
-                                        <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" />
-                                    </div>
-
-                                </div>
-                                <div className="card-footer">
-                                    <div className="numbers">
-                                        <div className="item">
-                                            <span>120</span>
-                                            like
-                                        </div>
-                                        <div className="border"></div>
-                                        <div className="item">
-                                            <span>127</span>
-                                            share
-                                        </div>
-                                        <div className="border"></div>
-                                        <div className="item">
-                                            <span>120</span>
-                                            comment
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
-                    </div>
-
-
+                {/* Post container */}
+                <div className="container bg-light md-5" >
+                    <SingleFeed />
                 </div>
-
-
-
-
-
-
-
             </section>
         </>
     )
@@ -467,6 +398,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     startLoadingUser: () => dispatch(loadUser()),
+    startLoadingPost: () => dispatch(loadPost()),
     onDisplayAlert: () => dispatch(displayAlert())
 });
 

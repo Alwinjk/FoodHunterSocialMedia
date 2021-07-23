@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { loadPost } from '../../store/thunk';
 
 import './post.css';
 
@@ -8,7 +9,11 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps)(function Post({ user }) {
+const mapDispatchToProps = dispatch => ({
+    startLoadingPost: () => dispatch(loadPost())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user, startLoadingPost }) {
     const text = useRef();
 
     const [selectedFiles, setSelectedFiles] = useState(null);
@@ -39,7 +44,8 @@ export default connect(mapStateToProps)(function Post({ user }) {
                 }
             })
                 .then((response) => {
-                    console.log('res', response); if (200 === response.status) {
+                    console.log('res', response);
+                    if (200 === response.status) {
                         // If file size is larger than expected.
                         if (response.data.error) {
                             if ('LIMIT_FILE_SIZE' === response.data.error.code) {
@@ -53,14 +59,17 @@ export default connect(mapStateToProps)(function Post({ user }) {
                         } else {
                             // Success
                             let fileName = response.data;
+
                             console.log('fileName', fileName);
                             console.log('File Uploaded successfully');
+
                         }
                     }
                 }).catch((error) => {
                     // If another error
                     console.log(error);
                 });
+            startLoadingPost();
         } else {
             // if file not selected throw error
             console.log('Please upload file');

@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadUser } from '../../store/thunk';
+import { loadUser, loadPost } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 import Post from '../post/Post';
-
 import Topbar from '../topbar/Topbar';
-
 import SingleFeed from '../singlefeed/SingleFeed';
 
 
-const Dashboard = ({ user, isLoading, startLoadingUser }) => {
+const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
 
     useEffect(() => {
         startLoadingUser();
+        startLoadingPost();
     }, []);
 
     const loadingMessage = <div>Loading Dashboard...</div>
@@ -37,6 +35,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     startLoadingUser: () => dispatch(loadUser()),
+    startLoadingPost: () => dispatch(loadPost()),
     onDisplayAlert: () => dispatch(displayAlert())
 });
 
