@@ -19,7 +19,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
     const [selectedFiles, setSelectedFiles] = useState(null);
     const multipleFileChangeHandler = (e) => {
         setSelectedFiles(e.target.files);
-        console.log(e.target.files);
     };
 
     const multipleFileUploadHandler = e => {
@@ -33,9 +32,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
             }
             data.append('userid', user._id);
             data.append('text', textValue);
-            for (var value of data.entries()) {
-                console.log(value[0] + " - " + value[1]);
-            }
             axios.post(`/posts/${user._id}/post`, data, {
                 headers: {
                     'accept': 'application/json',
@@ -44,7 +40,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                 }
             })
                 .then((response) => {
-                    console.log('res', response);
                     if (200 === response.status) {
                         // If file size is larger than expected.
                         if (response.data.error) {
@@ -59,7 +54,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                         } else {
                             // Success
                             let fileName = response.data;
-
                             console.log('fileName', fileName);
                             console.log('File Uploaded successfully');
 

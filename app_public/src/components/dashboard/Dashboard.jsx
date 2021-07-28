@@ -5,6 +5,7 @@ import { displayAlert } from '../../store/thunk';
 import Post from '../post/Post';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
+import Userlist from '../userlist/Userlist';
 
 
 const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
@@ -20,6 +21,7 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
             <Topbar />
             <Post />
             <SingleFeed />
+            <Userlist />
 
         </>
     );
