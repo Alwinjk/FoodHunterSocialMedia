@@ -99,12 +99,10 @@ const createPost = ( req, res ) => {
 };
 
 
-
-
-
 // finding all posts created by a user
 const findUserPost = (req, res) => {
     Post.find({ userid: req.params.userid})
+        .sort({ updatedAt: -1})
         .exec((err, posts) => {
         if (err) {
             res.status(404)
