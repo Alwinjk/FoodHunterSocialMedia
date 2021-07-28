@@ -1,14 +1,22 @@
 .profile-card {
     width: 100%;
     text-align: center;
-    border-radius: 8px;
+
     overflow: hidden;
+    border-radius: 20px;
+
 
 }
 
 .card-header {
     background: #f4f4f4;
     padding: 20px 20px;
+    border-radius: 20px;
+}
+
+.alwin-info {
+    border-radius: 20px;
+
 }
 
 .pic {
@@ -20,6 +28,7 @@
 
     animation: animated-gradient 2s linear infinite;
 }
+
 
 .pic-post {
     width: 100%;
@@ -147,4 +156,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 65%;
+    border-radius: 20px;
+    ;
 }

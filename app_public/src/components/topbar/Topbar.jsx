@@ -62,8 +62,6 @@ const Topbar = ({ user }) => {
                 </div>
             </div>
         </nav >
-
-
     );
 };
 
