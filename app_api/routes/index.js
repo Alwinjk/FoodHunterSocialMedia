@@ -38,4 +38,10 @@ router.route("/post/:userid/posts/:postid")
         .get(ctrlPost.findSpecificPost)
         .put(ctrlPost.editPost)
         .delete(ctrlPost.deletePost);
+
+// users routes
+const ctrlUsers = require("../controllers/users");
+// To diplay users except current user (this will display all users in database)
+router.route("/all-users/:userid")
+        .get(ctrlUsers.userReadAllExceptCurrent);
 module.exports = router;
