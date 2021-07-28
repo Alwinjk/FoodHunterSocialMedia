@@ -9,7 +9,7 @@ const SingleFeed = ({ user, posts }) => {
     let postsArray = posts.map(post => {
         return post.files;
     });
-    console.log("postsArray", postsArray)
+    // console.log("postsArray", postsArray)
 
 
 
@@ -25,7 +25,7 @@ const SingleFeed = ({ user, posts }) => {
                                 <div className="col bg-white mx-5 mt-5 mb-5">
                                     <div className="col-md-0 border-right">
                                     </div>
-                                    <div class="alwin-info">
+                                    <div className="alwin-info">
                                         <div className="col-md-12 mx-0 border-right">
                                             <div className="profile-card">
                                                 <div className="card-profile-info">

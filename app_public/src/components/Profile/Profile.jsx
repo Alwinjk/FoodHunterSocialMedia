@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
@@ -9,7 +9,7 @@ import { displayAlert } from '../../store/thunk';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
 import './Profile.css';
-import { useEffect } from 'react';
+
 
 const EditProfileReq = async (userid, data) => {
     try {
@@ -117,6 +117,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
             gender: gender.current.value
         };
         const user = await EditProfileReq(params.userid, data);
+        console.log("user", user)
         if (user) {
             startLoadingUser();
         }
