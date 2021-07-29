@@ -30,7 +30,7 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
                     </div>
                 </div>
 
-                <Userlist />
+
             </section>
         </>
     );

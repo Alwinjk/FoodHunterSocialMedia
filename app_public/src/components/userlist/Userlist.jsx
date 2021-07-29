@@ -46,18 +46,40 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
                             //     <button onClick={() => handleFollowRequest(currentUser._id, user._id)}>Follow</button>
                             //     <button onClick={() => handleCancelFollowRequest(currentUser._id, user._id)}>Cancel Request</button>
                             // </div>
-                            <div className="ananthu-right">
-                                <div className="user-info">
-                                    <h3>
-                                        Ananthu
+                            <div class="container-userlist mt-5">
+                                <div className="user-list-ananthu">
+                                    <div className="user-list-alwin">
 
-                                    </h3>
-                                    <button className="btn">View Profile</button>
-                                </div>
+                                        <div className="ananthu-left">
+                                            <div className="ananthu-image m-2">
+                                                <img className="ananthu-image-inner" alt="" />
+                                                <div className="gradient"></div>
+                                            </div>
 
-                                <div className="user-ananthu">
-                                    <p className="user-bio-name">Ananthu Purushothaman</p>
-                                    <p>This is the user biography <br /> stirling avenue thejhkjHk </p>
+                                        </div>
+
+                                        <div className="ananthu-right">
+                                            <div className="user-info">
+                                                <h3>
+                                                    Ananthu
+
+                                                </h3>
+                                                {/* <button className="btn">View Profile</button> */}
+                                            </div>
+                                            <div class="user-links">
+
+                                                <a><span>421k</span> Followers</a>
+                                                <a>Following <span>388</span></a>
+
+                                                <button class="userlist-button">Follow</button>
+                                                <button class="userlist-button">View Profile</button>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
