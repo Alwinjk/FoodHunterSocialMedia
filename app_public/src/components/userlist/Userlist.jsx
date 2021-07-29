@@ -5,7 +5,21 @@ import { loadUserList } from '../../store/thunk';
 import { useEffect } from 'react';
 
 
+const handleFollowRequest = async (currentUserid, userid) => {
+    try {
+        await axios.put(`users/${userid}/following`, { currentuser: currentUserid });
+    } catch (err) {
+        console.log("follow request error", err);
+    }
+}
 
+const handleCancelFollowRequest = async (currentUserid, userid) => {
+    try {
+        await axios.put(`users/${userid}/cancel-follow-request`, { currentuser: currentUserid });
+    } catch (err) {
+        console.log("follow request error", err);
+    }
+}
 
 const Userlist = ({ user, userList, startLoadingUserList }) => {
 
@@ -14,18 +28,20 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
     }, []);
     userList.map(user => {
         console.log(user.firstname);
-    })
+    });
 
     return (
         <>
             {
-                userList.map(user => {
+                userList.map(currentUser => {
                     return (
                         <div className="user-container">
                             <div className="avatar-container">
-                                {user.avatar === undefined ? <img src="../../public/images/logo.png" alt="logo" /> : <img src={user.avatar.url} />}
+                                {currentUser.avatar === undefined ? <img src="../../public/images/logo.png" alt="logo" /> : <img src={currentUser.avatar.url} />}
                             </div>
-                            <p style={{ color: "white" }}>{user.firstname} {user.lastname}</p>
+                            <p style={{ color: "white" }}>{currentUser.firstname} {currentUser.lastname}</p>
+                            <button onClick={() => handleFollowRequest(currentUser._id, user._id)}>Follow</button>
+                            <button onClick={() => handleCancelFollowRequest(currentUser._id, user._id)}>Cancel Request</button>
                         </div>
                     )
                 })

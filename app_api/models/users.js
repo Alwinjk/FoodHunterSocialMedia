@@ -54,6 +54,14 @@ const userSchema = new mongoose.Schema({
   bio: String,
   gender: String,
   dob: Date,
+  following: {
+    type: [String],
+    unique: true
+  },
+  followers: {
+    type: [String],
+    unique: true
+  },
   address: addressSchema,
   avatar: avatarSchema
 });

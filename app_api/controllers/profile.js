@@ -21,7 +21,7 @@ const profileImgUpload = multer({
             cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
         }
     }),
-    limits:{ fileSize: 15000000 }, // In bytes: 2000000 bytes = 2 MB
+    limits:{ fileSize: 15000000 }, // In bytes: 15000000 bytes = 2 MB
     fileFilter: function( req, file, cb ){
      checkFileType( file, cb );
     }
@@ -156,9 +156,64 @@ const userUpdate = (req, res) => {
         });
 };
 
+// follow request
+const followRequest = (req, res) => {
+    if(!req.params.userid) {
+        res
+            .status(404)
+            .json({ "message" : "Not found, userid required!"});
+            return;
+    }
+    User
+        .updateOne({_id: req.params.userid},{$addToSet: {following: [req.body.currentuser]}})
+        .exec((err, user) => {
+            if(!user) {
+                res.status(404)
+                    .json({ "message" : "Userid not found" });
+                    return;
+            } else if (err) {
+                res.status(400)
+                    .json(err);
+                    return;
+            } else {
+                res.status(200)
+                    .json(user);
+            }
+            
+        });
+}
+
+const cancelFollowRequest = (req, res) => {
+    if(!req.params.userid) {
+        res
+            .status(404)
+            .json({ "message" : "Not found, userid required!"});
+            return;
+    }
+    User
+        .updateOne({_id: req.params.userid}, {$pull: {following: req.body.currentuser}})
+        .exec((err, user) => {
+            if(!user) {
+                res.status(404)
+                    .json({ "message" : "Userid not found" });
+                    return;
+            } else if (err) {
+                res.status(400)
+                    .json(err);
+                    return;
+            } else {
+                res.status(200)
+                    .json(user);
+            }
+            
+        });
+}
+
 
 module.exports = {
     userReadOne,
     userUpdate,
     avatarUpload,
+    followRequest,
+    cancelFollowRequest
 };

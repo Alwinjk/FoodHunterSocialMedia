@@ -26,6 +26,12 @@ router.route("/users/:userid")
 router.route("/users/:userid/avatar")
         .put(ctrlProfile.avatarUpload);
 
+// follow reqeust
+router.route("/users/:userid/following")
+        .put(ctrlProfile.followRequest);
+router.route("/users/:userid/cancel-follow-request")
+        .put(ctrlProfile.cancelFollowRequest);
+
 
 // post routes
 const ctrlPost = require("../controllers/post");

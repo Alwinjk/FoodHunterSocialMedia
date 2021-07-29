@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Person, VpnKey, Lock } from '@material-ui/icons';
@@ -22,16 +22,28 @@ export default function Login({ setToken }) {
     // useRef instead of useState
     const email = useRef();
     const password = useRef();
+    const [userdata, setUserData] = useState();
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const userData = await LoginApiReq({ email: email.current.value, password: password.current.value });
-        const _id = userData.user._id;
-        sessionStorage.setItem('_id', JSON.stringify(_id));
+        try {
+            const userData = await LoginApiReq({ email: email.current.value, password: password.current.value });
+            const _id = userData.user._id;
+            sessionStorage.setItem('_id', JSON.stringify(_id));
 
-        const token = userData.token;
-        setToken(token);
+            const token = userData.token;
+            setToken(token);
+            setUserData(userData);
+        } catch (err) {
+            console.log("Log in error", err);
+
+        }
+
     }
+
+    const logInErrorMessage = (
+        <div>E-mail or Password is wrong</div>
+    );
 
     return (
         <>
@@ -107,6 +119,7 @@ export default function Login({ setToken }) {
                                             </div>
                                         </div>
                                     </form>
+                                    {userdata === undefined || "" || null ? logInErrorMessage : ""}
                                 </div>
                             </div>
                         </div>
