@@ -150,7 +150,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                             <div className="row">
                                 <div className="col-md-3 border-right">
                                     <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar.url} />
+                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url} />
                                         <form >
                                             <input type="file" onChange={singleFileChangeHandler} />
                                             <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
@@ -195,7 +195,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="day"
-                                                    defaultValue={dayDob}
+                                                    defaultValue={user.dob === undefined ? "" : dayDob}
                                                     ref={day}
                                                 />
                                             </div>
@@ -205,7 +205,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="month"
-                                                    defaultValue={monthDob}
+                                                    defaultValue={user.dob === undefined ? "" : monthDob}
                                                     ref={month}
                                                 />
                                             </div>
@@ -215,7 +215,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="year"
-                                                    defaultValue={yearDob}
+                                                    defaultValue={user.dob === undefined ? "" : yearDob}
                                                     ref={year}
                                                 />
                                             </div>
@@ -227,7 +227,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="Gender"
-                                                    defaultValue={user.gender}
+                                                    defaultValue={user.gender === undefined ? "" : user.gender}
                                                     ref={gender}
                                                 />
                                             </div>
@@ -241,7 +241,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="enter phone number"
-                                                    defaultValue={user.phoneno}
+                                                    defaultValue={user.phoneno === undefined ? "" : user.phoneno}
                                                     ref={phoneno}
                                                 />
                                             </div>
@@ -262,7 +262,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="enter address line 1"
-                                                    defaultValue={user.address.address1}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.address1 ? "" : user.address.address1)}
                                                     ref={address1}
                                                 />
                                             </div>
@@ -272,7 +272,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="enter address line 2"
-                                                    defaultValue={user.address.address2}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.address2 ? "" : user.address.address2)}
                                                     ref={address2}
                                                 />
                                             </div>
@@ -282,7 +282,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="Region/State/Province"
-                                                    defaultValue={user.address.region}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.region ? "" : user.address.region)}
                                                     ref={region}
                                                 />
                                             </div>
@@ -292,7 +292,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="City"
-                                                    defaultValue={user.address.city}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.city ? "" : user.address.city)}
                                                     ref={city}
                                                 />
                                             </div>
@@ -303,7 +303,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="Zip code"
-                                                    defaultValue={user.address.zipcode}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.zipcode ? "" : user.address.zipcode)}
                                                     ref={zipcode}
                                                 />
                                             </div>
@@ -313,7 +313,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="Country"
-                                                    defaultValue={user.address.country}
+                                                    defaultValue={user.address === undefined ? "" : (user.address.country ? "" : user.address.country)}
                                                     ref={country}
                                                 />
                                             </div>
@@ -341,7 +341,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                 name="w3review"
                                                 rows="4"
                                                 cols="100%"
-                                                defaultValue={user.bio}
+                                                defaultValue={user.bio === undefined ? "" : user.bio}
                                                 ref={bio}
                                             />
                                         </div>
