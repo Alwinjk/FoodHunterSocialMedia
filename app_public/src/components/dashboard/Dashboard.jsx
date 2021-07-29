@@ -18,11 +18,20 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
     const loadingMessage = <div>Loading Dashboard...</div>
     const content = (
         <>
-            <Topbar />
-            <Post />
-            <SingleFeed />
-            <Userlist />
+            <section>
 
+                <Topbar />
+                <Post />
+                <div className="feed-content">
+                    <div class="row m-0">
+                        <div class="col-3"><Userlist /></div>
+                        <div class="col-6"><SingleFeed /></div>
+                        <div class="col-3"><Userlist /></div>
+                    </div>
+                </div>
+
+                <Userlist />
+            </section>
         </>
     );
     console.log("Current user: " + JSON.stringify(user));
