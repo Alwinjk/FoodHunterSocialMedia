@@ -22,7 +22,7 @@ const SingleFeed = ({ user, posts }) => {
                     return (
                         <section>
                             <div className="content-alwin">
-                                <div className="col bg-white mx-5 mt-5 mb-5">
+                                <div className="col bg-white ">
                                     <div className="col-md-0 border-right">
                                     </div>
                                     <div className="alwin-info">
