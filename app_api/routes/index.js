@@ -26,6 +26,12 @@ router.route("/users/:userid")
 router.route("/users/:userid/avatar")
         .put(ctrlProfile.avatarUpload);
 
+// follow reqeust
+router.route("/users/:userid/following")
+        .put(ctrlProfile.followRequest);
+router.route("/users/:userid/cancel-follow-request")
+        .put(ctrlProfile.cancelFollowRequest);
+
 
 // post routes
 const ctrlPost = require("../controllers/post");
@@ -44,4 +50,7 @@ const ctrlUsers = require("../controllers/users");
 // To diplay users except current user (this will display all users in database)
 router.route("/all-users/:userid")
         .get(ctrlUsers.userReadAllExceptCurrent);
+// view a profile of user
+router.route("/view-profile/:userid")
+        .get(ctrlUsers.readAUserProfile);
 module.exports = router;
