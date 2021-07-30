@@ -12,6 +12,7 @@ import Profile from './components/Profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
 import Preferences from './components/Preferences/preferences';
 import useToken from './useToken';
+import FriendUser from "./components/frienduser/FriendUser";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/">
             {token ? <Dashboard /> : <Login setToken={setToken}/>}
           </Route>
+
           <Route path="/login">
             {token ? <Dashboard /> : <Login setToken={setToken} />}
           </Route>
@@ -42,6 +44,9 @@ function App() {
           </Route> */}
           <Route path="/profile/:userid">
             {token ? <Profile /> : <Login setToken={setToken} />}
+          </Route>
+          <Route  path="/view-profile">
+            {token ? <FriendUser /> : <Login setToken={setToken}/>}
           </Route>
         </Switch>
       </Router>
