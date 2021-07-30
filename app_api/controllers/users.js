@@ -20,6 +20,27 @@ const userReadAllExceptCurrent = (req, res) => {
         });
 };
 
+// view another user
+const readAUserProfile = (req, res) => {
+    User
+        .findById(req.params.userid)
+        .select('-salt -hash -__v ')
+        .exec((err, user) => {
+            if(!user) {
+                res.status(404)
+                    .json({ "message": "user not found" });
+                    return;
+            } else if (err) {
+                res.status(404)
+                    .json(err);
+            } else {
+                res.status(200)
+                    .json(user);
+            }
+        });
+}
+
 module.exports = {
-    userReadAllExceptCurrent
+    userReadAllExceptCurrent,
+    readAUserProfile
 };

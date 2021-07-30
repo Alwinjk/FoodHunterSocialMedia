@@ -50,4 +50,7 @@ const ctrlUsers = require("../controllers/users");
 // To diplay users except current user (this will display all users in database)
 router.route("/all-users/:userid")
         .get(ctrlUsers.userReadAllExceptCurrent);
+// view a profile of user
+router.route("/view-profile/:userid")
+        .get(ctrlUsers.readAUserProfile);
 module.exports = router;
