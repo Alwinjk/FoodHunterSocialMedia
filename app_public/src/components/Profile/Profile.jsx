@@ -128,12 +128,6 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
         <>
             <Topbar />
             <section className="login pt-0 ">
-                <h1>{user.firstname}</h1>
-                <nav className="navbar navbar-expand-lg navbar-light ">
-                    <div className="container-fluid">
-                        <a className="navbar-brand" href="#"><img src="" height="60px" width="60px" /></a>
-                    </div>
-                </nav>
 
                 <div className="create-img1">
                     <div className="content">
