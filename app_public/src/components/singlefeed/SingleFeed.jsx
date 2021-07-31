@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import SimpleImageSlider from "react-simple-image-slider";
 
 import './singlefeed.css';
 
@@ -11,11 +12,21 @@ const SingleFeed = ({ user, posts }) => {
     });
     // console.log("postsArray", postsArray)
 
-    const displayPosts = posts.map(post => {
+    const displayPosts = posts.map((post, index) => {
+        // let filesArray = [];
+        // filesArray.push(post.files.map(file => {
+        //     return { url: file.url };
+        // }));
+        const filesArray = [
+            { url: "https://pixabay.com/images/id-1406106/" },
+            { url: "https://pixabay.com/images/id-1406106/" }
+        ]
+
+        console.log("files array", filesArray);
         return (
-            <section>
+            <section key={index}>
                 <div className="content-alwin">
-                    <div className="col bg-white mx-5 mt-5 mb-5">
+                    <div className="col mx-5 mt-5 mb-5">
                         <div className="col-md-0 border-right">
                         </div>
                         <div className="alwin-info">
@@ -39,13 +50,17 @@ const SingleFeed = ({ user, posts }) => {
                                     <div className="card-header">
                                         <div className="pic-post">
                                             {post.text}
-                                            <div>
+                                            <div className="slide-container">
                                                 {
                                                     post.files.map(file => {
                                                         return <img src={file.url} alt={file.filename} />
                                                     })
                                                 }
-
+                                                {/* <SimpleImageSlider
+                                                    width={500}
+                                                    height={400}
+                                                    images={filesArray}
+                                                /> */}
                                             </div>
 
                                             {/* <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" /> */}
