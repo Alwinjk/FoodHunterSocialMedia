@@ -39,7 +39,7 @@ const SingleFeed = ({ user, posts }) => {
                                                 </div>
                                                 <div className="pic">
 
-                                                    <img src={user.avatar.url} alt="" />
+                                                    <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right">

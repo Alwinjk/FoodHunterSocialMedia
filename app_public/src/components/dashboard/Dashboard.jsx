@@ -15,17 +15,20 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
         startLoadingPost();
     }, []);
 
+
     const loadingMessage = <div>Loading Dashboard...</div>
     const content = (
         <>
             <section>
 
-                <Topbar />
-                <Post />
+
+
                 <div className="feed-content">
+
                     <div class="row m-0">
-                        <div class="col-3"><Userlist /></div>
-                        <div class="col-6"><SingleFeed /></div>
+
+                        <div class="col-2 m-0 p-0"> <Topbar /></div>
+                        <div class="col-7 m-0 p-0"><Post /><SingleFeed /></div>
                         <div class="col-3"><Userlist /></div>
                     </div>
                 </div>

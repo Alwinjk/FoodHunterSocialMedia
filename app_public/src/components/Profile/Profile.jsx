@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useRef } from 'react';
 import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
+import Userlist from '../userlist/Userlist';
 
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
@@ -126,263 +127,292 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
 
     return (
         <>
-            <Topbar />
-            <section className="login pt-0 ">
-
-                <div className="create-img1">
-                    <div className="content">
-                        <h1><span>FOODHUNTER</span></h1>
-                        <span className="cen>">MANAGE YOUR PROFILE</span>
-                    </div>
-                </div>
-
-                <div className="container">
 
 
-                    <div className="col bg-white mt-5 mb-5">
-                        <form onSubmit={handleSubmit}>
-                            <div className="row">
-                                <div className="col-md-3 border-right">
-                                    <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user} />
-                                        <form >
-                                            <input type="file" onChange={singleFileChangeHandler} />
-                                            <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
-                                        </form>
-                                        <span className="font-weight-bold">{user.firstname} {user.lastname}</span><span className="text-black-50"></span><span> </span>
-                                    </div>
-                                </div>
+            <div className="feed-content">
 
-                                <div className="col-md-5 border-right">
+                <div class="row m-0">
 
-                                    <div className="p-3 py-5">
-                                        <div className="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 className="text-right">Profile Settings</h4>
-                                        </div>
-                                        <div className="row mt-2">
-                                            <div className="col-md-6">
-                                                <label className="labels">First Name</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    // placeholder="First Name"
-                                                    defaultValue={user.firstname}
-                                                    ref={firstname}
-                                                />
-                                            </div>
-                                            <div className="col-md-6">
-                                                <label className="labels">Last Name</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    // placeholder="Last Name"
-                                                    defaultValue={user.lastname}
-                                                    ref={lastname}
-                                                />
-                                            </div>
+                    <div class="col-2 m-0 p-0"> <Topbar /></div>
+                    <div class="col-10 m-0 p-0">
 
-                                        </div>
-                                        <div className="row mt-3">
-                                            <div className="col-md-3">
-                                                <label className="labels">Date Of Birth</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="day"
-                                                    defaultValue={user.dob === undefined ? "" : dayDob}
-                                                    ref={day}
-                                                />
-                                            </div>
-                                            <div className="col-md-3">
-                                                <label className="labels"></label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="month"
-                                                    defaultValue={user.dob === undefined ? "" : monthDob}
-                                                    ref={month}
-                                                />
-                                            </div>
-                                            <div className="col-md-3">
-                                                <label className="labels"></label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="year"
-                                                    defaultValue={user.dob === undefined ? "" : yearDob}
-                                                    ref={year}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="row mt-3">
-                                            <div className="col-md-12">
-                                                <label className="labels">Gender</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Gender"
-                                                    defaultValue={user.gender === undefined ? "" : user.gender}
-                                                    ref={gender}
-                                                />
-                                            </div>
-                                        </div>
 
-                                        <div className="row mt-3">
 
-                                            <div className="col-md-12">
-                                                <label className="labels">Mobile Number</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="enter phone number"
-                                                    defaultValue={user.phoneno === undefined ? "" : user.phoneno}
-                                                    ref={phoneno}
-                                                />
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label className="labels">Email</label>
-                                                <input
-                                                    type="text"
-                                                    defaultValue={user.email}
-                                                    className="form-control"
-                                                    // placeholder="enter email id"
-                                                    ref={email}
-                                                />
-                                            </div>
+                        <section className="login pt-0 ">
 
-                                            <div className="col-md-12">
-                                                <label className="labels">Address 1</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="enter address line 1"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.address1 ? "" : user.address.address1)}
-                                                    ref={address1}
-                                                />
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label className="labels">Address 2</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="enter address line 2"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.address2 ? "" : user.address.address2)}
-                                                    ref={address2}
-                                                />
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label className="labels">Region</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Region/State/Province"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.region ? "" : user.address.region)}
-                                                    ref={region}
-                                                />
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label className="labels">City</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="City"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.city ? "" : user.address.city)}
-                                                    ref={city}
-                                                />
-                                            </div>
-
-                                            <div className="col-md-12">
-                                                <label className="labels">Zip code</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Zip code"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.zipcode ? "" : user.address.zipcode)}
-                                                    ref={zipcode}
-                                                />
-                                            </div>
-                                            <div className="col-md-12">
-                                                <label className="labels">Country</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Country"
-                                                    defaultValue={user.address === undefined ? "" : (user.address.country ? "" : user.address.country)}
-                                                    ref={country}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="mt-5 text-center">
-                                            <input
-                                                className="btn btn-primary profile-button"
-                                                type="submit"
-                                                defaultValue="Save Profile"
-                                            />
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div className="col-md-4">
-                                    <div className="p-3 py-5">
-                                        <div className="d-flex justify-content-between align-items-center experience"><span>Edit Bio</span>
-                                        </div>
-                                        <br />
-                                        <div className="col-md-12">
-                                            <label className="labels">Bio</label>
-                                            <textarea
-                                                id="w3review"
-                                                name="w3review"
-                                                rows="4"
-                                                cols="100%"
-                                                defaultValue={user.bio === undefined ? "" : user.bio}
-                                                ref={bio}
-                                            />
-                                        </div>
-                                    </div>
+                            <div className="create-img1">
+                                <div className="content">
+                                    <h1><span>FOODHUNTER</span></h1>
+                                    <span className="cen>">MANAGE YOUR PROFILE</span>
                                 </div>
                             </div>
-                        </form>
+
+                            <div className="container">
+
+
+                                <div className="col bg-white mt-5 mb-5">
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="row">
+                                            <div className="col-md-3 border-right">
+                                                <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                    <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} />
+                                                    <form >
+                                                        <input type="file" onChange={singleFileChangeHandler} />
+                                                        <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
+                                                    </form>
+                                                    <span className="font-weight-bold">{user.firstname} {user.lastname}</span><span className="text-black-50"></span><span> </span>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-5 border-right">
+
+                                                <div className="p-3 py-5">
+                                                    <div className="d-flex justify-content-between align-items-center mb-3">
+                                                        <h4 className="text-right">Profile Settings</h4>
+                                                    </div>
+                                                    <div className="row mt-2">
+                                                        <div className="col-md-6">
+                                                            <label className="labels">First Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                // placeholder="First Name"
+                                                                defaultValue={user.firstname}
+                                                                ref={firstname}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <label className="labels">Last Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                // placeholder="Last Name"
+                                                                defaultValue={user.lastname}
+                                                                ref={lastname}
+                                                            />
+                                                        </div>
+
+                                                    </div>
+                                                    <div className="row mt-3">
+                                                        <div className="col-md-3">
+                                                            <label className="labels">Date Of Birth</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="day"
+                                                                defaultValue={user.dob === undefined ? "" : dayDob}
+                                                                ref={day}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                            <label className="labels"></label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="month"
+                                                                defaultValue={user.dob === undefined ? "" : monthDob}
+                                                                ref={month}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                            <label className="labels"></label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="year"
+                                                                defaultValue={user.dob === undefined ? "" : yearDob}
+                                                                ref={year}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="row mt-3">
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Gender</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="Gender"
+                                                                defaultValue={user.gender === undefined ? "" : user.gender}
+                                                                ref={gender}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="row mt-3">
+
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Mobile Number</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="enter phone number"
+                                                                defaultValue={user.phoneno === undefined ? "" : user.phoneno}
+                                                                ref={phoneno}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Email</label>
+                                                            <input
+                                                                type="text"
+                                                                defaultValue={user.email}
+                                                                className="form-control"
+                                                                // placeholder="enter email id"
+                                                                ref={email}
+                                                            />
+                                                        </div>
+
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Address 1</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="enter address line 1"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.address1 ? "" : user.address.address1)}
+                                                                ref={address1}
+
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Address 2</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="enter address line 2"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.address2
+
+
+                                                                    ? "" : user.address.address2)}
+                                                                ref={address2}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Region</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="Region/State/Province"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.region ? "" : user.address.region)}
+                                                                ref={region}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <label className="labels">City</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="City"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.city ? "" : user.address.city)}
+                                                                ref={city}
+                                                            />
+                                                        </div>
+
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Zip code</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="Zip code"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.zipcode ? "" : user.address.zipcode)}
+                                                                ref={zipcode}
+                                                            />
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <label className="labels">Country</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="Country"
+                                                                defaultValue={user.address === undefined ? "" : (user.address.country ? "" : user.address.country)}
+                                                                ref={country}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="mt-5 text-center">
+                                                        <input
+                                                            className="btn btn-primary profile-button"
+                                                            type="submit"
+                                                            defaultValue="Save Profile"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div className="col-md-4">
+                                                <div className="p-3 py-5">
+                                                    <div className="d-flex justify-content-between align-items-center experience"><span>Edit Bio</span>
+                                                    </div>
+                                                    <br />
+                                                    <div className="col-md-12">
+                                                        <label className="labels">Bio</label>
+                                                        <textarea
+                                                            id="w3review"
+                                                            name="w3review"
+                                                            rows="4"
+                                                            cols="100%"
+                                                            defaultValue={user.bio === undefined ? "" : user.bio}
+                                                            ref={bio}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            {/* Gallery container */}
+
+                            {/* <div className="container">
+
+ <div className="col bg-white mt-12 mb-5 ">
+
+
+
+    <div class="container">
+        <h1>Gallery</h1>
+
+        <div class="gallery-wrap">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+            <div class="item item-4"></div>
+            <div class="item item-5"></div>
+        </div>
+    </div>
+
+    <div class="social">
+        <a href="https://twitter.com/StefCharle" target="_blank">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg" alt="" />
+        </a>
+    </div>
+
+</div> 
+
+</div> */}
+
+
+                            {/* Post container */}
+                            <div className="container bg-light md-5" >
+                                <SingleFeed />
+                            </div>
+                        </section>
+
+
+
+                        <div className="row">
+                            <div class="col-9 m-0 p-0"> <SingleFeed /></div>
+                            <div class="col-3 m-0 p-0"><Userlist /></div>
+                        </div>
                     </div>
 
                 </div>
-
-                {/* Gallery container */}
-
-                {/* <div className="container">
-
-                     <div className="col bg-white mt-12 mb-5 ">
+            </div>
 
 
 
-                        <div class="container">
-                            <h1>Gallery</h1>
 
-                            <div class="gallery-wrap">
-                                <div class="item item-1"></div>
-                                <div class="item item-2"></div>
-                                <div class="item item-3"></div>
-                                <div class="item item-4"></div>
-                                <div class="item item-5"></div>
-                            </div>
-                        </div>
-
-                        <div class="social">
-                            <a href="https://twitter.com/StefCharle" target="_blank">
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg" alt="" />
-                            </a>
-                        </div>
-
-                    </div> 
-
-                </div> */}
-
-
-                {/* Post container */}
-                <div className="container bg-light md-5" >
-                    <SingleFeed />
-                </div>
-            </section>
         </>
     )
 };
@@ -398,5 +428,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+
+
+
+
+
+
+
+
+
 
 
