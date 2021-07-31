@@ -10,7 +10,7 @@ import Login from "./components/login/Login";
 import Signup from './components/Signup/Signup';
 import Profile from './components/Profile/Profile';
 import Dashboard from './components/dashboard/Dashboard';
-import Preferences from './components/Preferences/preferences';
+
 import useToken from './useToken';
 import FriendUser from "./components/frienduser/FriendUser";
 
@@ -38,10 +38,6 @@ function App() {
           <Route path="/dashboard">
             {token ? <Dashboard /> : <Login setToken={setToken}/>}
           </Route>
-          {/* <Route path="/preferences">
-            
-            <Preferences />
-          </Route> */}
           <Route path="/profile/:userid">
             {token ? <Profile /> : <Login setToken={setToken} />}
           </Route>

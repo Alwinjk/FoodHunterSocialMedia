@@ -53,4 +53,9 @@ router.route("/all-users/:userid")
 // view a profile of user
 router.route("/view-profile/:userid")
         .get(ctrlUsers.readAUserProfile);
+
+//search api
+const ctrlSearch = require("../controllers/search");
+router.route("/search-users")
+        .post(ctrlSearch.userSearch);
 module.exports = router;

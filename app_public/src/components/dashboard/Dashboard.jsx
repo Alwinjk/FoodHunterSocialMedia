@@ -29,8 +29,6 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
                         <div class="col-3"><Userlist /></div>
                     </div>
                 </div>
-
-
             </section>
         </>
     );

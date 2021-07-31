@@ -8,15 +8,9 @@ import SingleFeed from '../singlefeed/SingleFeed';
 
 const FriendUser = () => {
 
-
-
-
-
     return (
         <>
             <section>
-
-
                 <div className="content-profile-page">
                     <div className="profile-user-page card">
                         <div className="img-user-profile">

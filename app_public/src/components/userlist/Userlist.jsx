@@ -35,19 +35,12 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
 
     const followingArray = user.following;
     const removeExistingFriend = (currentUserId) => {
-        console.log("current user id inside filter", currentUserId);
         for (let i = 0; i < followingArray.length; i++) {
             if (currentUserId === followingArray[i]) {
                 return true;
             }
         }
     }
-
-    const customButtonStyle = {
-        display: 'none'
-    };
-    const [disable, setDisable] = useState(false);
-    const [buttonStyle, setButtonStyle] = useState();
 
 
     return (
@@ -57,11 +50,9 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                     userList.map(currentUser => {
 
                         let removeExistingFriendCheck = removeExistingFriend(currentUser._id);
-                        console.log("Inside render", removeExistingFriendCheck)
                         return (
                             <>
                                 {
-
                                     removeExistingFriendCheck === true ? null :
                                         <div className="container-userlist mt-5">
                                             <div className="user-list-ananthu">
@@ -80,9 +71,7 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                                         <div className="user-info">
                                                             <h3>
                                                                 {currentUser.firstname} {currentUser.lastname}
-
                                                             </h3>
-                                                            {/* <button className="btn">View Profile</button> */}
                                                         </div>
                                                         <div className="user-links">
 
@@ -100,18 +89,6 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                                                 Follow
                                                             </button>
                                                             <button className="userlist-button">View Profile</button>
-                                                            {/* <button
-                                                            className="userlist-button"
-                                                            style={{ display: 'none' }}
-                                                            onClick={
-                                                                (event) => {
-                                                                    handleCancelFollowRequest(currentUser._id, user._id, event);
-                                                                }
-                                                            }
-                                                        >
-                                                            Unfollow
-                                                        </button> */}
-
                                                         </div>
                                                     </div>
                                                 </div>

@@ -144,7 +144,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                             <div className="row">
                                 <div className="col-md-3 border-right">
                                     <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url} />
+                                        <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user} />
                                         <form >
                                             <input type="file" onChange={singleFileChangeHandler} />
                                             <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
