@@ -71,7 +71,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
     };
     return (
         <>
-            <div className="content-alwin">
+            {/* <div className="content-alwin">
                 <div className="col bg-white mx-5 mt-5 mb-5">
                     <div className="container-post">
                         <div className="row">
@@ -124,6 +124,78 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                         <button type="submit" className="btn2 btn-primary">post</button>
                                         <button type="submit" className="btn2 btn-danger">Cancel</button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+            <div className="content-alwin">
+                <div className="col bg-white mx-5 mt-5 mb-5">
+                    <form onSubmit={multipleFileUploadHandler}>
+                        <div className="m-mrg" id="composer">
+                            <div id="c-tabs-cvr">
+
+                            </div>
+                            <div id="c-c-main">
+                                <div className="tb">
+                                    <div className="td" id="p-c-i"><img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg" alt="Profile pic" /></div>
+                                    <div className="td" id="c-inp">
+
+                                        <input id="userInput" type="text" ref={text} placeholder="New item..." />
+                                        <div id="c-tabs-cvr">
+
+                                        </div>
+                                        <div className="alwin-post">
+                                            <button type="submit" className="btn2 btn-primary">Post</button>
+                                        </div>
+
+                                        <div className="tb" id="c-tabs">
+                                            {/* <div className="td active"><i class="material-icons">subject</i><span></span></div>
+                            <div className="td"><i class="material-icons">camera_enhance</i><span></span></div>
+                            <div className="td"><i class="material-icons">videocam</i><span></span></div>
+                            <div className="td"><i class="material-icons">event</i><span></span></div> */}
+                                            <i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal">attach_file</i>
+                                            <i className="material-icons">image</i>
+                                            <i className="material-icons">search</i>
+                                            <i className="material-icons">explore</i>
+                                            <i className="material-icons">camera</i>
+                                            <i className="material-icons">videocam</i>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                    <div className="modal" id="myModal">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">new post</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="wrapper-ananthu">
+                                        <div className="photo_submit-container">
+                                            <input
+                                                type="file"
+                                                accept="image/*,audio/*,video/*"
+                                                multiple
+                                                onChange={multipleFileChangeHandler}
+                                            />
+                                            <div className="label-holder">
+                                                <label htmlFor="file" className="label">
+                                                    <i className="material-icons">add_a_photo</i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="submit" className="btn2 btn-primary">post</button>
+                                    <button type="submit" className="btn2 btn-danger">Cancel</button>
                                 </div>
                             </div>
                         </div>
