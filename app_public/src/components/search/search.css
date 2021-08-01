@@ -1,0 +1,61 @@
+.seatch-div .modal-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 28%;
+    float: right;
+}
+
+.collection {
+    height: 10%;
+}
+
+
+.modal-footer .modal-close {
+    color: rgb(7, 7, 7);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.modal-footer .modal-close:hover {
+    color: #fff;
+    background-color: rgb(17, 146, 197);
+}
+
+.modal-content input {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(252, 252, 252);
+}
+
+.collection {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.collection .collection-item {
+    margin: 3px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+.collection .collection-item img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}

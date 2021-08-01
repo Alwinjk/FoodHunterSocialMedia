@@ -3,6 +3,7 @@ import React from 'react';
 import SimpleImageSlider from "react-simple-image-slider";
 
 import './singlefeed.css';
+import ImageSlider from '../imageSlider/ImageSlider';
 
 
 const SingleFeed = ({ user, posts }) => {
@@ -13,16 +14,10 @@ const SingleFeed = ({ user, posts }) => {
     // console.log("postsArray", postsArray)
 
     const displayPosts = posts.map((post, index) => {
-        // let filesArray = [];
-        // filesArray.push(post.files.map(file => {
-        //     return { url: file.url };
-        // }));
-        const filesArray = [
-            { url: "https://pixabay.com/images/id-1406106/" },
-            { url: "https://pixabay.com/images/id-1406106/" }
-        ]
-
-        // console.log("files array", filesArray);
+        let filesArray = [];
+        filesArray.push(post.files.map(file => {
+            return file.url;
+        }));
         return (
             <section key={index}>
                 <div className="content-alwin">
@@ -51,16 +46,17 @@ const SingleFeed = ({ user, posts }) => {
                                         <div className="pic-post">
                                             {post.text}
                                             <div className="slide-container">
-                                                {
+                                                {/* {
                                                     post.files.map((file, index) => {
                                                         return <img key={index} src={file.url} alt={file.filename} />
                                                     })
-                                                }
+                                                } */}
                                                 {/* <SimpleImageSlider
                                                     width={500}
                                                     height={400}
                                                     images={filesArray}
                                                 /> */}
+                                                <ImageSlider filesArray={filesArray} />
                                             </div>
 
                                             {/* <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" /> */}
