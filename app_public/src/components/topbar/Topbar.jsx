@@ -29,15 +29,16 @@ const Topbar = ({ user }) => {
                 <div className="nav-true">
 
 
-                    <Link className="navbar-brand auto-link" to='/dashboard'>FoodHunter</Link>
-                    <Link className="navbar-brand auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}>
+                    <div className="hover-top">
+                        <Link className=" auto-link" to='/dashboard'>FoodHunter</Link>
+                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}>
 
-                        Profile
-                    </Link>
-                    <Link className="navbar-brand auto-link" to='/dashboard'>About Us</Link>
-                    <Link className="navbar-brand auto-link" to='/dashboard'>Contact</Link>
-                    <Link className="navbar-brand auto-link" to='/dashboard'>Logout</Link>
-
+                            Profile
+                        </Link>
+                        <Link className=" auto-link" to='/dashboard'>About Us</Link>
+                        <Link className=" auto-link" to='/dashboard'>Contact</Link>
+                        <Link className=" auto-link" to='/dashboard'>Logout</Link>
+                    </div>
 
                     <form className="d-flex">
                         <div className="topbar-input">

@@ -131,13 +131,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                 </div>
             </div> */}
             <div className="content-alwin">
-                <div className="col bg-white mx-5 mt-5 mb-5">
+                <div className="col bg-white mx-5 mt-2 mb-5">
                     <form onSubmit={multipleFileUploadHandler}>
                         <div className="m-mrg" id="composer">
+                            <div className="home-page"> <h1>Home</h1></div>
                             <div id="c-tabs-cvr">
 
                             </div>
                             <div id="c-c-main">
+
                                 <div className="tb">
                                     <div className="td" id="p-c-i"><img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg" alt="Profile pic" /></div>
                                     <div className="td" id="c-inp">
@@ -147,7 +149,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
 
                                         </div>
                                         <div className="alwin-post">
-                                            <button type="submit" className="btn2 btn-primary">Post</button>
+                                            <button type="submit" className="btn2  mt-2 btn-primary">Post</button>
                                         </div>
 
                                         <div className="tb" id="c-tabs">
