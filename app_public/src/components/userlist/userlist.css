@@ -16,7 +16,7 @@
 
 .container-userlist {
     width: 100%;
-    background-color: antiquewhite;
+    background-color: rgb(241, 240, 237);
     border-radius: 20px;
 
 }
@@ -65,16 +65,16 @@
     border-radius: 3px;
     border: 1px solid var(--grey);
     background-color: var(--light);
-    padding: .4em .6em;
+    padding: .3em .6em;
     cursor: pointer;
     border-radius: 5px;
-    color: var(--black);
-    background-color: rgb(253, 253, 253);
+    color: #2fa8f8;
+    background-color: #fff;
 }
 
 .userlist-button:hover {
-    background-color: black;
-    color: blanchedalmond;
+    background-color: #2fa8f8;
+    color: #fff;
 }
 
 .ananthu-image-inner {

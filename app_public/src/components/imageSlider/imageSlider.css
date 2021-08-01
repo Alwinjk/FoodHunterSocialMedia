@@ -1,0 +1,35 @@
+.slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-img {
+    width: 700px;
+    height: 600px;
+    border-radius: 10px;
+}
+
+.slider-right-arrow {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    font-size: 3rem;
+    color: rgba(201, 201, 201, 0.5);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+
+}
+
+.slider-left-arrow {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    font-size: 3rem;
+    color: rgba(201, 201, 201, 0.8);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}

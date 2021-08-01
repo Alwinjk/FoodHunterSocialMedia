@@ -36,13 +36,7 @@ const FriendUserUi = (
                         <span>BIO</span>
                         <div className="lb-action"></div>
                     </div>
-                    <div id="i-box">
 
-
-                        {/* bio */}
-                        <div id="friend-bio"> Hai iam Ananthu Purushothaman .Iam a Web Development Student. Please follow my FoodHunter website .</div>
-                        <div id="u-loc"><i className="material-icons">location_on</i><a href="#">Bengaluru</a>, <a href="#">India</a></div>
-                    </div>
                 </div>
 
 
