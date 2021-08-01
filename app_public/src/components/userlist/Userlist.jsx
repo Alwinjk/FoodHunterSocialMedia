@@ -48,14 +48,14 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
         <>
             <section>
                 {
-                    userList.map(currentUser => {
+                    userList.map((currentUser, index) => {
 
                         let removeExistingFriendCheck = removeExistingFriend(currentUser._id);
                         return (
                             <>
                                 {
                                     removeExistingFriendCheck === true ? null :
-                                        <div className="container-userlist mt-5">
+                                        <div key={index} className="container-userlist mt-5">
                                             <div className="user-list-ananthu">
                                                 <div className="user-list-alwin">
 
