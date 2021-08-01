@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { loadUserList } from '../../store/thunk';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './userlist.css';
 import { currentUser } from '../../store/LoginAction';
@@ -88,7 +89,7 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                                             >
                                                                 Follow
                                                             </button>
-                                                            <button className="userlist-button">View Profile</button>
+                                                            <button className="userlist-button"><Link to={{ pathname: `/view-profile/${currentUser._id}` }}>View Profile</Link></button>
                                                         </div>
                                                     </div>
                                                 </div>
