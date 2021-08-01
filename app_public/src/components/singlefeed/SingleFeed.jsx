@@ -22,7 +22,7 @@ const SingleFeed = ({ user, posts }) => {
             { url: "https://pixabay.com/images/id-1406106/" }
         ]
 
-        console.log("files array", filesArray);
+        // console.log("files array", filesArray);
         return (
             <section key={index}>
                 <div className="content-alwin">
@@ -52,8 +52,8 @@ const SingleFeed = ({ user, posts }) => {
                                             {post.text}
                                             <div className="slide-container">
                                                 {
-                                                    post.files.map(file => {
-                                                        return <img src={file.url} alt={file.filename} />
+                                                    post.files.map((file, index) => {
+                                                        return <img key={index} src={file.url} alt={file.filename} />
                                                     })
                                                 }
                                                 {/* <SimpleImageSlider

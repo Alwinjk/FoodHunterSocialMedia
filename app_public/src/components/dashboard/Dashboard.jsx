@@ -6,6 +6,8 @@ import Post from '../post/Post';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
 import Userlist from '../userlist/Userlist';
+import SearchComponent from '../search/Search';
+
 
 
 const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
@@ -20,16 +22,16 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
     const content = (
         <>
             <section>
-
-
-
                 <div className="feed-content">
 
-                    <div class="row m-0">
+                    <div className="row m-0">
 
-                        <div class="col-2 m-0 p-0"> <Topbar /></div>
-                        <div class="col-7 m-0 p-0"><Post /><SingleFeed /></div>
-                        <div class="col-3"><Userlist /></div>
+                        <div className="col-2 m-0 p-0"> <Topbar /></div>
+                        <div className="col-7 m-0 p-0"><Post /><SingleFeed /></div>
+                        <div className="col-3">
+                            <SearchComponent />
+                            <Userlist />
+                        </div>
                     </div>
                 </div>
             </section>
