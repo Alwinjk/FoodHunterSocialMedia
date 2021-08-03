@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import './frienduser.css';
 import img1 from '../../public/images/lake.jpg';
 import SingleFeed from '../singlefeed/SingleFeed';
@@ -28,22 +27,7 @@ const FriendUserUi = (
                 </ul>
             </div>
         </div>
-        <div className="row m-0">
-            <div className="col-3">
-                <div className="l-cnt">
-                    <div className="cnt-label">
-                        <i className="l-i" id="l-i-i"></i>
-                        <span>BIO</span>
-                        <div className="lb-action"></div>
-                    </div>
 
-                </div>
-
-
-            </div>
-            <div className="col-6"><SingleFeed /></div>
-
-        </div>
     </section>
 
 )
@@ -59,7 +43,7 @@ const FriendUser = () => {
                 <div class="row m-0">
 
                     <div class="col-2 m-0 p-0"> <Topbar /></div>
-                    <div class="col-10 m-0 p-0">{FriendUserUi}</div>
+                    <div class="col-10 m-0 p-0">{FriendUserUi}<SingleFeed /></div>
 
                 </div>
             </div>

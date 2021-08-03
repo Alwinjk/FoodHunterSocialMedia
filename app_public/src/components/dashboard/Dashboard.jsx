@@ -5,7 +5,7 @@ import { displayAlert } from '../../store/thunk';
 import Post from '../post/Post';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
-import Userlist from '../userlist/Userlist';
+import UserList from '../userlist/Userlist';
 import SearchComponent from '../search/Search';
 
 
@@ -26,11 +26,11 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
 
                     <div className="row m-0">
 
-                        <div className="col-2 m-0 p-0"> <Topbar /></div>
-                        <div className="col-7 m-0 p-0"><Post /><SingleFeed /></div>
-                        <div className="col-3">
+                        <div className="col-md-2 m-0 p-0"> <Topbar /></div>
+                        <div className="col-md-7 m-0 p-0"><Post /><SingleFeed /></div>
+                        <div className="col-md-3">
                             <SearchComponent />
-                            <Userlist />
+                            <UserList />
                         </div>
                     </div>
                 </div>

@@ -48,14 +48,14 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
         <>
             <section>
                 {
-                    userList.map((currentUser, index) => {
+                    userList.map(currentUser => {
 
                         let removeExistingFriendCheck = removeExistingFriend(currentUser._id);
                         return (
                             <>
                                 {
                                     removeExistingFriendCheck === true ? null :
-                                        <div key={index} className="container-userlist mt-5">
+                                        <div className="container-userlist mt-5">
                                             <div className="user-list-ananthu">
                                                 <div className="user-list-alwin">
 
@@ -89,7 +89,7 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                                             >
                                                                 Follow
                                                             </button>
-                                                            <button className="userlist-button"><Link to={{ pathname: `/view-profile/${currentUser._id}` }}>View Profile</Link></button>
+                                                            <button className="userlist-button"><Link to={{ pathname: `/view-profile/$` }}></Link>View Profile</button>
                                                         </div>
                                                     </div>
                                                 </div>

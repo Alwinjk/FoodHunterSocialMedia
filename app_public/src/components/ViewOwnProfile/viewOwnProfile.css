@@ -1,0 +1,60 @@
+img {
+    display: block;
+}
+
+.container-jibu {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.btn5 {
+    height: 40px;
+    width: 60%;
+    outline: none;
+    border: none;
+    background: #3aafa9;
+    color: #fff;
+    border-radius: 10px;
+
+    font-weight: 700;
+    margin-bottom: 50px;
+    margin-left: 50px;
+
+
+}
+
+.btn:focus {
+    outline: 0.5rem auto #4d90fe;
+}
+
+
+/* Profile Section */
+
+.profile-hunter {
+    padding: 5rem 0;
+}
+
+
+.profile-image-hunter {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image-hunter img {
+    border-radius: 50%;
+}
+
+.profile-user-settings {
+    float: left;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+
+}

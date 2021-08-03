@@ -742,7 +742,7 @@ header {
     padding-left: 20px;
 }
 
-#c-inp input {
+#c-inp textarea {
     width: 100%;
     font-size: 20px;
     border: 0;
@@ -795,4 +795,8 @@ header {
     color: #5a5959;
     font-size: 15px;
     margin-bottom: 7px;
+}
+
+.content-alwin {
+    width: 100%;
 }

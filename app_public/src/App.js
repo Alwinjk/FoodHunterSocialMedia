@@ -13,6 +13,7 @@ import Dashboard from './components/dashboard/Dashboard';
 
 import useToken from './useToken';
 import FriendUser from "./components/frienduser/FriendUser";
+import ViewOwnProfile from "./components/ViewOwnProfile/ViewOwnProfile";
 
 function App() {
   
@@ -39,6 +40,9 @@ function App() {
             {token ? <Dashboard /> : <Login setToken={setToken}/>}
           </Route>
           <Route path="/profile/:userid">
+            {token ? <ViewOwnProfile /> : <Login setToken={setToken} />}
+          </Route>
+          <Route path="/profile/:userid/edit-profile">
             {token ? <Profile /> : <Login setToken={setToken} />}
           </Route>
           <Route  path="/view-profile">
