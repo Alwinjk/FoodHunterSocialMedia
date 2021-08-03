@@ -5,6 +5,8 @@
     float: right;
 }
 
+
+
 .collection {
     height: 10%;
 }
@@ -58,4 +60,8 @@
     align-items: center;
 
     cursor: pointer;
+}
+
+.modal {
+    top: 1% !important;
 }

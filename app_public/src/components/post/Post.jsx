@@ -144,7 +144,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                     <div className="td" id="p-c-i"><img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg" alt="Profile pic" /></div>
                                     <div className="td" id="c-inp">
 
-                                        <input id="userInput" type="text" ref={text} placeholder="New item..." />
+                                        <textarea id="userInput" type="text" ref={text} placeholder="New item..." />
                                         <div id="c-tabs-cvr">
 
                                         </div>
