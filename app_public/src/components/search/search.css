@@ -1,67 +1,175 @@
-.seatch-div .modal-content {
-    margin-left: auto;
-    margin-right: auto;
-    width: 28%;
-    float: right;
-}
+ .seatch-div .modal-content {
+     margin-left: auto;
+     margin-right: auto;
+     width: 28%;
+     float: right;
+ }
+
+ .seatch-div {
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+
+ .collection {
+     height: 10%;
+ }
+
+
+ .modal-footer .modal-close {
+     color: rgb(7, 7, 7);
+     background-color: rgb(255, 255, 255);
+     border-radius: 10px;
+     font-weight: 200;
+     font-size: 15px;
+ }
+
+ .modal-footer .modal-close:hover {
+     color: #fff;
+     background-color: rgb(17, 146, 197);
+ }
+
+ .modal-content input {
+     padding: 15px;
+     border-radius: 10px;
+     background-color: rgb(252, 252, 252);
+ }
+
+ .collection {
+     background-color: rgb(255, 255, 255);
+     margin: 0;
+     list-style-type: none;
+     padding: 0;
+
+ }
+
+ .collection .collection-item {
+     margin: 3px;
+     padding: 10px;
+     background-color: rgb(255, 255, 255);
+     margin-left: auto;
+     margin-right: auto;
 
 
 
-.collection {
-    height: 10%;
-}
+ }
+
+ .collection .collection-item img {
+     width: 2.5rem;
+     height: 2.5rem;
+     border-radius: 50%;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     cursor: pointer;
+ }
+
+ .modal {
+     top: 1% !important;
+ }
 
 
-.modal-footer .modal-close {
-    color: rgb(7, 7, 7);
-    background-color: rgb(255, 255, 255);
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*--------------------------------------------------------------
+1.0 - BASE SITE STYLES
+--------------------------------------------------------------*/
+
+ /*--------------------------------------------------------------
+  2.0 - SEARCH FORM
+  --------------------------------------------------------------*/
+ /* .searchform {
+    background: #f4f4f4;
+    background: rgba(244, 244, 244, .79);
+    border: 1px solid #d3d3d3;
+    left: 50%;
+    padding: 2px 5px;
+    position: absolute;
+
+    top: 50%;
+    width: 339px;
+    box-shadow: 0 4px 9px rgba(0, 0, 0, .37);
+    -moz-box-shadow: 0 4px 9px rgba(0, 0, 0, .37);
+    -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, .37);
     border-radius: 10px;
-    font-weight: 200;
-    font-size: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px
 }
 
-.modal-footer .modal-close:hover {
-    color: #fff;
-    background-color: rgb(17, 146, 197);
+.searchform input,
+.searchform button {
+    float: left
 }
 
-.modal-content input {
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgb(252, 252, 252);
-}
 
-.collection {
-    background-color: rgb(255, 255, 255);
-    margin: 0;
-    list-style-type: none;
-    padding: 0;
 
-}
-
-.collection .collection-item {
-    margin: 3px;
+.searchform input {
+    background: #fefefe;
+    border: none;
+    font: 12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    margin-right: 5px;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
-    margin-left: auto;
-    margin-right: auto;
-
-
-
+    width: 216px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4) inset, 1px 1px 1px rgba(255, 255, 255, .75);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .4) inset, 1px 1px 1px rgba(255, 255, 255, .75);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .4) inset, 1px 1px 1px rgba(255, 255, 255, .75);
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px
 }
 
-.collection .collection-item img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.searchform input:focus {
+    outline: none;
+    box-shadow: 0 0 4px #0d76be inset;
+    -moz-box-shadow: 0 0 4px #0d76be inset;
+    -webkit-box-shadow: 0 0 4px #0d76be inset;
+}
 
+.searchform input::-webkit-input-placeholder {
+    font-style: italic;
+    line-height: 15px
+}
+
+.searchform input:-moz-placeholder {
+    font-style: italic;
+    line-height: 15px
+}
+
+.searchform button {
+    background: rgb(52, 173, 236);
+    background: -moz-linear-gradient(top, rgba(52, 173, 236, 1) 0%, rgba(38, 145, 220, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(52, 173, 236, 1)), color-stop(100%, rgba(38, 145, 220, 1)));
+    background: -webkit-linear-gradient(top, rgba(52, 173, 236, 1) 0%, rgba(38, 145, 220, 1) 100%);
+    background: -o-linear-gradient(top, rgba(52, 173, 236, 1) 0%, rgba(38, 145, 220, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(52, 173, 236, 1) 0%, rgba(38, 145, 220, 1) 100%);
+    background: linear-gradient(to bottom, rgba(52, 173, 236, 1) 0%, rgba(38, 145, 220, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#34adec', endColorstr='#2691dc', GradientType=0);
+    border: none;
+    color: #fff;
     cursor: pointer;
+    font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    padding: 10px;
+    width: 106px;
+    box-shadow: 0 0 2px #2692dd inset;
+    -moz-box-shadow: 0 0 2px #2692dd inset;
+    -webkit-box-shadow: 0 0 2px #2692dd inset;
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
 }
 
-.modal {
-    top: 1% !important;
-}
+.searchform button:hover {
+    opacity: .9;
+} */

@@ -130,11 +130,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                     </div>
                 </div>
             </div> */}
+
             <div className="content-alwin">
                 <div className="col bg-white mx-5 mt-2 mb-5">
                     <form onSubmit={multipleFileUploadHandler}>
                         <div className="m-mrg" id="composer">
-                            <div className="home-page"> <h1>Home</h1></div>
+
                             <div id="c-tabs-cvr">
 
                             </div>
@@ -144,7 +145,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                     <div className="td" id="p-c-i"><img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg" alt="Profile pic" /></div>
                                     <div className="td" id="c-inp">
 
-                                        <textarea id="userInput" type="text" ref={text} placeholder="New item..." />
+                                        <textarea id="userInput" type="text" ref={text} placeholder="Whats on your mind...?" />
                                         <div id="c-tabs-cvr">
 
                                         </div>
@@ -157,12 +158,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                             <div className="td"><i class="material-icons">camera_enhance</i><span></span></div>
                             <div className="td"><i class="material-icons">videocam</i><span></span></div>
                             <div className="td"><i class="material-icons">event</i><span></span></div> */}
-                                            <i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal">attach_file</i>
+                                            {/* <i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal">attach_file</i>
                                             <i className="material-icons">image</i>
                                             <i className="material-icons">search</i>
                                             <i className="material-icons">explore</i>
                                             <i className="material-icons">camera</i>
-                                            <i className="material-icons">videocam</i>
+                                            <i className="material-icons">videocam</i> */}
+                                            <div className="alwin-post2">
+                                                <button type="submit" className="btn2  mt-2 btn-primary"><i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal">attach_file</i></button>
+                                            </div>
                                         </div>
                                     </div>
 

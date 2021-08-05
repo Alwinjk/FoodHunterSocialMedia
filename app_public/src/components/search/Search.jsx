@@ -41,15 +41,24 @@ const SearchComponent = () => {
 
 
 
-            <div className="seatch-div">
+            <div className="seatch-div ">
+                <div className="first-search">
 
-                <div ref={searchDiv} id="search-container" className="d-flex">
-                    <div className="topbar-input">
-                        <i ref={searchIcon} onClick={handleSearchContainer} data-target="modal1" className="large material-icons modal-trigger" style={{ color: "black" }}>search</i>
+                    <div ref={searchDiv} id="search-container" className="flex">
+
+
+                        <form class="searchform cf">
+                            <input type="text" ref={searchIcon} onClick={handleSearchContainer} data-target="modal1" className="larg material-icons modal-trigger" style={{ color: "black" }}>
+
+                            </input>
+                            <button type="submit">Search</button>
+                        </form>
+
+
+
                     </div>
+
                 </div>
-
-
                 {/* modal */}
                 <div id="modal1" className="modal" ref={searchModal}>
                     <div className="modal-content">

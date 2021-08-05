@@ -4,46 +4,55 @@ import React, { useRef, useEffect, useState } from 'react';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
 import Userlist from '../userlist/Userlist';
-import SearchComponent from '../search/Search';
+import img1 from '../../public/images/man.jpg';
+
 
 import './viewOwnProfile.css';
 
 const ViewProfile = (
 
 
-    <section>
 
-        <container>
+    <div className="container-pro">
+        <div className="innerwrap">
+            <section className="section1 clearfix">
+                <div>
+                    <div className="row grid clearfix">
+                        <div className="col2 first">
 
-            <div className="container-jibu">
-
-
-
-                <div className="profile-hunter">
-
-
-                    <div className="profile-image-hunter">
-
-                        <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="" />
-
+                            <img src={img1} alt="" />
+                            <h1>Ananthu</h1>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                            <span>Follow</span>
+                        </div>
+                        <div className="col2 last">
+                            <div className="grid clearfix">
+                                <div className="col3 first">
+                                    <h1>694</h1>
+                                    <span>Following</span>
+                                </div>
+                                <div className="col3"><h1>452</h1>
+                                    <span>Followers</span></div>
+                                <div className="col3 last"><h1>1002</h1>
+                                    <span>posts</span></div>
+                            </div>
+                        </div>
                     </div>
+                    <div className="row clearfix">
+                        <ul className="row2tab clearfix">
+                            <li><i className="fa fa-list-alt"></i> My posts </li>
+                            <li><i className="fa fa-heart"></i> edit profile </li>
 
-                    <div className="profile-user-settings">
-
-                        <h1 className="profile-user-name">janedoe_</h1>
-
-                        <button type="submit" className="btn5  mt-2 btn-primary">edit profile</button>
-
+                        </ul>
                     </div>
-
-
-
                 </div>
 
+            </section>
 
-            </div>
-        </container>
-    </section>
+        </div>
+    </div>
+
+
 
 
 );
@@ -64,7 +73,7 @@ const ViewOwnProfile = ({ user }) => {
 
                     <SingleFeed /></div>
                 <div className="col-3">
-                    <SearchComponent />
+
                     <Userlist />
                 </div>
             </div>

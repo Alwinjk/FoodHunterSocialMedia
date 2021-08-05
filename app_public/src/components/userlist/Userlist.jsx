@@ -54,47 +54,90 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                         return (
                             <>
                                 {
+
+
+
                                     removeExistingFriendCheck === true ? null :
-                                        <div className="container-userlist mt-5">
-                                            <div className="user-list-ananthu">
-                                                <div className="user-list-alwin">
+                                        // <div className="container-userlist mt-5">
 
-                                                    <div className="ananthu-left">
-                                                        <div className="ananthu-image m-2">
 
-                                                            {currentUser.avatar === undefined ? <img src="" alt="logo" /> : <img className="ananthu-image-inner" src={currentUser.avatar.url} />}
-                                                            <div className="gradient"></div>
-                                                        </div>
+
+                                        //     <div className="user-list-ananthu">
+                                        //         <div className="user-list-alwin">
+
+                                        //             <div className="ananthu-left">
+                                        //                 <div className="ananthu-image m-2">
+
+                                        //                     {currentUser.avatar === undefined ? <img src="" alt="logo" /> : <img className="ananthu-image-inner" src={currentUser.avatar.url} />}
+                                        //                     <div className="gradient"></div>
+                                        //                 </div>
+
+                                        //             </div>
+
+                                        //             <div className="ananthu-right">
+                                        //                 <div className="user-info">
+                                        //                     <h3>
+                                        //                         {currentUser.firstname} {currentUser.lastname}
+                                        //                     </h3>
+                                        //                 </div>
+                                        //                 <div className="user-links">
+
+                                        //                     <a>Followers <span>0</span></a>
+                                        //                     <a>Following <span>0</span></a>
+
+                                        //                     <button
+                                        //                         className="userlist-button"
+                                        //                         onClick={
+                                        //                             (event) => {
+                                        //                                 handleFollowRequest(currentUser._id, user._id, event);
+                                        //                             }
+                                        //                         }
+                                        //                     >
+                                        //                         Follow
+                                        //                     </button>
+                                        //                     <button className="userlist-button"><Link to={{ pathname: `/view-profile/$` }}></Link>View Profile</button>
+                                        //                 </div>
+                                        //             </div>
+                                        //         </div>
+                                        //     </div>
+                                        // </div>
+
+
+
+                                        <div className="people-nearby">
+
+                                            <div className="nearby-user">
+                                                <div className="row">
+                                                    <div className="col-md-2 col-sm-2">
+
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg" />
+
+
 
                                                     </div>
-
-                                                    <div className="ananthu-right">
-                                                        <div className="user-info">
-                                                            <h3>
-                                                                {currentUser.firstname} {currentUser.lastname}
-                                                            </h3>
-                                                        </div>
-                                                        <div className="user-links">
-
-                                                            <a>Followers <span>0</span></a>
-                                                            <a>Following <span>0</span></a>
-
-                                                            <button
-                                                                className="userlist-button"
-                                                                onClick={
-                                                                    (event) => {
-                                                                        handleFollowRequest(currentUser._id, user._id, event);
-                                                                    }
-                                                                }
-                                                            >
-                                                                Follow
-                                                            </button>
-                                                            <button className="userlist-button"><Link to={{ pathname: `/view-profile/$` }}></Link>View Profile</button>
-                                                        </div>
+                                                    <div className="col-md-7 col-sm-7">
+                                                        <h5><a href="#" className="profile-link"> {currentUser.firstname} {currentUser.lastname}</a></h5>
+                                                        <p>pala</p>
+                                                        <p className="text-muted">zczvxvvz</p>
+                                                    </div>
+                                                    <div className="col-md-3 col-sm-3">
+                                                        <button className="btn btn-primary pull-right">follow</button>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
+
+
+
+
+
+
+
+
+
+
+
                                 }
                             </>
                         )
