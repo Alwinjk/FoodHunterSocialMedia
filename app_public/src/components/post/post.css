@@ -321,7 +321,7 @@ p {
     /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    width: 60%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -332,16 +332,27 @@ p {
 
 }
 
-.material-icons {
-    padding-top: 20px;
-    padding-left: 30px;
-    ;
+.alwin-post2 button {
+    background-color: #2fa8f8;
+    /* Green */
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    padding: 13px 43px 13px 43px;
+
+
+    border-radius: 30px;
 }
 
-.btn2 {
-    padding: 10px 40px 10px 40px;
 
-}
+
+
+
 
 .tb {
     display: table;
@@ -799,4 +810,23 @@ header {
 
 .content-alwin {
     width: 100%;
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer */
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+::placeholder {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+
 }

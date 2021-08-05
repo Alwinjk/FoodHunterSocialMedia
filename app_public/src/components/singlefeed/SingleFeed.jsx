@@ -37,7 +37,7 @@ const SingleFeed = ({ user, posts }) => {
                                                     <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                 </div>
                                             </div>
-                                            <div className="col-md-9 border-right">
+                                            <div className="col-md-9 border-right ">
                                                 <span>{user.firstname} {user.lastname}</span>
                                             </div>
                                         </div>
@@ -69,10 +69,7 @@ const SingleFeed = ({ user, posts }) => {
                                                 like
                                             </div>
                                             <div className="border-ananthu"></div>
-                                            <div className="item-ananthu">
-                                                <span>127</span>
-                                                share
-                                            </div>
+
                                             <div className="border-ananthu"></div>
                                             <div className="item">
                                                 <span>120</span>
