@@ -2,11 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { loadUserList } from '../../store/thunk';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import './userlist.css';
-import { currentUser } from '../../store/LoginAction';
+import { useEffect } from 'react';
 
 const Userlist = ({ user, userList, startLoadingUserList }, props) => {
 
@@ -24,15 +20,15 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
 
     }
 
-    const handleCancelFollowRequest = async (currentUserid, userid, event) => {
-        try {
-            await axios.put(`users/${userid}/cancel-follow-request`, { currentuser: currentUserid });
-            event.target.style.display = "none";
-        } catch (err) {
-            console.log("follow request error", err);
-        }
+    // const handleCancelFollowRequest = async (currentUserid, userid, event) => {
+    //     try {
+    //         await axios.put(`users/${userid}/cancel-follow-request`, { currentuser: currentUserid });
+    //         event.target.style.display = "none";
+    //     } catch (err) {
+    //         console.log("follow request error", err);
+    //     }
 
-    }
+    // }
 
     const followingArray = user.following;
     const removeExistingFriend = (currentUserId) => {
@@ -112,34 +108,31 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                                     <div className="row">
                                                         <div className="col-md-2 col-sm-2">
 
-                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg" />
-
-
+                                                            <img src={currentUser.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : currentUser.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : currentUser.avatar.url} alt="user" class="profile-photo-lg" />
 
                                                         </div>
                                                         <div className="col-md-7 col-sm-7">
                                                             <h5><a href="#" className="profile-link"> {currentUser.firstname} {currentUser.lastname}</a></h5>
-                                                            <p>pala</p>
-                                                            <p className="text-muted">zczvxvvz</p>
+                                                            <p>{currentUser.address === undefined ? "" : currentUser.address.city === undefined ? "" : currentUser.address.city}</p>
+                                                            {/* <p className="text-muted">zczvxvvz</p> */}
                                                         </div>
                                                         <div className="col-md-3 col-sm-3">
-                                                            <button className="btn btn-primary pull-right">follow</button>
+                                                            <button
+                                                                onClick={
+                                                                    (event) => {
+                                                                        handleFollowRequest(currentUser._id, user._id, event);
+                                                                    }
+                                                                }
+                                                                className="btn btn-primary pull-right"
+                                                            >
+                                                                Follow
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
-
-
-
-
-
-
-
-
-
-
 
                                 }
                             </>

@@ -5,7 +5,6 @@ import { useParams } from 'react-router';
 import { useRef } from 'react';
 import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
-import Userlist from '../userlist/Userlist';
 
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
