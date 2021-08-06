@@ -28,7 +28,8 @@ const ViewOwnProfile = ({ user, posts }) => {
                                             <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                             <h1>{user.firstname} {user.lastname}</h1>
                                             <p>{user.bio}</p>
-                                            <span>Follow</span>
+                                            <Link to={{ pathname: `/profile/${user._id}/edit-profile` }}><span>Edit Profile</span></Link>
+
                                         </div>
                                         <div className="col2 last">
                                             <div className="grid clearfix">
@@ -46,7 +47,7 @@ const ViewOwnProfile = ({ user, posts }) => {
                                     <div className="row clearfix">
                                         <ul className="row2tab clearfix">
                                             <li><i className="fa fa-list-alt"></i> My posts </li>
-                                            <li><Link to={{ pathname: `profile/${user._id}` }}><i className="fa fa-heart"></i> edit profile </Link></li>
+                                            <li><Link to={{ pathname: `profile/${user._id}/edit-profile` }}><i className="fa fa-heart"></i> edit profile </Link></li>
                                         </ul>
                                     </div>
                                 </div>
