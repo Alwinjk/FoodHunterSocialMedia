@@ -51,6 +51,18 @@ router.route("/all-posts")
 router.route("/following-posts")
         .post(ctrlPost.findFollowingPosts);
 
+// like routes
+router.route("/like")
+        .put(ctrlPost.addALike);
+router.route("/unlike")
+        .put(ctrlPost.removeLike);
+
+// comment routes
+router.route("/comment")
+        .put(ctrlPost.createComment);
+router.route("/delete-comment")
+        .put(ctrlPost.deleteComment);
+
 // users routes
 const ctrlUsers = require("../controllers/users");
 // To diplay users except current user (this will display all users in database)

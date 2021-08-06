@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './topbar.css';
 import img1 from '../../public/images/fast-food.png';
-import M from 'materialize-css';
 
 const Topbar = ({ user }) => {
 
@@ -18,13 +16,13 @@ const Topbar = ({ user }) => {
                             <p>FoodHunter</p>
 
                         </a>
-                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">house</i>FoodHunter</Link>
-                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i className="material-icons">person</i>
+                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">house</i>FoodHunter</Link>
+                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i style={{ color: "#0d6efd" }} className="material-icons">person</i>
                             Profile
                         </Link>
-                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">emoji_people</i>About Us</Link>
-                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">contact_support</i>Contact</Link>
-                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">logout</i>Logout</Link>
+                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">emoji_people</i>About Us</Link>
+                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">contact_support</i>Contact</Link>
+                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">logout</i>Logout</Link>
 
 
                     </div>

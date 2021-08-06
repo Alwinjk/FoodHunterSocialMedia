@@ -208,6 +208,7 @@ const findFollowingPosts = (req, res) => {
         })
         .sort({ updatedAt: -1})
         .populate('user')
+        .populate('comments.user')
         .exec((err, post) => {
             if(err) {
                 res.status(404)
@@ -216,8 +217,92 @@ const findFollowingPosts = (req, res) => {
                 res.status(200)
                     .json(post);
             }
-        })
-}
+        });
+};
+
+const addALike = (req, res) => {
+    Post.findByIdAndUpdate(req.body.postid, { 
+        $addToSet: { 
+            like: mongoose.Types.ObjectId(req.body.userid)
+        }
+    },
+    {
+        new: true
+    }
+    ).exec((err, post) => {
+        if(err){
+            return res.status(422)
+                        .json(err);
+        } else {
+            res.status(200)
+                .json(post);
+        }
+    });
+};
+
+const removeLike = (req, res) => {
+    Post.findByIdAndUpdate(req.body.postid, {
+        $pull: {
+            like: req.body.userid
+        }
+    },
+    {
+        new: true
+    }).exec((err, post) => {
+        if(err){
+            return res.status(422)
+                        .json(err);
+        } else {
+            res.status(200)
+                .json(post);
+        }
+    });
+};
+
+const createComment = (req, res) => {
+    const comment = {
+        text: req.body.text,
+        user: mongoose.Types.ObjectId(req.body.userid)
+    };
+    Post.findByIdAndUpdate(req.body.postid,{
+        $push: {comments: comment}
+    },{
+        new: true
+    })
+    .populate('comments.user')
+    .exec((err, post) => {
+        if(err){
+            return res.status(422)
+                .json(err);
+        } else {
+            res.status(200)
+                .json(post);
+        }
+    });
+};
+
+const deleteComment = (req, res) => {
+    Post.findByIdAndUpdate(req.body,postid, {
+        $pull: { 
+            comments: {
+                text: {
+                    $eq: req.body.text
+                }
+            }
+        }
+    },{
+        new: true
+    })
+    .exec((err, post) => {
+        if(err){
+            return res.status(422)
+                .json(err);
+        } else {
+            res.status(200)
+                .json(post);
+        }
+    });
+};
 
 module.exports = {
     createPost,
@@ -226,5 +311,9 @@ module.exports = {
     editPost,
     deletePost, 
     findAllPosts,
-    findFollowingPosts
+    findFollowingPosts,
+    addALike,
+    removeLike,
+    createComment,
+    deleteComment
 };
