@@ -46,6 +46,7 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
 
     return (
         <>
+
             <section>
                 {
                     userList.map(currentUser => {
@@ -103,25 +104,27 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                                         // </div>
 
 
+                                        <div className="my-list1">
 
-                                        <div className="people-nearby">
+                                            <div className="my-list">
 
-                                            <div className="nearby-user">
-                                                <div className="row">
-                                                    <div className="col-md-2 col-sm-2">
+                                                <div className="nearby-user">
+                                                    <div className="row">
+                                                        <div className="col-md-2 col-sm-2">
 
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg" />
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg" />
 
 
 
-                                                    </div>
-                                                    <div className="col-md-7 col-sm-7">
-                                                        <h5><a href="#" className="profile-link"> {currentUser.firstname} {currentUser.lastname}</a></h5>
-                                                        <p>pala</p>
-                                                        <p className="text-muted">zczvxvvz</p>
-                                                    </div>
-                                                    <div className="col-md-3 col-sm-3">
-                                                        <button className="btn btn-primary pull-right">follow</button>
+                                                        </div>
+                                                        <div className="col-md-7 col-sm-7">
+                                                            <h5><a href="#" className="profile-link"> {currentUser.firstname} {currentUser.lastname}</a></h5>
+                                                            <p>pala</p>
+                                                            <p className="text-muted">zczvxvvz</p>
+                                                        </div>
+                                                        <div className="col-md-3 col-sm-3">
+                                                            <button className="btn btn-primary pull-right">follow</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,6 +148,7 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
                 }
 
             </section>
+
         </>
 
     )

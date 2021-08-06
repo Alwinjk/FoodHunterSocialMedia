@@ -67,7 +67,35 @@
 
  .modal {
      top: 1% !important;
+
  }
+
+ .search-name input {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid black;
+     border-radius: 10px;
+ }
+
+ @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+ .search {
+     position: relative;
+ }
+
+ .search input {
+     text-indent: 30px;
+ }
+
+ .search .fa-search {
+     position: absolute;
+     top: 15px;
+     left: 9px;
+     font-size: 18px;
+     color: blue;
+ }
+
+
 
 
 

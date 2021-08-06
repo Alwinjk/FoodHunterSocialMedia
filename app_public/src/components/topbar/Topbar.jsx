@@ -29,6 +29,7 @@ const Topbar = ({ user }) => {
                         <Link className=" auto-link" to='/dashboard'><i class="material-icons">contact_support</i>Contact</Link>
                         <Link className=" auto-link" to='/dashboard'><i class="material-icons">logout</i>Logout</Link>
 
+
                     </div>
                 </div>
             </div>
