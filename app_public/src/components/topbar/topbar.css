@@ -25,6 +25,10 @@
 
  }
 
+ .material-icons:hover {
+     color: rgb(254, 255, 255) !important;
+ }
+
 
 
 

@@ -11,6 +11,18 @@ const filesSchema = new mongoose.Schema({
     }
 });
 
+const commentSchema = new mongoose.Schema({
+    text: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
+
+})
+
 const postSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -19,14 +31,11 @@ const postSchema = new mongoose.Schema({
   },
   text: String,
   files: [filesSchema],
-  like: {
-      type: Number,
-      deafult: 0
-  },
-  share: {
-      type: Number,
-      default: 0
-  },
+  like: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    comments: [commentSchema]
 }, {
     timestamps: true
 });

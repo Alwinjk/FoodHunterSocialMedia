@@ -19,7 +19,7 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
     }, []);
 
 
-    const loadingMessage = <div>Loading Dashboard...</div>
+    const loadingMessage = <div style={{ textAlign: "center" }}>Loading Dashboard...</div>
     const content = (
         <>
             <section>
@@ -35,11 +35,7 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
                         </div>
                         <div className="col-md-3 m">
                             <SearchComponent />
-                            <div className="user-list">
-                                <h5>Find More Friends</h5>
-                                <UserList />
-                                <div className="user-list2"><h6>Show more</h6></div>
-                            </div>
+                            <UserList />
                         </div>
                     </div>
                 </div>

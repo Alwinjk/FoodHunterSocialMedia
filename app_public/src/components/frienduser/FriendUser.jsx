@@ -33,23 +33,21 @@ const FriendUserUi = (
 )
 const FriendUser = () => {
 
-
-
-
     return (
         <>
             <div className="feed-content">
-
                 <div class="row m-0">
 
                     <div class="col-2 m-0 p-0"> <Topbar /></div>
-                    <div class="col-10 m-0 p-0">{FriendUserUi}<SingleFeed /></div>
+                    <div class="col-10 m-0 p-0">
+                        {FriendUserUi}
+                        <SingleFeed />
+                    </div>
 
                 </div>
             </div>
-
         </>
-
     )
 }
+
 export default FriendUser;
