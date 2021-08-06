@@ -94,7 +94,7 @@ const SingleFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    <img src={post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
+                                                    <img src={post === undefined ? "" : post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
