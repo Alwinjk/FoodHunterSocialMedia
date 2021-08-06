@@ -45,36 +45,40 @@ const SingleFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    { }
-
                                                     <img src={post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
                                                 <span>{post.user.firstname} {post.user.lastname}</span>
+                                                <div className="col-md-9 border-right pull-left ">
+                                                    <span>{user.firstname} {user.lastname}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="card-header">
-                                        <div className="pic-post">
-                                            {post.text}
-                                            <div className="slide-container">
-                                                <ImageSlider filesArray={filesArray} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card-footer-ananthu">
-                                        <div className="numbers-ananthu">
-                                            <div className="item-ananthu">
-                                                <span>120</span>
-                                                like
-                                            </div>
-                                            <div className="border-ananthu"></div>
+                                        <div className="card-header">
+                                            <div className="pic-post">
+                                                {post.text}
+                                                <div className="slide-container">
 
-                                            <div className="border-ananthu"></div>
-                                            <div className="item">
-                                                <span>120</span>
-                                                comment
+                                                    <ImageSlider filesArray={filesArray} />
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div className="card-footer-ananthu">
+                                            <div className="numbers-ananthu">
+                                                <div className="item-ananthu">
+                                                    <span>120</span>
+                                                    like
+                                                </div>
+                                                <div className="border-ananthu"></div>
+
+                                                <div className="border-ananthu"></div>
+                                                <div className="item">
+                                                    <span>120</span>
+                                                    comment
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

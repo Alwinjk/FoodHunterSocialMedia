@@ -35,7 +35,11 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
                         </div>
                         <div className="col-md-3 m">
                             <SearchComponent />
-                            <UserList />
+                            <div className="user-list">
+                                <h5>Find More Friends</h5>
+                                <UserList />
+                                <div className="user-list2"><h6>Show more</h6></div>
+                            </div>
                         </div>
                     </div>
                 </div>

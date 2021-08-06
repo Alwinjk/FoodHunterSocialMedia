@@ -57,9 +57,9 @@ export default function Login({ setToken }) {
                         </div>
                     </nav>
 
-                    <div className="container">
-                        <div className="col">
-                            <div className="row">
+                    <div className="container p-0">
+                        <div className="col mx-3">
+                            <div className="row mx-5">
                                 <div className="col">
                                     <div className="col-lg-3 p-5">
 
@@ -78,7 +78,7 @@ export default function Login({ setToken }) {
                                     </div>
                                 </div>
 
-                                <div className="col-lg-5 text-center py-5 bg-white rounded ">
+                                <div className="col-lg-5 pt-5 pb-5 text-center  bg-white rounded ">
                                     <Lock color="secondary" fontSize="large" />
 
                                     <div className="signin">
@@ -121,6 +121,7 @@ export default function Login({ setToken }) {
                                     </form>
                                     {userdata === undefined || "" || null ? logInErrorMessage : ""}
                                 </div>
+
                             </div>
                         </div>
                     </div>

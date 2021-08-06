@@ -42,9 +42,9 @@ export default function Signup() {
   return (
     <div className="bg-image">
       <section className="login py-5 ">
-        <div className="container">
+        <div className="container p-0">
           <div className="col">
-            <div className="row">
+            <div className="row px-5">
               <div className="col">
                 <div className="col-lg-9 col-md-10  ">
                   <div className="create-img">
