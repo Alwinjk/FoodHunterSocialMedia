@@ -32,7 +32,11 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
                         <div className="col-md-7 m-0 p-0">  <Post /><SingleFeed /></div>
                         <div className="col-md-3 m">
                             <SearchComponent />
-                            <UserList />
+                            <div className="user-list">
+                                <h5>Find More Friends</h5>
+                                <UserList />
+                                <div className="user-list2"><h6>Show more</h6></div>
+                            </div>
                         </div>
                     </div>
                 </div>

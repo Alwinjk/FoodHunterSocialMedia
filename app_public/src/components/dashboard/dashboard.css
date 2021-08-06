@@ -4,3 +4,35 @@
  position: fixed; */
 
 }
+
+.user-list {
+    padding: 15px 25px 25px 15px;
+    width: 100%;
+    background-color: rgb(247, 244, 244);
+
+}
+
+.user-list h5 {
+    font-weight: 850;
+    font-size: 20px;
+    padding-bottom: 10px;
+
+
+}
+
+.user-list2 h6 {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(240, 240, 240);
+    color: rgb(84, 84, 223);
+
+
+}
+
+.user-list2 h6:hover {
+
+    background-color: rgb(209, 209, 209);
+
+
+}

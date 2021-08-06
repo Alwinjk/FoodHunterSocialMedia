@@ -37,7 +37,7 @@ const SingleFeed = ({ user, posts }) => {
                                                     <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                 </div>
                                             </div>
-                                            <div className="col-md-9 border-right ">
+                                            <div className="col-md-9 border-right pull-left ">
                                                 <span>{user.firstname} {user.lastname}</span>
                                             </div>
                                         </div>
@@ -46,20 +46,11 @@ const SingleFeed = ({ user, posts }) => {
                                         <div className="pic-post">
                                             {post.text}
                                             <div className="slide-container">
-                                                {/* {
-                                                    post.files.map((file, index) => {
-                                                        return <img key={index} src={file.url} alt={file.filename} />
-                                                    })
-                                                } */}
-                                                {/* <SimpleImageSlider
-                                                    width={500}
-                                                    height={400}
-                                                    images={filesArray}
-                                                /> */}
+
                                                 <ImageSlider filesArray={filesArray} />
                                             </div>
 
-                                            {/* <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" /> */}
+
                                         </div>
                                     </div>
                                     <div className="card-footer-ananthu">
