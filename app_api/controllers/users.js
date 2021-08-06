@@ -5,6 +5,7 @@ const User = mongoose.model('User');
 const userReadAllExceptCurrent = (req, res) => {
     User
         .find({ _id: { $ne: req.params.userid } })
+        .select('-salt -hash -__v ')
         .exec((err, users) => {
             if(!users) {
                 res.status(404)

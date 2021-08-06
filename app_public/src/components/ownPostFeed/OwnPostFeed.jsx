@@ -2,18 +2,18 @@ import { connect } from 'react-redux';
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
-import './singlefeed.css';
+import './ownPostFeed.css';
 import ImageSlider from '../imageSlider/ImageSlider';
 
 
-const SingleFeed = ({ user }) => {
+const OwnPostFeed = ({ user }) => {
 
     const likeRef = useRef();
 
     const [posts, setPosts] = useState([]);
     useEffect(async () => {
         console.log("userid", user._id);
-        await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
+        await axios.get(`/post/${user._id}/posts`)
             .then(res => {
                 console.log("result", res.data);
                 setPosts(res.data);
@@ -94,13 +94,13 @@ const SingleFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    <img src={post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
+                                                    <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
 
                                                 <div className="col-md-9 border-right pull-left ">
-                                                    <span className="user-name">{post.user.firstname} {post.user.lastname}</span>
+                                                    <span className="user-name">{user.firstname} {user.lastname}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,10 +166,7 @@ const SingleFeed = ({ user }) => {
 
     const displayPostsError = (
         <>
-            <div style={{
-                color: "blue",
-                textAlign: "center"
-            }}>Follow some FoodHunters to see new posts</div>
+            <div>Post something....</div>
         </>
     );
 
@@ -190,6 +187,6 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps)(SingleFeed);
+export default connect(mapStateToProps)(OwnPostFeed);
 
 
