@@ -1,1 +1,0 @@
-add a new action and reducer to update persisted data when user updates his profile

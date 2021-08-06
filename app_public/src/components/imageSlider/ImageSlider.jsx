@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import './imageSlider.css';
 
 
@@ -15,8 +14,8 @@ const ImageSlider = ({ filesArray }) => {
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);
     }
-    console.log("inside image slider", filesArray);
-    console.log("slide position", current, length);
+    // console.log("inside image slider", filesArray);
+    // console.log("slide position", current, length);
 
     const prevNextIcons = (
         <>

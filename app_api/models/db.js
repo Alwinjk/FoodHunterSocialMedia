@@ -9,6 +9,7 @@ mongoose.connect(
         useCreateIndex: true
     });
 require('./users');
+require('./posts');
 
 mongoose.connection.on('connected', () => {
     console.log(`mongoose connected to ${dbURI}`);

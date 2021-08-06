@@ -1,7 +1,7 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 const register = (req, res) => {
     if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {

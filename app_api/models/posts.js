@@ -12,8 +12,9 @@ const filesSchema = new mongoose.Schema({
 });
 
 const postSchema = new mongoose.Schema({
-  userid: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   text: String,
@@ -31,8 +32,6 @@ const postSchema = new mongoose.Schema({
 });
 
 
-module.exports = {
-    postSchema
-}
+mongoose.model('Post', postSchema);
 
 

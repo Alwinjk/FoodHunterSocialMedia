@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 const userSearch = (req, res) => {
     let userPattern = new RegExp("^" + req.body.query, "i");

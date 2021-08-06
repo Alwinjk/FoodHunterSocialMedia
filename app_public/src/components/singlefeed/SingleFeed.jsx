@@ -1,12 +1,24 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import SimpleImageSlider from "react-simple-image-slider";
+import axios from 'axios';
 
 import './singlefeed.css';
 import ImageSlider from '../imageSlider/ImageSlider';
+import { useEffect, useState } from 'react';
 
 
-const SingleFeed = ({ user, posts }) => {
+const SingleFeed = ({ user }) => {
+
+    const [posts, setPosts] = useState([]);
+    useEffect(async () => {
+        await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
+            .then(res => {
+                console.log("result", res.data);
+                setPosts(res.data);
+            })
+    }, []);
+
+    console.log("posts", posts);
 
     let postsArray = posts.map(post => {
         return post.files;
@@ -33,12 +45,13 @@ const SingleFeed = ({ user, posts }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
+                                                    { }
 
-                                                    <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
+                                                    <img src={post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
-                                                <span>{user.firstname} {user.lastname}</span>
+                                                <span>{post.user.firstname} {post.user.lastname}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -46,20 +59,8 @@ const SingleFeed = ({ user, posts }) => {
                                         <div className="pic-post">
                                             {post.text}
                                             <div className="slide-container">
-                                                {/* {
-                                                    post.files.map((file, index) => {
-                                                        return <img key={index} src={file.url} alt={file.filename} />
-                                                    })
-                                                } */}
-                                                {/* <SimpleImageSlider
-                                                    width={500}
-                                                    height={400}
-                                                    images={filesArray}
-                                                /> */}
                                                 <ImageSlider filesArray={filesArray} />
                                             </div>
-
-                                            {/* <img src="./images/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="" /> */}
                                         </div>
                                     </div>
                                     <div className="card-footer-ananthu">
