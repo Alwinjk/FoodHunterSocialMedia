@@ -44,6 +44,12 @@ router.route("/post/:userid/posts/:postid")
         .get(ctrlPost.findSpecificPost)
         .put(ctrlPost.editPost)
         .delete(ctrlPost.deletePost);
+// To display all posts
+router.route("/all-posts")
+        .get(ctrlPost.findAllPosts);
+// To display following posts
+router.route("/following-posts")
+        .post(ctrlPost.findFollowingPosts);
 
 // users routes
 const ctrlUsers = require("../controllers/users");

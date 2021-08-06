@@ -4,9 +4,8 @@ const multerS3 = require('multer-s3');
 const multer = require('multer');
 const path = require('path');
 
-const post = require('../models/posts');
-const postSchema = post.postSchema;
-const Post = mongoose.model('posts', postSchema);
+const Post = mongoose.model('Post');
+const User = mongoose.model('User');
 
 const s3 = new aws.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -52,17 +51,16 @@ const createPost = ( req, res ) => {
             console.log( 'errors', error );
             res.json( { error: error } );
         } else {
+            const galleryImgLocationArray = [];
             // If File not found
             if( req.files === undefined ){
-                console.log( 'Error: No File Selected!' );
-                res.json( 'Error: No File Selected' );
+                console.log( 'No File Selected!' );
             } else {
             // If Success
                 let fileArray = req.files,
                 fileLocation,
                 fileName,
                 file;
-                const galleryImgLocationArray = [];
                 for ( let i = 0; i < fileArray.length; i++ ) {
                     fileLocation = fileArray[ i ].location;
                     fileName = fileArray[ i ].key;
@@ -76,24 +74,35 @@ const createPost = ( req, res ) => {
                     galleryImgLocationArray.push( file );
                     console.log("Gallery ", galleryImgLocationArray);
                 }
-                // Save the file name into database
-                const post = new Post();
-        
-                post.userid = req.body.userid;
-                post.text = req.body.text;
-                post.files = galleryImgLocationArray;
-                post.like = req.body.like;
-                post.share = req.body.share;
-                post.save((err, data) => {
-                    if(err) {
-                        res.status(404)
-                            .json(err);
-                    } else {
-                        res.status(200)
-                        return;
-                    }
-                });
             }
+            // Save the file name into database
+            const post = new Post();
+            User.findById(req.params.userid)
+                .then(user => {
+                    req.body.user = user._id;
+                    console.log(req.body.user)
+                    
+                });
+            post.user = mongoose.Types.ObjectId(req.params.userid);
+            post.text = req.body.text;
+            console.log(post.text);
+            if(galleryImgLocationArray === undefined){
+                post.files = [];
+            } else {
+                post.files = galleryImgLocationArray;
+            }
+            post.like = req.body.like;
+            post.share = req.body.share;
+            console.log("post", post)
+            post.save((err, data) => {
+                if(err) {
+                    res.status(404)
+                        .json(err);
+                } else {
+                    res.status(200)
+                        .json(data);
+                }
+            });
         }
     });
 };
@@ -117,6 +126,7 @@ const findUserPost = (req, res) => {
 // finding a specific post created by a specific user
 const findSpecificPost = (req, res) => {
     Post.findById( req.params.postid)
+        .populate('user')
         .exec((err, post) => {
             if(err) {
                 res.status(404)
@@ -170,10 +180,51 @@ const deletePost = (req, res) => {
         
 };
 
+// find all posts
+const findAllPosts = (req, res) => {
+    Post.find()
+        .sort({ updatedAt: -1})
+        .exec((err, posts) => {
+            if(err){
+                res.status(404)
+                    .json(err);
+            } else {
+                res.status(200)
+                    .json(posts);
+            }
+        })
+}
+
+// find all posts from following users
+const findFollowingPosts = (req, res) => {
+    console.log("following array", req.body.followingArray);
+    console.log("userid", req.body.userid);
+    // res.json("Hello");
+    Post.find({
+            $or: [
+                {user: {$in: req.body.followingArray}},
+                {user: {$eq: req.body.userid}}
+            ]
+        })
+        .sort({ updatedAt: -1})
+        .populate('user')
+        .exec((err, post) => {
+            if(err) {
+                res.status(404)
+                    .json(err);
+            } else {
+                res.status(200)
+                    .json(post);
+            }
+        })
+}
+
 module.exports = {
     createPost,
     findUserPost,
     findSpecificPost,
     editPost,
-    deletePost
+    deletePost, 
+    findAllPosts,
+    findFollowingPosts
 };

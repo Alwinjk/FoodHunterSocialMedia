@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
@@ -165,7 +165,7 @@ const followRequest = (req, res) => {
             return;
     }
     User
-        .updateOne({_id: req.params.userid},{$addToSet: {following: [req.body.currentuser]}})
+        .updateOne({_id: req.params.userid},{$addToSet: {following: [mongoose.Types.ObjectId(req.body.currentuser)]}})
         .exec((err, user) => {
             if(!user) {
                 res.status(404)
@@ -191,7 +191,7 @@ const cancelFollowRequest = (req, res) => {
             return;
     }
     User
-        .updateOne({_id: req.params.userid}, {$pull: {following: req.body.currentuser}})
+        .updateOne({_id: req.params.userid}, {$pull: {following: mongoose.Types.ObjectId(req.body.currentuser)}})
         .exec((err, user) => {
             if(!user) {
                 res.status(404)

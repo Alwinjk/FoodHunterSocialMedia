@@ -55,12 +55,11 @@ const userSchema = new mongoose.Schema({
   gender: String,
   dob: Date,
   following: {
-    type: [String],
-    unique: true
+    type: [mongoose.Schema.Types.ObjectId],
+
   },
   followers: {
-    type: [String],
-    unique: true
+    type: [mongoose.Schema.Types.ObjectId],
   },
   address: addressSchema,
   avatar: avatarSchema
@@ -91,4 +90,4 @@ userSchema.methods.generateJwt = function () {
     exp: parseInt(expiry.getTime() / 1000, 10),
   }, process.env.JWT_SECRET);
 };
-mongoose.model('users', userSchema);
+mongoose.model('User', userSchema);

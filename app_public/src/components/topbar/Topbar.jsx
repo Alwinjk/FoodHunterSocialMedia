@@ -18,16 +18,13 @@ const Topbar = ({ user }) => {
                             <p>FoodHunter</p>
 
                         </a>
-                        <Link className=" auto-link" to='/dashboard'><i class="material-icons">house</i>FoodHunter</Link>
-                        {/* <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i class="material-icons">person</i>
-                            Profile
-                        </Link> */}
-                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i class="material-icons">person</i>
+                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">house</i>FoodHunter</Link>
+                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i className="material-icons">person</i>
                             Profile
                         </Link>
-                        <Link className=" auto-link" to='/dashboard'><i class="material-icons">emoji_people</i>About Us</Link>
-                        <Link className=" auto-link" to='/dashboard'><i class="material-icons">contact_support</i>Contact</Link>
-                        <Link className=" auto-link" to='/dashboard'><i class="material-icons">logout</i>Logout</Link>
+                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">emoji_people</i>About Us</Link>
+                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">contact_support</i>Contact</Link>
+                        <Link className=" auto-link" to='/dashboard'><i className="material-icons">logout</i>Logout</Link>
 
 
                     </div>

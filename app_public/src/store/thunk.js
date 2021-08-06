@@ -25,8 +25,15 @@ export const displayAlert = (e) => () => {
 export const loadPost = () => async (dispatch, getState) => {
     try {
         dispatch(loadPostInProgress);
+        let followingArray = [
+            "60f0bc9708f9562474e27f96",
+            "60c772fcfc689926e817cf9b",
+            "60e9f903217e3215fcf8153c",
+            "6102136930b8141df48749e1"
+        ];
         const userid = JSON.parse(sessionStorage.getItem('_id'));
-        const res = await axios.get(`/post/${userid}/posts`);
+        // const res = await axios.get(`/post/${userid}/posts`);
+        const res = await axios.get('/all-posts');
         const post = res.data;
         dispatch(loadPostSuccess(post));
     } catch (e) {

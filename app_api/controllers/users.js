@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 // display all users except current user
 const userReadAllExceptCurrent = (req, res) => {
