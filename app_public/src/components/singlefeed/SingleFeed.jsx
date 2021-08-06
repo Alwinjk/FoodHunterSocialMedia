@@ -117,41 +117,59 @@ const SingleFeed = ({ user }) => {
                                             <div className="numbers-ananthu">
                                                 <div className="item-ananthu">
                                                     <span ref={likeRef}>{post.like.length}</span>
-                                                    <span style={{ color: "blue" }} onClick={e => { likeHandler(e, post._id) }} className="span-like">like</span>
+                                                    <span style={{ color: "blue" }} onClick={e => { likeHandler(e, post._id) }} className="span-like"><h1>like</h1></span>
                                                 </div>
                                                 <div className="border-ananthu"></div>
 
                                                 <div className="border-ananthu"></div>
                                                 <div className="item-ananthu">
-                                                    <span>120</span>
+                                                    <span>{post.comments.length}</span>
                                                     comment
                                                 </div>
 
                                                 {/* comment division */}
-                                                <div>
-                                                    {
-                                                        post.comments.map(comment => {
-                                                            if (comment.user != null) {
-                                                                console.log("comment", comment.user)
-                                                                return (
-                                                                    <h6>
-                                                                        <span style={{ fontWeight: "700" }}>
-                                                                            {comment.user.firstname} {comment.user.lastname}
-                                                                        </span>
-                                                                        {comment.text}
-                                                                    </h6>
-                                                                )
-                                                            }
 
-                                                        })
-                                                    }
-                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div className="my-comment">
+                                            <div className="my-comment-form">
                                                 <form onSubmit={(e) => {
                                                     e.preventDefault();
                                                     createComment(e.target[0].value, post._id);
                                                 }}>
                                                     <input type="text" placeholder="Add a comment.." />
                                                 </form>
+                                            </div>
+                                            <div className="comment-post">
+                                                {
+                                                    post.comments.map(comment => {
+                                                        if (comment.user != null) {
+                                                            console.log("comment", comment.user)
+                                                            return (
+                                                                <div className="comment-ananthu">
+                                                                    <div className="comment-alwin">
+                                                                        <div className="comment-img">
+                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" class="profile-photo-lg" />
+                                                                        </div>
+                                                                        <div className="comment-comment">
+                                                                            <h2>
+                                                                                {comment.user.firstname} {comment.user.lastname}
+                                                                            </h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="comment-feba">
+                                                                        <h3>{comment.text}</h3>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            )
+                                                        }
+
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     </div>
