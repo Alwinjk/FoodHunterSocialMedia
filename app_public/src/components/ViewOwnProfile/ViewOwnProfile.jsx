@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import React, { useRef, useEffect, useState } from 'react';
 
 import Topbar from '../topbar/Topbar';
-import SingleFeed from '../singlefeed/SingleFeed';
 import Userlist from '../userlist/Userlist';
 
 
 import './viewOwnProfile.css';
 import { Link } from 'react-router-dom';
+import OwnPostFeed from '../ownPostFeed/OwnPostFeed';
 
-const ViewOwnProfile = ({ user }) => {
+const ViewOwnProfile = ({ user, posts }) => {
 
     return (
         <>
@@ -53,7 +53,8 @@ const ViewOwnProfile = ({ user }) => {
                             </section>
                         </div>
                     </div>
-                    <SingleFeed /></div>
+                    <OwnPostFeed />
+                </div>
                 <div className="col-3">
                     <Userlist />
                 </div>
@@ -64,7 +65,8 @@ const ViewOwnProfile = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    posts: state.post
 });
 
 export default connect(mapStateToProps)(ViewOwnProfile);

@@ -1,0 +1,169 @@
+.profile-card {
+    width: 100%;
+    text-align: center;
+
+    overflow: hidden;
+    border-radius: 20px;
+
+
+}
+
+.content-alwin {
+    margin: 0px;
+
+}
+
+.card-header {
+    background: #f4f4f4;
+    padding: 20px 20px;
+    border-radius: 20px;
+}
+
+.alwin-info {
+    border-radius: 20px;
+
+}
+
+.pic {
+    display: inline-block;
+    padding: 8px;
+    background: linear-gradient(130deg, #74b9ff, #e66767);
+    margin: auto;
+    border-radius: 50%;
+
+    animation: animated-gradient 2s linear infinite;
+}
+
+
+.pic-post {
+    width: 100%;
+
+}
+
+.pic-post img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes animated-gradient {
+    25% {
+        background-position: left bottom;
+    }
+
+    50% {
+        background-position: right bottom;
+    }
+
+    75% {
+        background-position: right top;
+    }
+
+    100% {
+        background-position: left top;
+    }
+}
+
+.pic img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+}
+
+.name {
+    color: #f2f2f2;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.desc {
+    font-size: 18px;
+    color: #e66767;
+}
+
+.sm {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.sm a {
+    color: #f2f2f2;
+    width: 56px;
+    font-size: 22px;
+    transition: .3s linear;
+}
+
+.sm a:hover {
+    color: #e66767;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 12px 50px;
+    color: #e66767;
+    border: 2px solid #e66767;
+    border-radius: 6px;
+    margin-top: 16px;
+    transition: .3s linear;
+}
+
+.contact-btn:hover {
+    background: #e66767;
+    color: #f2f2f2;
+}
+
+.card-profile-info {
+    background: #f4f4f4;
+    padding: 10px 10px;
+    margin-bottom: 3px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card-footer-ananthu {
+    background: #f4f4f4;
+    padding: 60px 10px;
+}
+
+.numbers-ananthu {
+    display: flex;
+    align-items: center;
+}
+
+.item-ananthu {
+    flex: 1;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #e66767;
+}
+
+.item-ananthu span {
+    display: block;
+    color: #2c3a47;
+    font-size: 30px;
+}
+
+.card-profile-info span {
+    display: block;
+    color: #2c3a47;
+    font-size: 20px;
+}
+
+.border-ananthu {
+    width: 1px;
+    height: 30px;
+    background: #bbb;
+}
+
+.content-alwin {
+
+    border-radius: 20px;
+
+}
+
+.user-name {
+    font-weight: bold;
+}

@@ -2,18 +2,18 @@ import { connect } from 'react-redux';
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 
-import './singlefeed.css';
+import './ownPostFeed.css';
 import ImageSlider from '../imageSlider/ImageSlider';
 
 
-const SingleFeed = ({ user }) => {
+const OwnPostFeed = ({ user }) => {
 
     const likeRef = useRef();
 
     const [posts, setPosts] = useState([]);
     useEffect(async () => {
         console.log("userid", user._id);
-        await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
+        await axios.get(`/post/${user._id}/posts`)
             .then(res => {
                 console.log("result", res.data);
                 setPosts(res.data);
@@ -94,13 +94,13 @@ const SingleFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    <img src={post === undefined ? "" : post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
+                                                    <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
 
                                                 <div className="col-md-9 border-right pull-left ">
-                                                    <span className="user-name">{post.user.firstname} {post.user.lastname}</span>
+                                                    <span className="user-name">{user.firstname} {user.lastname}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,59 +117,41 @@ const SingleFeed = ({ user }) => {
                                             <div className="numbers-ananthu">
                                                 <div className="item-ananthu">
                                                     <span ref={likeRef}>{post.like.length}</span>
-                                                    <span style={{ color: "blue" }} onClick={e => { likeHandler(e, post._id) }} className="span-like"><h1>like</h1></span>
+                                                    <span style={{ color: "blue" }} onClick={e => { likeHandler(e, post._id) }} className="span-like">like</span>
                                                 </div>
                                                 <div className="border-ananthu"></div>
 
                                                 <div className="border-ananthu"></div>
                                                 <div className="item-ananthu">
-                                                    <span>{post.comments.length}</span>
+                                                    <span>120</span>
                                                     comment
                                                 </div>
 
                                                 {/* comment division */}
+                                                <div>
+                                                    {
+                                                        post.comments.map(comment => {
+                                                            if (comment.user != null) {
+                                                                console.log("comment", comment.user)
+                                                                return (
+                                                                    <h6>
+                                                                        <span style={{ fontWeight: "700" }}>
+                                                                            {comment.user.firstname} {comment.user.lastname}
+                                                                        </span>
+                                                                        {comment.text}
+                                                                    </h6>
+                                                                )
+                                                            }
 
-
-                                            </div>
-                                        </div>
-                                        <div className="my-comment">
-                                            <div className="my-comment-form">
+                                                        })
+                                                    }
+                                                </div>
                                                 <form onSubmit={(e) => {
                                                     e.preventDefault();
                                                     createComment(e.target[0].value, post._id);
                                                 }}>
                                                     <input type="text" placeholder="Add a comment.." />
                                                 </form>
-                                            </div>
-                                            <div className="comment-post">
-                                                {
-                                                    post.comments.map(comment => {
-                                                        if (comment.user != null) {
-                                                            console.log("comment", comment.user)
-                                                            return (
-                                                                <div className="comment-ananthu">
-                                                                    <div className="comment-alwin">
-                                                                        <div className="comment-img">
-                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" class="profile-photo-lg" />
-                                                                        </div>
-                                                                        <div className="comment-comment">
-                                                                            <h2>
-                                                                                {comment.user.firstname} {comment.user.lastname}
-                                                                            </h2>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="comment-feba">
-                                                                        <h3>{comment.text}</h3>
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                            )
-                                                        }
-
-                                                    })
-                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -184,10 +166,7 @@ const SingleFeed = ({ user }) => {
 
     const displayPostsError = (
         <>
-            <div style={{
-                color: "blue",
-                textAlign: "center"
-            }}>Follow some FoodHunters to see new posts</div>
+            <div>Post something....</div>
         </>
     );
 
@@ -208,6 +187,6 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-export default connect(mapStateToProps)(SingleFeed);
+export default connect(mapStateToProps)(OwnPostFeed);
 
 
