@@ -14,10 +14,9 @@ const Topbar = ({ user }) => {
                         <a className="navbar-brand" href="#">
                             <img src={img1} alt="" width="70" height="70" />
                             <p>FoodHunter</p>
-
                         </a>
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">house</i>FoodHunter</Link>
-                        <Link className=" auto-link" aria-current="page" to={{ pathname: `profile/${user._id}` }}><i style={{ color: "#0d6efd" }} className="material-icons">person</i>
+                        <Link className=" auto-link" aria-current="page" to={{ pathname: `/profile/${user._id}` }}><i style={{ color: "#0d6efd" }} className="material-icons">person</i>
                             Profile
                         </Link>
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">emoji_people</i>About Us</Link>

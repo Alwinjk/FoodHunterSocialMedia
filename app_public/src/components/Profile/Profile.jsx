@@ -7,7 +7,6 @@ import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
 import Topbar from '../topbar/Topbar';
-import SingleFeed from '../singlefeed/SingleFeed';
 import './Profile.css';
 
 
@@ -22,12 +21,13 @@ const EditProfileReq = async (userid, data) => {
 };
 
 const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
-
+    console.log("user in profile", user.address);
     useEffect(() => {
         startLoadingPost();
     }, []);
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [validationMsg, setValidationMsg] = useState([]);
 
     const firstname = useRef();
     const lastname = useRef();
@@ -99,6 +99,27 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
     // form submit function
     const handleSubmit = async e => {
         e.preventDefault();
+
+        // year validation
+        if (year.current.value !== undefined) {
+            let value;
+            try {
+                value = parseInt(year.current.value);
+            } catch (err) {
+                console.log("Invalid number");
+            }
+
+            const d = new Date();
+            if (value < 1900) {
+                setValidationMsg("Invalid year, year must be between 1900 and " + (d.getFullYear - 12));
+            }
+            if (value > (d.getFullYear - 12)) {
+                setValidationMsg("You must be 13 years old to create an account!");
+            }
+        }
+        if (month.current.value) {
+            const value = parseInt(year.current.value)
+        }
         const data = {
             firstname: firstname.current.value,
             lastname: lastname.current.value,
@@ -153,7 +174,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                         <div className="row">
                                             <div className="col-md-3 border-right">
                                                 <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                    <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} />
+                                                    <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url} />
                                                     <form >
                                                         <input type="file" onChange={singleFileChangeHandler} />
                                                         <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
@@ -254,7 +275,6 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 defaultValue={user.email}
                                                                 className="form-control"
-                                                                // placeholder="enter email id"
                                                                 ref={email}
                                                             />
                                                         </div>
@@ -265,7 +285,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="enter address line 1"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.address1 ? "" : user.address.address1)}
+                                                                defaultValue={user.address === undefined ? "" : user.address.address1 === undefined ? "" : user.address.address1}
                                                                 ref={address1}
 
                                                             />
@@ -276,10 +296,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="enter address line 2"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.address2
-
-
-                                                                    ? "" : user.address.address2)}
+                                                                defaultValue={user.address === undefined ? "" : (user.address.address2 === undefined ? "" : user.address.address2)}
                                                                 ref={address2}
                                                             />
                                                         </div>
@@ -289,7 +306,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="Region/State/Province"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.region ? "" : user.address.region)}
+                                                                defaultValue={user.address === undefined ? "" : (user.address.region === undefined ? "" : user.address.region)}
                                                                 ref={region}
                                                             />
                                                         </div>
@@ -299,7 +316,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="City"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.city ? "" : user.address.city)}
+                                                                defaultValue={user.address === undefined ? "" : (user.address.city === undefined ? "" : user.address.city)}
                                                                 ref={city}
                                                             />
                                                         </div>
@@ -310,7 +327,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="Zip code"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.zipcode ? "" : user.address.zipcode)}
+                                                                defaultValue={user.address === undefined ? "" : (user.address.zipcode === undefined ? "" : user.address.zipcode)}
                                                                 ref={zipcode}
                                                             />
                                                         </div>
@@ -320,7 +337,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                                 type="text"
                                                                 className="form-control"
                                                                 placeholder="Country"
-                                                                defaultValue={user.address === undefined ? "" : (user.address.country ? "" : user.address.country)}
+                                                                defaultValue={user.address === undefined ? "" : (user.address.country === undefined ? "" : user.address.country)}
                                                                 ref={country}
                                                             />
                                                         </div>
@@ -359,46 +376,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                 </div>
 
                             </div>
-
-                            {/* Gallery container */}
-
-                            {/* <div className="container">
-
-     <div className="col bg-white mt-12 mb-5 ">
-
-
-
-        <div class="container">
-            <h1>Gallery</h1>
-
-            <div class="gallery-wrap">
-                <div class="item item-1"></div>
-                <div class="item item-2"></div>
-                <div class="item item-3"></div>
-                <div class="item item-4"></div>
-                <div class="item item-5"></div>
-            </div>
-        </div>
-
-        <div class="social">
-            <a href="https://twitter.com/StefCharle" target="_blank">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg" alt="" />
-            </a>
-        </div>
-
-    </div> 
-
-</div> */}
-
-
-                            {/* Post container */}
-                            <div className="container bg-light md-5" >
-                                <SingleFeed />
-                            </div>
                         </section>
-
-
-                        <SingleFeed />
 
 
                     </div>

@@ -3,8 +3,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { loadUserList } from '../../store/thunk';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-const Userlist = ({ user, userList, startLoadingUserList }, props) => {
+
+const Userlist = ({ user, userList, startLoadingUserList }) => {
 
     useEffect(() => {
         startLoadingUserList();
@@ -112,7 +114,9 @@ const Userlist = ({ user, userList, startLoadingUserList }, props) => {
 
                                                         </div>
                                                         <div className="col-md-7 col-sm-7">
-                                                            <h5><a href="#" className="profile-link"> {currentUser.firstname} {currentUser.lastname}</a></h5>
+                                                            <h5>
+                                                                <Link className="profile-link" to={{ pathname: `/view-profile/${currentUser._id}` }}>{currentUser.firstname} {currentUser.lastname}</Link>
+                                                            </h5>
                                                             <p>{currentUser.address === undefined ? "" : currentUser.address.city === undefined ? "" : currentUser.address.city}</p>
                                                             {/* <p className="text-muted">zczvxvvz</p> */}
                                                         </div>

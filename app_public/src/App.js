@@ -42,10 +42,10 @@ function App() {
           <Route path="/profile/:userid">
             {token ? <ViewOwnProfile /> : <Login setToken={setToken} />}
           </Route>
-          <Route path="/profile/:userid/edit-profile">
+          <Route path="/edit-profile/:userid">
             {token ? <Profile /> : <Login setToken={setToken} />}
           </Route>
-          <Route  path="/view-profile">
+          <Route  path="/view-profile/:userid">
             {token ? <FriendUser /> : <Login setToken={setToken}/>}
           </Route>
         </Switch>
