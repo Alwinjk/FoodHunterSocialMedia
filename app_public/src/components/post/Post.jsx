@@ -108,21 +108,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                         <div className="photo_submit-container">
                                             <input
                                                 type="file"
+                                                className="custom-file-input"
                                                 accept="image/*,audio/*,video/*"
                                                 multiple
                                                 onChange={multipleFileChangeHandler}
                                             />
-                                            <div className="label-holder">
+                                            {/* <div className="label-holder">
                                                 <label htmlFor="file" className="label">
-                                                    <i className="material-icons">add_a_photo</i>
+                                        
                                                 </label>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="modal-footer">
-                                    <button type="submit" className="btn2 btn-primary">post</button>
-                                    <button type="submit" className="btn2 btn-danger">Cancel</button>
+                                <div className="modal-f">
+
+                                    <button type="submit" className="btn2">Close</button>
                                 </div>
                             </div>
                         </div>
