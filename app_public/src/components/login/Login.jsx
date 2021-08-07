@@ -23,6 +23,7 @@ export default function Login({ setToken }) {
     const email = useRef();
     const password = useRef();
     const [userdata, setUserData] = useState();
+    const [errorMsg, setErrorMsg] = useState("");
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -36,13 +37,14 @@ export default function Login({ setToken }) {
             setUserData(userData);
         } catch (err) {
             console.log("Log in error", err);
+            setErrorMsg("E-mail or Password is wrong. Please try again...")
 
         }
 
     }
 
     const logInErrorMessage = (
-        <div>E-mail or Password is wrong</div>
+        <div style={{ color: "red" }}>{errorMsg}</div>
     );
 
     return (
@@ -109,7 +111,6 @@ export default function Login({ setToken }) {
                                         </div>
                                         <div className="form-row">
                                             <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                {/* <button className="btn1">Create New Account</button> */}
                                                 <a className="btn1" href="/signup">Sign up</a><br></br>
 
                                             </div>

@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Topbar from '../topbar/Topbar';
 import Userlist from '../userlist/Userlist';
-
-
-import './viewOwnProfile.css';
-import { Link } from 'react-router-dom';
 import OwnPostFeed from '../ownPostFeed/OwnPostFeed';
 
-const ViewOwnProfile = ({ user, posts }) => {
+import './viewOwnProfile.css';
+
+const ViewOwnProfile = ({ user }) => {
 
     return (
         <>
@@ -25,11 +24,9 @@ const ViewOwnProfile = ({ user, posts }) => {
                                     <div className="row grid clearfix">
                                         <div className="col2 first">
 
-                                            <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
+                                            <img src={user.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url} alt="" />
                                             <h1>{user.firstname} {user.lastname}</h1>
-                                            <p>{user.bio}</p>
-                                            <Link to={{ pathname: `/profile/${user._id}/edit-profile` }}><span>Edit Profile</span></Link>
-
+                                            <p>{user.bio === undefined ? "" : user.bio}</p>
                                         </div>
                                         <div className="col2 last">
                                             <div className="grid clearfix">
@@ -47,7 +44,14 @@ const ViewOwnProfile = ({ user, posts }) => {
                                     <div className="row clearfix">
                                         <ul className="row2tab clearfix">
                                             <li><i className="fa fa-list-alt"></i> My posts </li>
-                                            <li><Link to={{ pathname: `profile/${user._id}/edit-profile` }}><i className="fa fa-heart"></i> edit profile </Link></li>
+
+                                            <Link to={{ pathname: `/edit-profile/${user._id}` }}>
+                                                <li>
+                                                    <i className="fa fa-heart"></i>
+                                                    edit profile
+                                                </li>
+                                            </Link>
+
                                         </ul>
                                     </div>
                                 </div>
