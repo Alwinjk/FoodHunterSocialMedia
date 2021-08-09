@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadUser, loadPost } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
+
 import Post from '../post/Post';
 import Topbar from '../topbar/Topbar';
 import SingleFeed from '../singlefeed/SingleFeed';
@@ -17,6 +18,8 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
         startLoadingUser();
         startLoadingPost();
     }, []);
+
+
 
 
     const loadingMessage = <div style={{ textAlign: "center" }}>Loading Dashboard...</div>

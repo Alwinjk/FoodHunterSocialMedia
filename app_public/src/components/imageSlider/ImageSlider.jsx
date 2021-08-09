@@ -19,8 +19,8 @@ const ImageSlider = ({ filesArray }) => {
 
     const prevNextIcons = (
         <>
-            <i class="material-icons slider-left-arrow" onClick={prevSlide}>arrow_back_ios</i>
-            <i class="material-icons  slider-right-arrow" onClick={nextSlide}>arrow_forward_ios</i>
+            <i className="material-icons slider-left-arrow" onClick={prevSlide}>arrow_back_ios</i>
+            <i className="material-icons  slider-right-arrow" onClick={nextSlide}>arrow_forward_ios</i>
         </>
     )
     return (

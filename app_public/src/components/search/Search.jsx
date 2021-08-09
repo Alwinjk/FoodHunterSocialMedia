@@ -47,13 +47,13 @@ const SearchComponent = () => {
                     <div ref={searchDiv} id="search-container" className="flex">
 
 
-                        <form class="searchform cf">
+                        <form className="searchform cf">
                             <div className="search-name">
                                 {/* <input type="search" ref={searchIcon} onClick={handleSearchContainer} data-target="modal1" className="larg material-icons modal-trigger" style={{ color: "black" }}>
 
                                 </input> */}
-                                <div class="search">
-                                    <span class="fa fa-search"></span>
+                                <div className="search">
+                                    <span className="fa fa-search"></span>
                                     <input placeholder="" type="search" ref={searchIcon} onClick={handleSearchContainer} data-target="modal1" className="larg material-icons modal-trigger" style={{ color: "black" }}></input>
                                 </div>
 
@@ -76,19 +76,19 @@ const SearchComponent = () => {
                             value={search}
                             onChange={(e) => fetchUsers(e.target.value)}
                         />
-                        <ul class="collection">
+                        <ul className="collection">
                             {
                                 searchResults.length == 0 || searchResults[0] == "" ? null : searchResults.map(user => {
                                     return (
                                         <div>
 
-                                            <div class="row">
-                                                <div class="col p-0 ml-5 ">
+                                            <div className="row">
+                                                <div className="col p-0 ml-5 ">
                                                     <li className="collection-item">
                                                         <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
                                                     </li>
                                                 </div>
-                                                <div class="col p-0 mr-5">
+                                                <div className="col p-0 mr-5">
                                                     <li className="collection-item">
                                                         {user.firstname} {user.lastname}
                                                     </li>
