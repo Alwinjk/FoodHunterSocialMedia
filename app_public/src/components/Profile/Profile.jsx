@@ -53,6 +53,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
     const params = useParams();
 
     const singleFileChangeHandler = e => {
+        e.preventDefault();
         setSelectedFile(e.target.files[0]);
     }
 
@@ -96,6 +97,8 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
         }
     };
     console.log("selected file", selectedFile);
+
+
     // form submit function
     const handleSubmit = async e => {
         e.preventDefault();

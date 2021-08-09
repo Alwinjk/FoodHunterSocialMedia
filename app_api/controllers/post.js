@@ -112,6 +112,7 @@ const createPost = ( req, res ) => {
 const findUserPost = (req, res) => {
     Post.find({ user: req.params.userid})
         .sort({ updatedAt: -1})
+        .populate('user')
         .select('-__v ')
         .exec((err, posts) => {
         if (err) {

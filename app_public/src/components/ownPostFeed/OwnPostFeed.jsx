@@ -4,26 +4,36 @@ import axios from 'axios';
 
 import './ownPostFeed.css';
 import ImageSlider from '../imageSlider/ImageSlider';
-
+import { useParams } from 'react-router';
 
 const OwnPostFeed = ({ user }) => {
 
     const likeRef = useRef();
+    const params = useParams();
+    const [postsEmpty, setPostsEmpty] = useState(false);
 
     const [posts, setPosts] = useState([]);
-    useEffect(async () => {
-        console.log("userid", user._id);
-        await axios.get(`/post/${user._id}/posts`)
+    useEffect(() => {
+        fetchUserPosts();
+    }, []);
+
+    async function fetchUserPosts() {
+        await axios.get(`/post/${params.userid}/posts`)
             .then(res => {
                 console.log("result", res.data);
                 setPosts(res.data);
+                if (posts.length === 0) {
+                    setPostsEmpty(true);
+                }
             })
-    }, []);
+    }
+
+
 
     console.log("posts", posts);
 
     const likeHandler = async (e, postid) => {
-        if (e.target.style.color == "blue") {
+        if (e.target.style.color === "blue") {
             e.target.style.color = "red";
             const res = await axios.put(`/like`, { postid: postid, userid: user._id });
             const data = res.data;
@@ -42,7 +52,7 @@ const OwnPostFeed = ({ user }) => {
             const data = res.data;
             const postData = posts.map(post => {
                 if (data._id !== undefined) {
-                    if (post._id == data._id) {
+                    if (post._id === data._id) {
                         return data;
                     } else {
                         return post;
@@ -60,7 +70,7 @@ const OwnPostFeed = ({ user }) => {
         const data = res.data;
         const postData = posts.map(post => {
             if (data._id !== undefined) {
-                if (post._id == data._id) {
+                if (post._id === data._id) {
                     return data;
                 } else {
                     return post;
@@ -94,13 +104,13 @@ const OwnPostFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    <img src={user.avatar === undefined ? "" : user.avatar.url === undefined ? "" : user.avatar.url} alt="" />
+                                                    <img src={post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
 
                                                 <div className="col-md-9 border-right pull-left ">
-                                                    <span className="user-name">{user.firstname} {user.lastname}</span>
+                                                    <span className="user-name">{post.user.firstname} {post.user.lastname}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,11 +153,11 @@ const OwnPostFeed = ({ user }) => {
                                             </div>
                                             <div className="comment-post">
                                                 {
-                                                    post.comments.map(comment => {
+                                                    post.comments.map((comment, index) => {
                                                         if (comment.user != null) {
                                                             console.log("comment", comment.user)
                                                             return (
-                                                                <div className="comment-ananthu">
+                                                                <div key={index} className="comment-ananthu">
                                                                     <div className="comment-alwin">
                                                                         <div className="comment-img">
                                                                             <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" class="profile-photo-lg" />
@@ -182,18 +192,22 @@ const OwnPostFeed = ({ user }) => {
         );
     });
 
-    const displayPostsError = (
+    const displayLoadingPostsError = (
         <>
-            <div>Post something....</div>
+            <div>Loading....</div>
         </>
     );
 
+    const displayEmptyPostsError = (
+        <>
+            <div>Hey {user.firstname}, add your first post!</div>
+        </>
+    )
 
-    // console.log("each post", filesArray);
     return (
         <>
             {
-                posts.length > 0 ? displayPosts : displayPostsError
+                posts.length > 0 ? displayPosts : postsEmpty ? displayEmptyPostsError : displayLoadingPostsError
             }
         </>
     );
