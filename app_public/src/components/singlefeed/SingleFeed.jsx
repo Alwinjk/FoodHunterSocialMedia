@@ -11,16 +11,18 @@ const SingleFeed = ({ user }) => {
     const likeRef = useRef();
 
     const [posts, setPosts] = useState([]);
-    useEffect(async () => {
-        console.log("userid", user._id);
+    useEffect(() => {
+        fetchFollowingPosts()
+    }, []);
+
+    // console.log("posts", posts);
+    async function fetchFollowingPosts() {
         await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
             .then(res => {
                 console.log("result", res.data);
                 setPosts(res.data);
-            })
-    }, []);
-
-    console.log("posts", posts);
+            });
+    }
 
     const likeHandler = async (e, postid) => {
         if (e.target.style.color == "blue") {

@@ -156,7 +156,7 @@ const userUpdate = (req, res) => {
         });
 };
 
-// follow request
+// following and followers request
 const followRequest = (req, res) => {
     if(!req.params.userid) {
         res
@@ -183,6 +183,7 @@ const followRequest = (req, res) => {
         });
 }
 
+
 const cancelFollowRequest = (req, res) => {
     if(!req.params.userid) {
         res
@@ -208,6 +209,8 @@ const cancelFollowRequest = (req, res) => {
             
         });
 }
+
+
 
 
 module.exports = {

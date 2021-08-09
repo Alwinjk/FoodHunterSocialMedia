@@ -18,6 +18,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
 
     const [selectedFiles, setSelectedFiles] = useState(null);
     const multipleFileChangeHandler = (e) => {
+        e.preventDefault();
         setSelectedFiles(e.target.files);
     };
 
@@ -25,46 +26,49 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
         e.preventDefault();
         const data = new FormData();
         const textValue = text.current.value;
-        // If file selected
-        if (selectedFiles) {
-            for (let i = 0; i < selectedFiles.length; i++) {
-                data.append('galleryImage', selectedFiles[i], selectedFiles[i].name);
-            }
-        }
-        data.append('userid', user._id);
-        data.append('text', textValue);
-        axios.post(`/posts/${user._id}/post`, data, {
-            headers: {
-                'accept': 'application/json',
-                'Accept-Language': 'en-US,en;q=0.8',
-                'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-            }
-        })
-            .then((response) => {
-                if (200 === response.status) {
-                    // If file size is larger than expected.
-                    if (response.data.error) {
-                        if ('LIMIT_FILE_SIZE' === response.data.error.code) {
-                            console.log('Max size: 150MB');
-                        } else if ('LIMIT_UNEXPECTED_FILE' === response.data.error.code) {
-                            console.log('Max 4 files allowed');
-                        } else {
-                            // If not the given ile type
-                            console.log(response.data.error);
-                        }
-                    }
-                    // else {
-                    //     // Success
-                    //     let fileName = response.data;
-                    //     console.log('fileName', fileName);
-                    //     console.log('File Uploaded successfully');
-
-                    // }
+        if (selectedFiles || textValue) {
+            if (selectedFiles) {
+                for (let i = 0; i < selectedFiles.length; i++) {
+                    data.append('galleryImage', selectedFiles[i], selectedFiles[i].name);
                 }
-            }).catch((error) => {
-                // If another error
-                console.log(error);
-            });
+            }
+            data.append('userid', user._id);
+            data.append('text', textValue);
+            axios.post(`/posts/${user._id}/post`, data, {
+                headers: {
+                    'accept': 'application/json',
+                    'Accept-Language': 'en-US,en;q=0.8',
+                    'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                }
+            })
+                .then((response) => {
+                    if (200 === response.status) {
+                        // If file size is larger than expected.
+                        if (response.data.error) {
+                            if ('LIMIT_FILE_SIZE' === response.data.error.code) {
+                                console.log('Max size: 150MB');
+                            } else if ('LIMIT_UNEXPECTED_FILE' === response.data.error.code) {
+                                console.log('Max 4 files allowed');
+                            } else {
+                                // If not the given file type
+                                console.log(response.data.error);
+                            }
+                        }
+                        // else {
+                        //     // Success
+                        //     let fileName = response.data;
+                        //     console.log('fileName', fileName);
+                        //     console.log('File Uploaded successfully');
+
+                        // }
+                    }
+                }).catch((error) => {
+                    // If another error
+                    console.log(error);
+                });
+        }
+        // If file selected
+
         startLoadingPost();
 
     };
@@ -108,22 +112,21 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                         <div className="photo_submit-container">
                                             <input
                                                 type="file"
-                                                className="custom-file-input"
                                                 accept="image/*,audio/*,video/*"
                                                 multiple
                                                 onChange={multipleFileChangeHandler}
                                             />
-                                            {/* <div className="label-holder">
+                                            <div className="label-holder">
                                                 <label htmlFor="file" className="label">
-                                        
+                                                    <i className="material-icons">add_a_photo</i>
                                                 </label>
-                                            </div> */}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="modal-f">
-
-                                    <button type="submit" className="btn2">Close</button>
+                                <div className="modal-footer">
+                                    <button type="submit" className="btn2 btn-primary">post</button>
+                                    <button type="submit" className="btn2 btn-danger">Cancel</button>
                                 </div>
                             </div>
                         </div>

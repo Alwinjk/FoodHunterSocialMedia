@@ -1,9 +1,3 @@
-export const CURRENT_USER = 'CURRENT_USER';
-export const currentUser = user => ({
-    type: CURRENT_USER,
-    payload: { user, }
-});
-
 
 export const LOAD_USER_IN_PROGRESS = 'LOAD_USER_IN_PROGRESS';
 export const loadUserInProgress = () => ({

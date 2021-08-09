@@ -10,6 +10,7 @@ import './viewOwnProfile.css';
 
 const ViewOwnProfile = ({ user }) => {
 
+
     return (
         <>
             <div className="row m-0">
@@ -43,7 +44,7 @@ const ViewOwnProfile = ({ user }) => {
                                     </div>
                                     <div className="row clearfix">
                                         <ul className="row2tab clearfix">
-                                            <li><i className="fa fa-list-alt"></i> My posts </li>
+                                            <li><i className="fa fa-list-alt"></i>{ } posts </li>
 
                                             <Link to={{ pathname: `/edit-profile/${user._id}` }}>
                                                 <li>
