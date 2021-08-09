@@ -225,7 +225,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                             />
                                                         </div>
                                                         <div className="col-md-3">
-                                                            <label className="labels"></label>
+                                                            <label className="labels">day</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
