@@ -375,6 +375,7 @@ a {
 
 ::placeholder {
     color: #f1f1f1;
+    font-weight: 100;
 }
 
 main {
@@ -815,19 +816,19 @@ header {
 ::-webkit-input-placeholder {
     /* Edge */
     color: rgb(0, 0, 0);
-    font-weight: 600;
+    font-weight: 100;
 
 }
 
 :-ms-input-placeholder {
     /* Internet Explorer */
     color: rgb(0, 0, 0);
-    font-weight: 600;
+    font-weight: 100;
 }
 
 ::placeholder {
     color: rgb(0, 0, 0);
-    font-weight: 600;
+    font-weight: 100;
 
 }
 
@@ -854,6 +855,7 @@ header {
 
 }
 
+/* 
 .photo_submit-input {
     display: none;
 }
@@ -870,4 +872,82 @@ header {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+} */
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile+label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus+label,
+.inputfile+label:hover {
+    background-color: rgb(68, 92, 230);
+    color: white;
+
+}
+
+
+
+.inputfile:focus+label,
+.inputfile+label {
+
+    background-color: rgb(51, 78, 236);
+    color: rgb(255, 255, 255);
+    margin-left: 180px;
+    margin-right: auto;
+    font-size: 15px;
+    font-weight: 350;
+    width: 20%;
+    text-align: center;
+
+    padding: 5px;
+
+
+}
+
+.inputfile:focus+label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.modal-body img {
+    max-width: 180px;
+}
+
+.upload {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    width: 60%;
+    padding: 40px;
+}
+
+.upload-text h1 {
+    font-size: 10px;
+    text-align: center;
+    color: rgb(192, 188, 188);
+    margin: 10px;
+}
+
+.upload-text h3 {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 500;
+    padding: 10px;
+
+}
+
+.modal-close .material-icons:hover {
+    color: red;
 }

@@ -157,7 +157,8 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                 <div class="row m-0">
 
                     <div class="col-2 m-0 p-0"> <Topbar /></div>
-                    <div class="col-10 m-0 p-0">
+                    <div class="col-1 m-0 p-0"> </div>
+                    <div class="col-9 m-0 p-0">
 
 
                         <section className="login pt-0 ">

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { loadPost } from '../../store/thunk';
+import img1 from '../../public/images/upload.png';
 
 import './post.css';
 
@@ -99,35 +100,36 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                 </div>
                             </div>
                         </div>
+                        {/* <input
+                            type="file"
+                            className="custom-file-input"
+                            accept="image/*,audio/*,video/*"
+                            multiple
+                            onChange={multipleFileChangeHandler}
+                        /> */}
                     </form>
                     <div className="modal" id="myModal">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title">new post</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                                    <div className="modal-close"> <i className="material-icons" data-bs-dismiss="modal">close</i></div>
                                 </div>
                                 <div className="modal-body">
-                                    <div className="wrapper-ananthu">
-                                        <div className="photo_submit-container">
-                                            <input
-                                                type="file"
-                                                accept="image/*,audio/*,video/*"
-                                                multiple
-                                                onChange={multipleFileChangeHandler}
-                                            />
-                                            <div className="label-holder">
-                                                <label htmlFor="file" className="label">
-                                                    <i className="material-icons">add_a_photo</i>
-                                                </label>
-                                            </div>
-                                        </div>
+                                    <div className="upload">
+                                        <img src={img1} alt="" />
                                     </div>
+                                    <input type="file" name="file" className="custom-file-input" id="file" class="inputfile" multiple
+                                        onChange={multipleFileChangeHandler} />
+                                    <label for="file">Upload</label>
+                                    <div className="upload-text">
+                                        <h3>Click to Upload Your Images</h3>
+                                        <h1>copyright owned by foodhunter.canada.in developed by alwin and ananthu</h1>
+                                    </div>
+
+
                                 </div>
-                                <div className="modal-footer">
-                                    <button type="submit" className="btn2 btn-primary">post</button>
-                                    <button type="submit" className="btn2 btn-danger">Cancel</button>
-                                </div>
+
                             </div>
                         </div>
                     </div>
