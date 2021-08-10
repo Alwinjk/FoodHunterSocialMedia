@@ -14,6 +14,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import useToken from './useToken';
 import FriendUser from "./components/frienduser/FriendUser";
 import ViewOwnProfile from "./components/ViewOwnProfile/ViewOwnProfile";
+import Following from "./components/following/Following";
 
 function App() {
   
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route  path="/view-profile/:userid">
             {token ? <FriendUser /> : <Login setToken={setToken}/>}
+          </Route>
+          <Route path="/view-following">
+            {token ? <Following /> : <Login setToken={setToken}/>}
           </Route>
         </Switch>
       </Router>

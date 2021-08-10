@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Topbar from '../topbar/Topbar';
 import Userlist from '../userlist/Userlist';
 import OwnPostFeed from '../ownPostFeed/OwnPostFeed';
+import SearchComponent from '../search/Search';
 
 import './viewOwnProfile.css';
 
@@ -59,9 +60,11 @@ const ViewOwnProfile = ({ user }) => {
                             </section>
                         </div>
                     </div>
+
                     <OwnPostFeed />
                 </div>
                 <div className="col-3">
+                    <SearchComponent />
                     <Userlist />
                 </div>
             </div>

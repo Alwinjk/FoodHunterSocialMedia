@@ -1,0 +1,73 @@
+.container-akhil {
+    width: 100%;
+    margin: auto;
+    text-align: center
+}
+
+.card-hold {
+    width: 200px;
+    background-color: white;
+    border: 0px solid #eee;
+    text-align: center;
+    display: inline-block;
+    margin-top: 100px;
+    box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.22);
+    margin: 20px;
+}
+
+.card-hold img {
+    width: 100%;
+    height: 200px;
+
+
+}
+
+
+
+.people-follow h1 {
+    font-size: 40px;
+    font-weight: 500;
+    color: rgb(17, 146, 197);
+    margin: 20px;
+}
+
+.card-hold h1 {
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    font-size: 25px;
+
+}
+
+.card-hold span {
+    margin: 15px 0px;
+    display: inline-block;
+    color: #999;
+    margin-top: 10px
+}
+
+.card-hold p {
+    margin-bottom: 20px;
+    font-size: 15px
+}
+
+
+
+.card-hold button {
+    display: inline-block;
+    width: 87%;
+    padding: 10px;
+    background-color: rgb(33, 46, 226);
+    color: white;
+    font-size: 15px;
+    margin-bottom: 17px;
+    margin-top: 20px;
+    cursor: pointer;
+
+}
+
+.card-hold button:hover {
+    background-color: #25a6b1
+}
+
+.card-hold {}
