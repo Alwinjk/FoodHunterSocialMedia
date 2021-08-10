@@ -8,14 +8,9 @@ const Following = () => {
     return (
         <>
             <div className="row m-0">
-
-
                 <div className="col-2 m-0 p-0">
-
-
                     <Topbar />
                 </div>
-
                 <div className="col-10 mt-5 p-0">
 
                     <div className="container-akhil">

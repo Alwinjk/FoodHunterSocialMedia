@@ -6,10 +6,8 @@ import { useRef } from 'react';
 import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
-
 import Topbar from '../topbar/Topbar';
 import './Profile.css';
-
 
 const EditProfileReq = async (userid, data) => {
     try {

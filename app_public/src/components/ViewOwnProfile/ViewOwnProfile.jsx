@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import Topbar from '../topbar/Topbar';
 import Userlist from '../userlist/Userlist';
@@ -11,6 +12,16 @@ import './viewOwnProfile.css';
 
 const ViewOwnProfile = ({ user }) => {
 
+    const [postCount, setPostCount] = useState(0);
+    useEffect(() => {
+        fetchUserPosts()
+    })
+    async function fetchUserPosts() {
+        await axios.get(`/post/${user._id}/posts`)
+            .then(res => {
+                setPostCount(res.data.length);
+            });
+    }
 
     return (
         <>
@@ -38,19 +49,19 @@ const ViewOwnProfile = ({ user }) => {
                                                 </div>
                                                 <div className="col3"><h1>452</h1>
                                                     <span>Followers</span></div>
-                                                <div className="col3 last"><h1>1002</h1>
+                                                <div className="col3 last"><h1>{postCount}</h1>
                                                     <span>posts</span></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row clearfix">
                                         <ul className="row2tab clearfix">
-                                            <li><i className="fa fa-list-alt"></i>{ } posts </li>
+                                            <li><i className="fa fa-list-alt"></i> Posts </li>
 
                                             <Link to={{ pathname: `/edit-profile/${user._id}` }}>
                                                 <li>
                                                     <i className="fa fa-heart"></i>
-                                                    edit profile
+                                                    Edit profile
                                                 </li>
                                             </Link>
 
@@ -74,8 +85,7 @@ const ViewOwnProfile = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-    user: state.user,
-    posts: state.post
+    user: state.user
 });
 
 export default connect(mapStateToProps)(ViewOwnProfile);
