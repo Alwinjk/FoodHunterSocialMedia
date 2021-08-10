@@ -1,9 +1,3 @@
-export const CURRENT_POST = 'CURRENT_POST';
-export const currentPost = post => ({
-    type: CURRENT_POST,
-    payload: { post, }
-});
-
 export const LOAD_POST_IN_PROGRESS = 'LOAD_POST_IN_PROGRESS';
 export const loadPostInProgress = () => ({
     type: LOAD_POST_IN_PROGRESS,

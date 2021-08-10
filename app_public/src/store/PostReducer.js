@@ -1,9 +1,7 @@
 import { 
-    CURRENT_POST,
     LOAD_POST_SUCCESS,
     LOAD_POST_IN_PROGRESS,
-    LOAD_POST_FAILURE
-
+    LOAD_POST_FAILURE,
 } from "./PostAction";
 
 export const post = (state = [], action) => {

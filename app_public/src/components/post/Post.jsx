@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { loadPost } from '../../store/thunk';
 import img1 from '../../public/images/upload.png';
 
 import './post.css';
@@ -10,11 +9,7 @@ const mapStateToProps = state => ({
     user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
-    startLoadingPost: () => dispatch(loadPost())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user, startLoadingPost }) {
+export default connect(mapStateToProps)(function Post({ user }) {
     const text = useRef();
 
     const [selectedFiles, setSelectedFiles] = useState(null);
@@ -70,7 +65,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
         }
         // If file selected
 
-        startLoadingPost();
 
     };
     return (
@@ -93,20 +87,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(function Post({ user
                                         </div>
                                         <div className="tb" id="c-tabs">
                                             <div className="alwin-post2">
-                                                <button type="submit" className="btn2  mt-2 btn-primary"><i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal">attach_file</i></button>
+                                                <i className="material-icons" data-bs-toggle="modal" data-bs-target="#myModal"><button type="submit" className="btn2  mt-2 btn-primary">attach_file</button></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {/* <input
-                            type="file"
-                            className="custom-file-input"
-                            accept="image/*,audio/*,video/*"
-                            multiple
-                            onChange={multipleFileChangeHandler}
-                        /> */}
                     </form>
                     <div className="modal" id="myModal">
                         <div className="modal-dialog">

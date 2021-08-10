@@ -4,10 +4,10 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 
 import Topbar from '../topbar/Topbar';
-import OwnPostFeed from '../ownPostFeed/OwnPostFeed';
 import Userlist from '../userlist/Userlist';
 
 import './frienduser.css';
+import OthersFeed from '../othersFeed/OthersFeed';
 
 const FriendUser = ({ user }) => {
 
@@ -69,7 +69,8 @@ const FriendUser = ({ user }) => {
                             }
                         </div>
                     </div>
-                    <OwnPostFeed />
+                    <OthersFeed currentUser={viewUser} />
+                    {/* add this particular user's posts here, only if the logged in user is following this user */}
                 </div>
                 <div className="col-3">
                     <Userlist />

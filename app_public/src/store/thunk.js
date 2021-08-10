@@ -1,6 +1,6 @@
 import axios from "axios";
 import { loadUserInProgress, loadUserSuccess, loadUserFailure } from "./LoginAction";
-import { loadPostInProgress, loadPostSuccess, loadPostFailure } from "./PostAction";
+import { loadPostInProgress, loadPostSuccess, loadPostFailure, postClear } from "./PostAction";
 import { loadUserListInProgress, loadUserListSuccess, loadUserListFailure } from "./UserListAction";
 
 export const loadUser = () => async (dispatch, getState) => {
@@ -26,7 +26,6 @@ export const loadPost = () => async (dispatch, getState) => {
     try {
         dispatch(loadPostInProgress);
         const userid = JSON.parse(sessionStorage.getItem('_id'));
-        // const res = await axios.get(`/post/${userid}/posts`);
         const res = await axios.get('/all-posts');
         const post = res.data;
         dispatch(loadPostSuccess(post));
@@ -44,7 +43,7 @@ export const loadUserList = () => async (dispatch, getState) => {
         const userList = res.data;
         dispatch(loadUserListSuccess(userList));
     } catch (e) {
-        dispatch(loadPostFailure);
+        dispatch(loadUserListFailure);
         dispatch(displayAlert(e));
     }
 }

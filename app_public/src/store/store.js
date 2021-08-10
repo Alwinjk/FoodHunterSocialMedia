@@ -12,7 +12,7 @@ const reducers = {
     user,
     isLoading,
     post,
-    userList
+    userList,    
 };
 
 const persistConfigure = {

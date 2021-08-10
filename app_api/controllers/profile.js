@@ -165,19 +165,34 @@ const followRequest = (req, res) => {
             return;
     }
     User
-        .updateOne({_id: req.params.userid},{$addToSet: {following: [mongoose.Types.ObjectId(req.body.currentuser)]}})
-        .exec((err, user) => {
-            if(!user) {
-                res.status(404)
-                    .json({ "message" : "Userid not found" });
-                    return;
-            } else if (err) {
-                res.status(400)
+        // .updateOne({_id: req.params.userid},{$addToSet: {following: [mongoose.Types.ObjectId(req.body.currentuser)]}})
+        .findByIdAndUpdate(req.body.currentuser, {
+            $addToSet: {
+                followers: [mongoose.Types.ObjectId(req.params.userid)]
+            },
+        }, {
+            new: true
+        },(err, result) => {
+            if (err) {
+                return res.status(422)
                     .json(err);
-                    return;
             } else {
-                res.status(200)
-                    .json(user);
+                
+                User
+                    .findByIdAndUpdate(req.params.userid,{
+                        $addToSet: {
+                            following: [mongoose.Types.ObjectId(req.body.currentuser)]
+                        },
+                    }, {
+                        new: true
+                    })
+                    .then(result => {
+                        res.json(result);
+                    })
+                    .catch(err => {
+                        return res.status(422)
+                            .json({error: err});
+                    })
             }
             
         });
