@@ -38,7 +38,7 @@ const OwnPostFeed = ({ user }) => {
             const res = await axios.put(`/like`, { postid: postid, userid: user._id });
             const data = res.data;
             const postData = posts.map(post => {
-                if (post._id == data._id) {
+                if (post._id === data._id) {
                     return data;
                 } else {
                     return post;
@@ -118,7 +118,6 @@ const OwnPostFeed = ({ user }) => {
                                             <div className="pic-post">
                                                 {post.text}
                                                 <div className="slide-container">
-
                                                     <ImageSlider filesArray={filesArray} />
                                                 </div>
                                             </div>
@@ -138,7 +137,6 @@ const OwnPostFeed = ({ user }) => {
                                                 </div>
 
                                                 {/* comment division */}
-
 
                                             </div>
                                         </div>
@@ -170,14 +168,10 @@ const OwnPostFeed = ({ user }) => {
                                                                     </div>
                                                                     <div className="comment-feba">
                                                                         <h3>{comment.text}</h3>
-
                                                                     </div>
-
                                                                 </div>
-
                                                             )
                                                         }
-
                                                     })
                                                 }
                                             </div>

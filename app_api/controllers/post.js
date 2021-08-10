@@ -231,7 +231,9 @@ const addALike = (req, res) => {
     {
         new: true
     }
-    ).exec((err, post) => {
+    )
+    .populate('user')
+    .exec((err, post) => {
         if(err){
             return res.status(422)
                         .json(err);
@@ -250,7 +252,9 @@ const removeLike = (req, res) => {
     },
     {
         new: true
-    }).exec((err, post) => {
+    })
+    .populate('user')
+    .exec((err, post) => {
         if(err){
             return res.status(422)
                         .json(err);
