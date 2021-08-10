@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { loadPost, loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
+
 import Topbar from '../topbar/Topbar';
 import './Profile.css';
 
@@ -157,7 +158,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                 <div class="row m-0">
 
                     <div class="col-2 m-0 p-0"> <Topbar /></div>
-                    <div class="col-1 m-0 p-0"> </div>
+                    <div class="col-1 m-0 p-0">  </div>
                     <div class="col-9 m-0 p-0">
 
 
@@ -170,7 +171,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                 </div>
                             </div>
 
-                            <div className="container">
+                            <div className="container p-0">
 
 
                                 <div className="col bg-white mt-5 mb-5">
@@ -179,11 +180,27 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                             <div className="col-md-3 border-right">
                                                 <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                                                     <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url} />
+                                                    <div className="profile-job">
+                                                        <h2>  {user.firstname} {user.lastname}</h2>
+                                                    </div>
                                                     <form >
-                                                        <input type="file" onChange={singleFileChangeHandler} />
-                                                        <button type="submit" onClick={singleFileUploadHandler}>Submit</button>
+
+
+                                                        <div className="select-file">
+                                                            <h3>change your profile picture</h3>
+                                                            <div class="file-input">
+                                                                <input type="file" id="file" class="file" onChange={singleFileChangeHandler} />
+                                                                <label for="file">Select file</label>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                        <button type="submit" className="btn8" onClick={singleFileUploadHandler}>Submit</button>
+
+
                                                     </form>
-                                                    <span className="font-weight-bold">{user.firstname} {user.lastname}</span><span className="text-black-50"></span><span> </span>
                                                 </div>
                                             </div>
 
@@ -218,7 +235,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                     </div>
                                                     <div className="row mt-3">
                                                         <div className="col-md-3">
-                                                            <label className="labels">Date Of Birth</label>
+                                                            <label className="labels">Day</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
@@ -228,7 +245,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                             />
                                                         </div>
                                                         <div className="col-md-3">
-                                                            <label className="labels">day</label>
+                                                            <label className="labels">Month</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
@@ -238,7 +255,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                             />
                                                         </div>
                                                         <div className="col-md-3">
-                                                            <label className="labels"></label>
+                                                            <label className="labels">Year</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
@@ -368,6 +385,7 @@ const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
                                                             id="w3review"
                                                             name="w3review"
                                                             rows="4"
+                                                            placeholder="enter your bio"
                                                             cols="100%"
                                                             defaultValue={user.bio === undefined ? "" : user.bio}
                                                             ref={bio}
