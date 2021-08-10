@@ -12,18 +12,37 @@ import OthersFeed from '../othersFeed/OthersFeed';
 const FriendUser = ({ user }) => {
 
     const [viewUser, setViewUser] = useState(null);
+    const [postCount, setPostCount] = useState(0);
+    const [followingCheck, setFollowingCheck] = useState(false);
     const params = useParams();
-    console.log(params.userid)
-    useEffect(async () => {
-        console.log("userid", user._id);
+    useEffect(() => {
+        fetchUserData();
+        fetchPostsData();
+    }, []);
+
+    async function fetchUserData() {
         try {
             const res = await axios.get(`/view-profile/${params.userid}`)
-            console.log("view user data", res.data);
             setViewUser(res.data);
         } catch (err) {
             console.log("view a user", err);
         }
-    }, []);
+    }
+
+    async function fetchPostsData() {
+        await axios.get(`/post/${params.userid}/posts`)
+            .then(res => {
+                setPostCount(res.data.length);
+                if (user.following.includes(setViewUser._id)) {
+                    setFollowingCheck(true);
+                    console.log(followingCheck);
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+    }
+
+
 
     return (
         <>
@@ -42,7 +61,7 @@ const FriendUser = ({ user }) => {
                                         <div>
                                             <div className="row grid clearfix">
                                                 <div className="col2 first">
-                                                    <img src={viewUser.avatar === undefined || viewUser.avatar === null ? "https://bootdey.com/img/Content/avatar/avatar7.png" : viewUser.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : viewUser.avatar.url} alt="" />
+                                                    <img src={viewUser.avatar === undefined || viewUser.avatar === null ? "https://www.bootdey.com/img/Content/avatar/avatar7.png" : viewUser.avatar.url === undefined ? "https://www.bootdey.com/img/Content/avatar/avatar7.png" : viewUser.avatar.url} alt="" />
                                                     <h1>{viewUser.firstname} {viewUser.lastname}</h1>
                                                     <p>{viewUser.bio === undefined ? "" : viewUser.bio}</p>
                                                 </div>
@@ -54,7 +73,7 @@ const FriendUser = ({ user }) => {
                                                         </div>
                                                         <div className="col3"><h1>{viewUser.followers.length}</h1>
                                                             <span>Followers</span></div>
-                                                        <div className="col3 last"><h1>1002</h1>
+                                                        <div className="col3 last"><h1>{postCount}</h1>
                                                             <span>Posts</span></div>
                                                     </div>
                                                 </div>
@@ -69,8 +88,9 @@ const FriendUser = ({ user }) => {
                             }
                         </div>
                     </div>
-                    <OthersFeed currentUser={viewUser} />
-                    {/* add this particular user's posts here, only if the logged in user is following this user */}
+
+                    {followingCheck === true ? <OthersFeed currentUser={viewUser} /> : <div>Follow to see posts</div>}
+
                 </div>
                 <div className="col-3">
                     <Userlist />

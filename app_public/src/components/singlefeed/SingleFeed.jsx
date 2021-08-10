@@ -15,6 +15,10 @@ const SingleFeed = ({ user }) => {
         fetchFollowingPosts()
     }, []);
 
+    const getNestedObject = (nestedObj, pathArr) => {
+        return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj)
+    }
+
     // console.log("posts", posts);
     async function fetchFollowingPosts() {
         await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
@@ -30,7 +34,7 @@ const SingleFeed = ({ user }) => {
             const res = await axios.put(`/like`, { postid: postid, userid: user._id });
             const data = res.data;
             const postData = posts.map(post => {
-                if (post._id == data._id) {
+                if (post._id === data._id) {
                     return data;
                 } else {
                     return post;
@@ -44,7 +48,7 @@ const SingleFeed = ({ user }) => {
             const data = res.data;
             const postData = posts.map(post => {
                 if (data._id !== undefined) {
-                    if (post._id == data._id) {
+                    if (post._id === data._id) {
                         return data;
                     } else {
                         return post;
@@ -81,6 +85,9 @@ const SingleFeed = ({ user }) => {
         filesArray.push(post.files.map(file => {
             return file.url;
         }));
+        const url = getNestedObject(post, ['user', 'avatar', 'url']);
+        console.log("url", url)
+        console.log(post.user)
         return (
             <section key={index}>
                 <div className="content-alwin">
@@ -96,7 +103,7 @@ const SingleFeed = ({ user }) => {
                                                 <div className="col-md-3 border-right">
                                                 </div>
                                                 <div className="pic">
-                                                    <img src={post === undefined ? "" : post.user.avatar === undefined ? "" : post.user.avatar.url === undefined ? "" : post.user.avatar.url} alt="" />
+                                                    <img src={post === undefined ? "" : post.user.avatar === undefined ? "" : url} alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-9 border-right ">
