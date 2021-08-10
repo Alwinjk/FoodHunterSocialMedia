@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { loadUserList } from '../../store/thunk';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
