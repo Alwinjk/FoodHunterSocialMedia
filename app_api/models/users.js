@@ -51,18 +51,19 @@ const userSchema = new mongoose.Schema({
   },
   hash: String,
   salt: String,
+  resetToken: String,
+  expireToken: Date,
   bio: String,
   gender: String,
   dob: Date,
   following: {
     type: [mongoose.Schema.Types.ObjectId],
-
   },
   followers: {
     type: [mongoose.Schema.Types.ObjectId],
   },
   address: addressSchema,
-  avatar: avatarSchema
+  avatar: avatarSchema,
 });
 
 userSchema.methods.setPassword = function (password) {

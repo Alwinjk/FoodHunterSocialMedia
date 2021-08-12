@@ -1,7 +1,29 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
+const crypto = require('crypto') 
 const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 const User = mongoose.model('User');
+
+// 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
+
+// const transporter = nodemailer.createTransport(sendgridTransport({
+//     auth:{
+//         api_key: "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"
+//     }
+// }))
+
+const transporter = nodemailer.createTransport({
+    service: "hotmail",
+    // host: "foodhuntermedia@outlook.com",
+    // port: 587,
+    // secure: false,
+
+    auth: {
+        user: "foodhuntermedia@outlook.com",
+        pass: "TheSocialMedia@AK&AP2021"
+    }
+});
 
 const register = (req, res) => {
     if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
@@ -70,17 +92,6 @@ const randString = () => {
 async function confirmAccount(email, uniqueString){
 
 
-    const transporter = nodemailer.createTransport({
-        service: "hotmail",
-        // host: "foodhuntermedia@outlook.com",
-        // port: 587,
-        // secure: false,
-        auth: {
-            user: "foodhuntermedia@outlook.com",
-            pass: "TheSocialMedia@AK&AP2021"
-        }
-    });
-
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"FoodHunter 👻" <foodhuntermedia@outlook.com>', // sender address
@@ -94,7 +105,59 @@ async function confirmAccount(email, uniqueString){
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 }
 
+const resetPassowrd = (req, res) => {
+    crypto.randomBytes(32, (err, buffer) => {
+        if(err){
+            console.log(err);
+        }
+        const token = buffer.toString("hex");
+        User.findOne({email: req.body.email})
+            .then(user => {
+                if(!user){
+                    return res.status(422)
+                                .json({err: "User does not exist with this email"});
+                } 
+                user.resetToken = token;
+                user.expireToken = Date.now() + 3600000;
+                user.save()
+                    .then(result => {
+                        console.log(user.email)
+                        transporter.sendMail({
+                            from: '"FoodHunter 👻" <foodhuntermedia@outlook.com>', // sender address
+                            to: req.body.email, // list of receivers
+                            subject: "Reset Your Password ✔", // Subject line
+                            // text: "Hello world?", // plain text body
+                            html: `Click <a href="http://localhost:3000/reset-password/${token}>here</a> to reset your password"`, // html body
+                        })
+                        res.json({message: "check your email"})
+                    })
+            })
+    })
+}
+
+const setNewPassword = (req, res) => {
+    const newPassword = req.body.password;
+    const sentToken = req.params.token;
+    User.findOne({resetToken:sentToken,expireToken: {$gt: Date.now()}})
+        .then(user => {
+            if(!user){
+                return res.status(422)
+                        .json({error: "Try again, session expired"})
+            }
+            user.setPassword(req.body.password);
+            user.resetToken = undefined;
+            user.expireToken = undefined;
+            user.save()
+                .then(savedUser => {
+                    res.json({message: "Password updated successfully"});
+                })
+
+        })
+}
+
 module.exports = {
     register,
-    login
+    login,
+    resetPassowrd,
+    setNewPassword
 };
