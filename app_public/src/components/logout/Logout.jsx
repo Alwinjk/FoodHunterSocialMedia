@@ -8,7 +8,7 @@ const Logout = ({ logOutUser, state, user }) => {
     })
     console.log("user", user)
     return (
-        <div>Logou successful</div>
+        <div>Logou successful {user.firstname}</div>
     )
 }
 

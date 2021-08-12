@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { useRef } from 'react';
-import { loadPost, loadUser } from '../../store/thunk';
+import { loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
 import Topbar from '../topbar/Topbar';
@@ -19,11 +19,7 @@ const EditProfileReq = async (userid, data) => {
     }
 };
 
-const Profile = ({ user, startLoadingUser, startLoadingPost }) => {
-    console.log("user in profile", user.address);
-    useEffect(() => {
-        startLoadingPost();
-    }, []);
+const Profile = ({ user, startLoadingUser }) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [validationMsg, setValidationMsg] = useState([]);
@@ -417,7 +413,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     startLoadingUser: () => dispatch(loadUser()),
-    startLoadingPost: () => dispatch(loadPost()),
     onDisplayAlert: () => dispatch(displayAlert())
 });
 
