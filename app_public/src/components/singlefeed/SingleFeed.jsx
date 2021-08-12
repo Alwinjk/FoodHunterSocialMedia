@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import './singlefeed.css';
 import ImageSlider from '../imageSlider/ImageSlider';
@@ -109,7 +110,10 @@ const SingleFeed = ({ user }) => {
                                             <div className="col-md-9 border-right ">
 
                                                 <div className="col-md-9 border-right pull-left ">
-                                                    <span className="user-name">{post.user.firstname} {post.user.lastname}</span>
+                                                    <Link to={{ pathname: `/view-profile/${post.user._id}` }}>
+                                                        <span className="user-name">{post.user.firstname} {post.user.lastname}</span>
+                                                    </Link>
+
                                                 </div>
                                             </div>
                                         </div>
