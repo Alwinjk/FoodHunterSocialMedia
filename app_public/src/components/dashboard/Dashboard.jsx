@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { loadUser, loadPost } from '../../store/thunk';
+import { loadUser } from '../../store/thunk';
 import { displayAlert } from '../../store/thunk';
 
 import Post from '../post/Post';
@@ -12,11 +12,10 @@ import './dashboard.css';
 
 
 
-const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
+const Dashboard = ({ user, isLoading, startLoadingUser }) => {
 
     useEffect(() => {
         startLoadingUser();
-        startLoadingPost();
     }, []);
 
 
@@ -57,7 +56,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     startLoadingUser: () => dispatch(loadUser()),
-    startLoadingPost: () => dispatch(loadPost()),
     onDisplayAlert: () => dispatch(displayAlert())
 });
 

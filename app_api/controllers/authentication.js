@@ -5,14 +5,6 @@ const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const User = mongoose.model('User');
 
-// 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
-
-// const transporter = nodemailer.createTransport(sendgridTransport({
-//     auth:{
-//         api_key: "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"
-//     }
-// }))
-
 const transporter = nodemailer.createTransport({
     service: "hotmail",
     // host: "foodhuntermedia@outlook.com",
@@ -48,7 +40,7 @@ const register = (req, res) => {
             res
                 .status(200)
                 .json(user);
-            confirmAccount(user.email);
+            // confirmAccount(user.email);
         }
     })
 };
@@ -127,7 +119,7 @@ const resetPassowrd = (req, res) => {
                             to: req.body.email, // list of receivers
                             subject: "Reset Your Password ✔", // Subject line
                             // text: "Hello world?", // plain text body
-                            html: `Click <a href="http://localhost:3000/reset-password/${token}>here</a> to reset your password"`, // html body
+                            html: `Click <a href="http://localhost:3000/reset-password/${token}">here</a> to reset your password"`, // html body
                         })
                         res.json({message: "check your email"})
                     })

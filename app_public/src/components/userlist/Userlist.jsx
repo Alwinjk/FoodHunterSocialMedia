@@ -13,7 +13,7 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
 
     const handleFollowRequest = async (currentUserid, userid, event) => {
         try {
-            await axios.put(`users/${userid}/following`, { currentuser: currentUserid });
+            await axios.put(`/users/${userid}/following`, { currentuser: currentUserid });
             event.target.style.display = "none";
         } catch (err) {
             console.log("follow request error", err);
@@ -94,9 +94,7 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
                         )
                     })
                 }
-
             </section>
-
         </>
 
     )
