@@ -8,6 +8,9 @@ import { isLoading, user } from './LoginReducer';
 import { post } from './PostReducer';
 import { userList } from './UserListReducer';
 
+import { USER_LOGOUT } from './LogoutAction';
+
+
 const reducers = {
     user,
     isLoading,
@@ -15,13 +18,22 @@ const reducers = {
     userList,    
 };
 
+const rootReducer = (state, action) => {
+    if(action.type === USER_LOGOUT){
+        storage.removeItem('persist:root')
+        storage.removeItem('persist:rehydrate')
+        return appReducer(undefined, action);
+    }
+    return appReducer(state, action);
+}
+
 const persistConfigure = {
     key: 'root',
     storage,
     stateReconciler: autoMergeLevel2,
 }
 
-const rootReducer = combineReducers(reducers);
+const appReducer = combineReducers(reducers);
 const persistedReducer = persistReducer(persistConfigure, rootReducer);
 
 export const configureStore = () => 

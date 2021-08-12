@@ -1,52 +1,41 @@
 import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Person, VpnKey, Lock } from '@material-ui/icons';
+import { useParams } from 'react-router';
+import { Person, Lock } from '@material-ui/icons';
 import img1 from '../../public/images/logo.png';
 
-import './Login.css';
+import '../login/Login.css';
 
-
-const LoginApiReq = async (userCredentials) => {
-    try {
-        const res = await axios.post('/login', userCredentials);
-        return res.data;
-    } catch (err) {
-        console.log("Login request error : " + err);
-    }
-
-};
-
-export default function Login({ setToken }) {
+export default function NewPassword() {
 
     // useRef instead of useState
-    const email = useRef();
     const password = useRef();
-    const [userdata, setUserData] = useState();
+    const confirmPassword = useRef();
+    const [successMsg, setSuccessMsg] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const { token } = useParams();
 
     const handleSubmit = async e => {
         e.preventDefault();
-        try {
-            const userData = await LoginApiReq({ email: email.current.value, password: password.current.value });
-            const _id = userData.user._id;
-            sessionStorage.setItem('_id', JSON.stringify(_id));
+        const currentPassword = password.current.value;
+        const currentConfirmPassword = confirmPassword.current.value;
+        if (currentPassword === currentConfirmPassword) {
 
-            const token = userData.token;
-            setToken(token);
-            setUserData(userData);
-        } catch (err) {
-            console.log("Log in error", err);
-            setErrorMsg("E-mail or Password is wrong. Please try again...")
+            await axios.post(`/reset-password/${token}`, { password: currentPassword })
+                .then(res => {
+                    setSuccessMsg(res.data.message)
+                    setErrorMsg("");
+                }).catch(err => {
+                    setErrorMsg("Something went wrong, not able to reset your password")
+                })
 
+        } else {
+            setErrorMsg("Password does not match!");
+            setSuccessMsg("");
         }
 
-    }
 
-    const logInErrorMessage = (
-        <div style={{ color: "red" }}>{errorMsg}</div>
-    );
+    }
 
     return (
         <>
@@ -85,43 +74,34 @@ export default function Login({ setToken }) {
                                     <Lock color="secondary" fontSize="large" />
 
                                     <div className="signin">
-                                        <h1>LOG IN</h1>
+                                        <h1>Password Reset</h1>
                                     </div>
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-row">
                                             <div className="offset-1 col-lg-10 py-3 pt-5">
                                                 <Person color="action" />
-                                                <input type="text" className="inp px-3" placeholder="E-mail" ref={email} />
+                                                <input type="text" className="inp px-3" placeholder="New password" ref={password} />
+                                            </div>
+                                        </div>
+                                        <div className="form-row">
+                                            <div className="offset-1 col-lg-10 py-3 pt-5">
+                                                <Person color="action" />
+                                                <input type="text" className="inp px-3" placeholder="Confirm password" ref={confirmPassword} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <VpnKey color="action" />
-                                                <input type="password" className="inp px-3" placeholder="Password" ref={password} />
-                                            </div>
-                                        </div>
-                                        <div className="form-row">
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <button
-                                                    type="submit"
+                                                <button type="submit"
                                                     className="btn2"
+
                                                 >
-                                                    Log In
+                                                    Set New Password
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="form-row">
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <a className="btn1" href="/signup">Sign up</a><br></br>
-
-                                            </div>
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-
-                                                <Link className="btn1" to={{ pathname: "/reset-password" }}>Forgot Password</Link>
-                                            </div>
-                                        </div>
+                                        <div style={{ color: "green" }}>{successMsg}</div>
+                                        <div style={{ color: "red" }}>{errorMsg}</div>
                                     </form>
-                                    {userdata === undefined || "" || null ? logInErrorMessage : ""}
                                 </div>
 
                             </div>
@@ -131,8 +111,4 @@ export default function Login({ setToken }) {
             </div>
         </>
     )
-}
-
-Login.prototype = {
-    setToken: PropTypes.func.isRequired
 }

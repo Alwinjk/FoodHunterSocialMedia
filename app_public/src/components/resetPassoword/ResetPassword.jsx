@@ -1,52 +1,29 @@
 import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Person, VpnKey, Lock } from '@material-ui/icons';
+import { Person, Lock } from '@material-ui/icons';
 import img1 from '../../public/images/logo.png';
 
-import './Login.css';
+import '../login/Login.css';
 
-
-const LoginApiReq = async (userCredentials) => {
-    try {
-        const res = await axios.post('/login', userCredentials);
-        return res.data;
-    } catch (err) {
-        console.log("Login request error : " + err);
-    }
-
-};
-
-export default function Login({ setToken }) {
+export default function ResetPassword({ setToken }) {
 
     // useRef instead of useState
     const email = useRef();
-    const password = useRef();
-    const [userdata, setUserData] = useState();
-    const [errorMsg, setErrorMsg] = useState("");
+    const [emailMsg, setEmailMsg] = useState("");
 
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const userData = await LoginApiReq({ email: email.current.value, password: password.current.value });
-            const _id = userData.user._id;
-            sessionStorage.setItem('_id', JSON.stringify(_id));
+            const res = await axios.post('/reset-password', { email: email.current.value });
+            console.log(res.data);
+            setEmailMsg(res.data.message);
 
-            const token = userData.token;
-            setToken(token);
-            setUserData(userData);
         } catch (err) {
             console.log("Log in error", err);
-            setErrorMsg("E-mail or Password is wrong. Please try again...")
 
         }
 
     }
-
-    const logInErrorMessage = (
-        <div style={{ color: "red" }}>{errorMsg}</div>
-    );
 
     return (
         <>
@@ -85,7 +62,7 @@ export default function Login({ setToken }) {
                                     <Lock color="secondary" fontSize="large" />
 
                                     <div className="signin">
-                                        <h1>LOG IN</h1>
+                                        <h1>Password Reset</h1>
                                     </div>
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-row">
@@ -96,32 +73,16 @@ export default function Login({ setToken }) {
                                         </div>
                                         <div className="form-row">
                                             <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <VpnKey color="action" />
-                                                <input type="password" className="inp px-3" placeholder="Password" ref={password} />
-                                            </div>
-                                        </div>
-                                        <div className="form-row">
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <button
-                                                    type="submit"
+                                                <button type="submit"
                                                     className="btn2"
+
                                                 >
-                                                    Log In
+                                                    Send Email
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="form-row">
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-                                                <a className="btn1" href="/signup">Sign up</a><br></br>
-
-                                            </div>
-                                            <div className="offset-1 col-lg-10 py-3 pt-2">
-
-                                                <Link className="btn1" to={{ pathname: "/reset-password" }}>Forgot Password</Link>
-                                            </div>
-                                        </div>
+                                        <div style={{ color: "green" }}>{emailMsg}</div>
                                     </form>
-                                    {userdata === undefined || "" || null ? logInErrorMessage : ""}
                                 </div>
 
                             </div>
@@ -131,8 +92,4 @@ export default function Login({ setToken }) {
             </div>
         </>
     )
-}
-
-Login.prototype = {
-    setToken: PropTypes.func.isRequired
 }

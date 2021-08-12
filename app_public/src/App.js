@@ -15,6 +15,9 @@ import useToken from './useToken';
 import FriendUser from "./components/frienduser/FriendUser";
 import ViewOwnProfile from "./components/ViewOwnProfile/ViewOwnProfile";
 import Following from "./components/following/Following";
+import Logout from "./components/logout/Logout";
+import ResetPassword from "./components/resetPassoword/ResetPassword";
+import NewPassword from "./components/resetPassoword/NewPassword";
 
 function App() {
   
@@ -51,6 +54,15 @@ function App() {
           </Route>
           <Route path="/view-following">
             {token ? <Following /> : <Login setToken={setToken}/>}
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route exact path="/reset-password">
+            <ResetPassword />
+          </Route>
+          <Route path="/reset-password/:token">
+            <NewPassword />
           </Route>
         </Switch>
       </Router>

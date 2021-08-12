@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loadUserInProgress, loadUserSuccess, loadUserFailure } from "./LoginAction";
-import { loadPostInProgress, loadPostSuccess, loadPostFailure, postClear } from "./PostAction";
+import { userLogout } from "./LogoutAction";
+import { loadPostInProgress, loadPostSuccess, loadPostFailure } from "./PostAction";
 import { loadUserListInProgress, loadUserListSuccess, loadUserListFailure } from "./UserListAction";
 
 export const loadUser = () => async (dispatch, getState) => {
@@ -16,6 +17,10 @@ export const loadUser = () => async (dispatch, getState) => {
         dispatch(displayAlert(e));
     }
     
+}
+
+export const logoutUser = () => (dispatch, getState) => {
+    dispatch(userLogout);
 }
 
 export const displayAlert = (e) => () => {

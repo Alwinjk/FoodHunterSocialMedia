@@ -13,9 +13,8 @@ const ctrlAuth = require("../controllers/authentication");
 
 router.post("/register", ctrlAuth.register);
 router.post("/login", ctrlAuth.login);
-router.get("/login", (req, res) => {
-    res.send("Hello User");
-});
+router.post("/reset-password", ctrlAuth.resetPassowrd);
+router.post("/reset-password/:token", ctrlAuth.setNewPassword);
 
 
 // user profile routes
@@ -76,4 +75,7 @@ router.route("/view-profile/:userid")
 const ctrlSearch = require("../controllers/search");
 router.route("/search-users")
         .post(ctrlSearch.userSearch);
+
+// reset password
+
 module.exports = router;

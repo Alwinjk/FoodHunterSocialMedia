@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Person, VpnKey, PersonAdd, MailOutline } from '@material-ui/icons';
 
 import './signup.css';
@@ -99,6 +100,13 @@ export default function Signup() {
                   <div className="form-row">
                     <div className="offset-1 col-lg-10  pt-2">
                       <button className="btn2">Create new account</button>
+                    </div>
+                  </div>
+                  <div className="form-row">
+
+                    <div className="offset-1 col-lg-10 py-3 pt-2">
+
+                      <Link className="btn1" to={{ pathname: "/login" }}>Login</Link>
                     </div>
                   </div>
                 </form>
