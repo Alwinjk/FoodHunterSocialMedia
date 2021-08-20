@@ -19,9 +19,11 @@ const Topbar = ({ user }) => {
                         <Link className=" auto-link" aria-current="page" to={{ pathname: `/profile/${user._id}` }}><i style={{ color: "#0d6efd" }} className="material-icons">person</i>
                             Profile
                         </Link>
-                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">emoji_people</i>About Us</Link>
+
+                        <Link className=" auto-link" to='/about-us'><i style={{ color: "#0d6efd" }} className="material-icons">group</i>About Us</Link>
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">contact_support</i>Contact</Link>
-                        <Link className=" auto-link" to='/view-following'><i style={{ color: "#0d6efd" }} className="material-icons">people_outline</i>Following</Link>
+                        <Link className=" auto-link" to='/view-following'><i style={{ color: "#0d6efd" }} className="material-icons">group</i>Following</Link>
+
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">logout</i>Logout</Link>
 
 

@@ -15,6 +15,8 @@ import useToken from './useToken';
 import FriendUser from "./components/frienduser/FriendUser";
 import ViewOwnProfile from "./components/ViewOwnProfile/ViewOwnProfile";
 import Following from "./components/following/Following";
+import About from "./components/About/About";
+
 
 function App() {
   
@@ -51,6 +53,9 @@ function App() {
           </Route>
           <Route path="/view-following">
             {token ? <Following /> : <Login setToken={setToken}/>}
+          </Route>
+          <Route path="/about-us">
+            {token ? <About /> : <Login setToken={setToken}/>}
           </Route>
         </Switch>
       </Router>

@@ -26,7 +26,7 @@
  }
 
  .material-icons:hover {
-     color: rgb(254, 255, 255) !important;
+     color: rgb(5, 32, 155) !important;
  }
 
 
@@ -82,9 +82,9 @@
 
  @media (max-width:600px) {
 
-     /* .function-nav .nav-true {
+     .function-nav .nav-true {
          display: none;
-     } */
+     }
 
  }
 

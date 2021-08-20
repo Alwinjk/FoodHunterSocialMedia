@@ -30,13 +30,13 @@ const Dashboard = ({ user, isLoading, startLoadingUser, startLoadingPost }) => {
 
                     <div className="row m-0">
 
-                        <div className="col-md-2 m-0 p-0"><Topbar /></div>
+                        <div className="col-md-2 col-sm-1 m-0 p-0"><Topbar /></div>
 
-                        <div className="col-md-7 m-0 p-0">
+                        <div className="col-md-7 col-sm-6 m-0 p-0">
                             <Post />
                             <SingleFeed />
                         </div>
-                        <div className="col-md-3 m">
+                        <div className="col-md-3 col-sm-5 m">
                             <SearchComponent />
                             <UserList />
                         </div>
