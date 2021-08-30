@@ -47,7 +47,7 @@ const ViewOwnProfile = ({ user }) => {
                                                     <h1>{user.following.length}</h1>
                                                     <span>Following</span>
                                                 </div>
-                                                <div className="col3"><h1>452</h1>
+                                                <div className="col3"><h1>{user.followers.length}</h1>
                                                     <span>Followers</span></div>
                                                 <div className="col3 last"><h1>{postCount}</h1>
                                                     <span>posts</span></div>

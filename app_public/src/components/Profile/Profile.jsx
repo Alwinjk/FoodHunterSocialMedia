@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
@@ -173,7 +173,7 @@ const Profile = ({ user, startLoadingUser }) => {
                                         <div className="row">
                                             <div className="col-md-3 border-right">
                                                 <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                    <img className="rounded-circle mt-4" width="150px" src={user.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url} />
+                                                    <img className="rounded-circle mt-4" width="150px" alt="profile pic" src={user.avatar === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url === undefined ? "https://bootdey.com/img/Content/avatar/avatar7.png" : user.avatar.url} />
                                                     <div className="profile-job">
                                                         <h2>  {user.firstname} {user.lastname}</h2>
                                                     </div>

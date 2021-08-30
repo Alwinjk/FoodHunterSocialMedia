@@ -24,16 +24,28 @@ const FriendUser = ({ user }) => {
         try {
             const res = await axios.get(`/view-profile/${params.userid}`)
             setViewUser(res.data);
+            console.log(viewUser)
         } catch (err) {
             console.log("view a user", err);
         }
+
+        // await axios.get(`/view-profile/${params.userid}`)
+        //     .then((response) => {
+        //         console.log(response)
+        //         const res = response.data
+        //         setViewUser(res);
+        //         console.log(viewUser);
+        //     }).catch(err => {
+        //         console.log(err);
+        //     });
     }
 
     async function fetchPostsData() {
         await axios.get(`/post/${params.userid}/posts`)
             .then(res => {
                 setPostCount(res.data.length);
-                if (user.following.includes(setViewUser._id)) {
+
+                if (user.following.includes(params.userid)) {
                     setFollowingCheck(true);
                     console.log(followingCheck);
                 }

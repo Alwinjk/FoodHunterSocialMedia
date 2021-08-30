@@ -162,7 +162,7 @@ const OthersFeed = ({ user, currentUser }) => {
                                                                 <div key={index} className="comment-ananthu">
                                                                     <div className="comment-alwin">
                                                                         <div className="comment-img">
-                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" class="profile-photo-lg" />
+                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" className="profile-photo-lg" />
                                                                         </div>
                                                                         <div className="comment-comment">
                                                                             <h2>

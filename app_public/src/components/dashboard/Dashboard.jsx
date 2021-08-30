@@ -18,9 +18,6 @@ const Dashboard = ({ user, isLoading, startLoadingUser }) => {
         startLoadingUser();
     }, []);
 
-
-
-
     const loadingMessage = <div style={{ textAlign: "center" }}>Loading Dashboard...</div>
     const content = (
         <>
@@ -44,7 +41,7 @@ const Dashboard = ({ user, isLoading, startLoadingUser }) => {
             </section>
         </>
     );
-    console.log("Current user: " + JSON.stringify(user));
+    // console.log("Current user: " + JSON.stringify(user));
     return isLoading ? loadingMessage : content;
 
 };
