@@ -106,9 +106,9 @@ export default connect(mapStateToProps)(function Post({ user }) {
                                     <div className="upload">
                                         <img src={img1} alt="" />
                                     </div>
-                                    <input type="file" name="file" className="custom-file-input" id="file" class="inputfile" multiple
+                                    <input type="file" name="file" className="custom-file-input" id="file" className="inputfile" multiple
                                         onChange={multipleFileChangeHandler} />
-                                    <label for="file">Upload</label>
+                                    <label htmlFor="file">Upload</label>
                                     <div className="upload-text">
                                         <h3>Click to Upload Your Images</h3>
                                         <h1>copyright owned by foodhunter.canada.in developed by alwin and ananthu</h1>

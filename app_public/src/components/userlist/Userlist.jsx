@@ -54,9 +54,7 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
                                 {
                                     removeExistingFriendCheck === true ? null :
                                         <div key={index} className="my-list1">
-
                                             <div className="my-list">
-
                                                 <div className="nearby-user">
                                                     <div className="row">
                                                         <div className="col-md-2 col-sm-2">
@@ -75,6 +73,7 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
                                                             <button
                                                                 onClick={
                                                                     (event) => {
+                                                                        console.log(currentUser._id, user._id)
                                                                         handleFollowRequest(currentUser._id, user._id, event);
                                                                     }
                                                                 }
@@ -86,9 +85,7 @@ const Userlist = ({ user, userList, startLoadingUserList }) => {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                 }
                             </>
                         )

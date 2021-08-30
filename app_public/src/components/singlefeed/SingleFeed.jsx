@@ -24,7 +24,7 @@ const SingleFeed = ({ user }) => {
     async function fetchFollowingPosts() {
         await axios.post('/following-posts', { userid: user._id, followingArray: user.following })
             .then(res => {
-                console.log("result", res.data);
+                // console.log("result", res.data);
                 setPosts(res.data);
             });
     }
@@ -87,8 +87,8 @@ const SingleFeed = ({ user }) => {
             return file.url;
         }));
         const url = getNestedObject(post, ['user', 'avatar', 'url']);
-        console.log("url", url)
-        console.log(post.user)
+        // console.log("url", url)
+        // console.log(post.user)
         return (
             <section key={index}>
                 <div className="content-alwin">
@@ -156,14 +156,14 @@ const SingleFeed = ({ user }) => {
                                             </div>
                                             <div className="comment-post">
                                                 {
-                                                    post.comments.map(comment => {
+                                                    post.comments.map((comment, index) => {
                                                         if (comment.user != null) {
-                                                            console.log("comment", comment.user)
+                                                            // console.log("comment", comment.user)
                                                             return (
-                                                                <div className="comment-ananthu">
+                                                                <div key={index} className="comment-ananthu">
                                                                     <div className="comment-alwin">
                                                                         <div className="comment-img">
-                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" class="profile-photo-lg" />
+                                                                            <img src={comment.user.avatar === undefined ? "" : comment.user.avatar.url === undefined ? "" : comment.user.avatar.url} alt="user" className="profile-photo-lg" />
                                                                         </div>
                                                                         <div className="comment-comment">
                                                                             <h2>

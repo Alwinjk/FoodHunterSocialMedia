@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { logoutUser } from '../../store/thunk';
 import { connect } from 'react-redux';
 
+import './logout.css';
+
 const Logout = ({ logOutUser, state, user }) => {
     useEffect(() => {
         logOutUser();
     })
     console.log("user", user)
     return (
-        <div>Logou successful {user.firstname}</div>
+        <div className="logout">Logout successful </div>
     )
 }
 

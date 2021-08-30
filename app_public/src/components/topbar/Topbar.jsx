@@ -22,7 +22,7 @@ const Topbar = ({ user }) => {
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">emoji_people</i>About Us</Link>
                         <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">contact_support</i>Contact</Link>
                         <Link className=" auto-link" to='/view-following'><i style={{ color: "#0d6efd" }} className="material-icons">people_outline</i>Following</Link>
-                        <Link className=" auto-link" to='/dashboard'><i style={{ color: "#0d6efd" }} className="material-icons">logout</i>Logout</Link>
+                        <Link className=" auto-link" to='/logout'><i style={{ color: "#0d6efd" }} className="material-icons">logout</i>Logout</Link>
 
 
                     </div>

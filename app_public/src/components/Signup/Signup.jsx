@@ -49,9 +49,9 @@ export default function Signup() {
               <div className="col">
                 <div className="col-lg-9 col-md-10  ">
                   <div className="create-img">
-                    <h1></h1>
+                    {/* <h1></h1>
                     <h3> </h3>
-                    <h2> </h2>
+                    <h2> </h2> */}
                   </div>
                 </div>
               </div>

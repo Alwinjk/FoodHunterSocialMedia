@@ -24,7 +24,7 @@ const SearchComponent = () => {
         setSearch(query);
         axios.post('/search-users', { query: query })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setSearchResults(res.data);
             })
     }
@@ -68,9 +68,9 @@ const SearchComponent = () => {
                         />
                         <ul className="collection">
                             {
-                                searchResults.length === 0 || searchResults[0] === "" ? null : searchResults.map(user => {
+                                searchResults.length === 0 || searchResults[0] === "" ? null : searchResults.map((user, index) => {
                                     return (
-                                        <Link className="profile-link" to={{ pathname: `/view-profile/${user._id}` }}>
+                                        <Link key={index} className="profile-link" to={{ pathname: `/view-profile/${user._id}` }}>
                                             <div>
                                                 <div className="row">
                                                     <div className="col p-0 ml-5 ">

@@ -15,7 +15,6 @@ const LoginApiReq = async (userCredentials) => {
     } catch (err) {
         console.log("Login request error : " + err);
     }
-
 };
 
 export default function Login({ setToken }) {
